@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <DesignationDef>
+    <defName>Rhy_PhaseSnareDesignation</defName>
+    <texturePath>RhyniaOverpower/UI/PhaseSnareDesignation</texturePath>
+    <targetType>Thing</targetType>
+  </DesignationDef>
+</Defs>

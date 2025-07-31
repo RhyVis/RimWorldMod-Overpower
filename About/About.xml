@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <packageId>Rhynia.Mod.Overpower</packageId>
+  <name>[RHY] Overpower</name>
+  <author>Rhynia</author>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>Rhynia.Mod.Baseline</packageId>
+      <displayName>[RHY] Baseline</displayName>
+      <steamWorkshopUrl />
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>Rhynia.Mod.Baseline</li>
+    <li>brrainz.harmony</li>
+    <li>oskarpotocki.vanillafactionsexpanded.core</li>
+  </loadAfter>
+  <description>
+    Homemade overpowered stuffs.
+
+    Features:
+
+    - PhaseSnare: Teleport designated targets (across maps) to the specific location, and stun them.
+  </description>
+</ModMetaData>

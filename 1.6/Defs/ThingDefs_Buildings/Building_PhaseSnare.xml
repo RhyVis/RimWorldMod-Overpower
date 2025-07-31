@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <DesignatorDropdownGroupDef>
+    <defName>Rhy_PhaseSnare_Dropdown</defName>
+  </DesignatorDropdownGroupDef>
+
+  <ThingDef ParentName="Rhy_FloorStructureBase">
+    <defName>Rhy_PhaseSnare_Core</defName>
+    <label>捕敌相位终端</label>
+    <description>将捕敌相位信标捕获的敌人传送至此位置，并对其造成约5秒的眩晕。</description>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>RhyniaOverpower/Things/Building/Security/PhaseSnare_Core</texPath>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>0</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Mass>0</Mass>
+    </statBases>
+    <useHitPoints>False</useHitPoints>
+    <size>(1, 1)</size>
+    <tickerType>Normal</tickerType>
+    <designatorDropdown>Rhy_PhaseSnare_Dropdown</designatorDropdown>
+    <costList Inherit="False" />
+    <placeWorkers>
+      <li>Rhynia.Overpower.Placeworker_PhaseSnareCore</li>
+    </placeWorkers>
+    <comps>
+      <li Class="Rhynia.Overpower.CompProperties_PhaseSnareCore" />
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_FurnBase">
+    <defName>Rhy_PhaseSnare_Beacon</defName>
+    <label>捕敌相位信标</label>
+    <description>这个装置用于向终端提供位置信息。所在的地图将可以使用相位传送功能。</description>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Building/Misc/DropBeacon</texPath>
+    </graphicData>
+    <building>
+      <expandHomeArea>False</expandHomeArea>
+    </building>
+    <fillPercent>0.1</fillPercent>
+    <rotatable>False</rotatable>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>0</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Mass>0</Mass>
+    </statBases>
+    <useHitPoints>False</useHitPoints>
+    <size>(1, 1)</size>
+    <tickerType>Normal</tickerType>
+    <costList Inherit="False" />
+    <minifiedDef Inherit="False" />
+    <thingCategories Inherit="False" />
+    <designatorDropdown>Rhy_PhaseSnare_Dropdown</designatorDropdown>
+    <placeWorkers>
+      <li>Rhynia.Overpower.Placeworker_PhaseSnareBeacon</li>
+    </placeWorkers>
+    <comps>
+      <li Class="Rhynia.Overpower.CompProperties_PhaseSnareBeacon" />
+    </comps>
+  </ThingDef>
+</Defs>

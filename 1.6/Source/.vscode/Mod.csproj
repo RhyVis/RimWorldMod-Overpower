@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net480</TargetFramework>
+        <PlatformTarget>x64</PlatformTarget>
+        <AssemblyName>Rhynia.Overpower</AssemblyName>
+        <OutputPath>../../Assemblies</OutputPath>
+        <VersionPrefix>1.6.0.0</VersionPrefix>
+        <DebugType>None</DebugType>
+        <DebugSymbols>False</DebugSymbols>
+        <Nullable>Enable</Nullable>
+        <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
+        <LangVersion>latestmajor</LangVersion>
+        <RimWorldPath>../../../../../RimWorldWin64_Data/Managed</RimWorldPath>
+        <RimWorldModsPath>../../../..</RimWorldModsPath>
+        <WorkShopPath>../../../../../../../workshop/content/294100</WorkShopPath>
+    </PropertyGroup>
+    <ItemGroup>
+        <!-- Mod -->
+        <Compile Include="../**/*.cs" />
+        <Compile Remove="../.vscode/**/*.cs" />
+        <!-- Rimworld -->
+        <Reference Include="$(RimWorldPath)/*.dll">
+            <Private>False</Private>
+        </Reference>
+        <!-- Mods -->
+        <Reference Include="$(RimWorldModsPath)/Rhynia Baseline/1.6/Assemblies/Rhynia.Baseline.dll">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(WorkShopPath)/2009463077/Current/Assemblies/0Harmony.dll">
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="$(WorkShopPath)/2023507013/1.6/Assemblies/PipeSystem.dll">
+            <Private>False</Private>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="PolySharp" Version="1.15.0">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>
