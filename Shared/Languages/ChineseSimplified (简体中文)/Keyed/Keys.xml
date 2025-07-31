@@ -3,6 +3,32 @@
 
   <!-- Common -->
 
+  <!-- Buildings -->
+
+  <RhyniaOverpower_Building_SpawnThing_Gizmo1_Label>立即生成</RhyniaOverpower_Building_SpawnThing_Gizmo1_Label>
+  <RhyniaOverpower_Building_SpawnThing_Gizmo1_Desc>立即生成：'{0}'</RhyniaOverpower_Building_SpawnThing_Gizmo1_Desc>
+  <RhyniaOverpower_Building_SpawnThing_Gizmo2_Desc>目前生成的目标物品为 '{0}'</RhyniaOverpower_Building_SpawnThing_Gizmo2_Desc>
+  <RhyniaOverpower_Building_SpawnThing_Gizmo2_Menu>选择生成的物品</RhyniaOverpower_Building_SpawnThing_Gizmo2_Menu>
+  <RhyniaOverpower_Building_SpawnThing_Gizmo3_Label>自动生成</RhyniaOverpower_Building_SpawnThing_Gizmo3_Label>
+  <RhyniaOverpower_Building_SpawnThing_Gizmo3_Desc>游戏内每1小时都会尝试补充物品</RhyniaOverpower_Building_SpawnThing_Gizmo3_Desc>
+  <RhyniaOverpower_Building_SpawnThing_Mote1>成功补充物品: {0}</RhyniaOverpower_Building_SpawnThing_Mote1>
+  <RhyniaOverpower_Building_SpawnThing_Mote2>成功生成物品</RhyniaOverpower_Building_SpawnThing_Mote2>
+  <RhyniaOverpower_Building_SpawnThing_Mote3>存储物品类型错误, 期望: {0}, 实际: {1}</RhyniaOverpower_Building_SpawnThing_Mote3>
+
+  <RhyniaOverpower_WealthConvert_Gizmo1_Label>自动转化</RhyniaOverpower_WealthConvert_Gizmo1_Label>
+  <RhyniaOverpower_WealthConvert_Gizmo1_Desc>当前自动转化状态为: {0}</RhyniaOverpower_WealthConvert_Gizmo1_Desc>
+  <RhyniaOverpower_WealthConvert_Gizmo2_Label>自动放置</RhyniaOverpower_WealthConvert_Gizmo2_Label>
+  <RhyniaOverpower_WealthConvert_Gizmo2_Desc>当前自动放置状态为: {0}</RhyniaOverpower_WealthConvert_Gizmo2_Desc>
+  <RhyniaOverpower_WealthConvert_Gizmo3_Label>立即转化</RhyniaOverpower_WealthConvert_Gizmo3_Label>
+  <RhyniaOverpower_WealthConvert_Gizmo3_Desc>立即将容器内的物品转化为贮存财富</RhyniaOverpower_WealthConvert_Gizmo3_Desc>
+  <RhyniaOverpower_WealthConvert_Gizmo4_Label>立即放置</RhyniaOverpower_WealthConvert_Gizmo4_Label>
+  <RhyniaOverpower_WealthConvert_Gizmo4_Desc>立即将容器内贮存的财富放置为白银或黄金</RhyniaOverpower_WealthConvert_Gizmo4_Desc>
+  <RhyniaOverpower_WealthConvert_Gizmo5_Label>当前模式: {0}</RhyniaOverpower_WealthConvert_Gizmo5_Label>
+  <RhyniaOverpower_WealthConvert_Gizmo5_Desc>决定转化为的目标</RhyniaOverpower_WealthConvert_Gizmo5_Desc>
+  <RhyniaOverpower_WealthConvert_Info>当前贮存的财富: {0}</RhyniaOverpower_WealthConvert_Info>
+  <RhyniaOverpower_WealthConvert_Mote>转化财富: {0}</RhyniaOverpower_WealthConvert_Mote>
+  <RhyniaOverpower_WealthConvert_MoteFailure>放置财富失败, 剩余: {0}</RhyniaOverpower_WealthConvert_MoteFailure>
+
   <!-- Comps -->
 
   <RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>上一次处理数量：{0}</RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>

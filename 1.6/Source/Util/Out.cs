@@ -1,6 +1,6 @@
 namespace Rhynia.Overpower.Util;
 
-public static class Out
+internal static class Out
 {
     private const string Label = "Rhynia.Overpower";
 

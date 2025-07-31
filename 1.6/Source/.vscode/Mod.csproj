@@ -33,6 +33,9 @@
         <Reference Include="$(WorkShopPath)/2023507013/1.6/Assemblies/PipeSystem.dll">
             <Private>False</Private>
         </Reference>
+        <Reference Include="$(WorkShopPath)/3033901359/1.6/Assemblies/AdaptiveStorageFramework.dll">
+            <Private>False</Private>
+        </Reference>
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="PolySharp" Version="1.15.0">
