@@ -2,7 +2,7 @@
 <Defs>
   <ThingDef Name="Rhy_ThingSpawnerBase" ParentName="AdaptiveStorageMinifiableBase" Abstract="True">
     <thingClass>Rhynia.Overpower.Building_ThingSpawner</thingClass>
-    <description>可以自动向容器内补充指定物品。</description>
+    <description>Can spawn specified items in the container.</description>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
       <texPath>RhyniaOverpower/Things/Building/Misc/Crate1</texPath>
@@ -13,6 +13,7 @@
     <size>(1, 1)</size>
     <defaultPlacingRot>North</defaultPlacingRot>
     <rotatable>False</rotatable>
+    <inspectorTabs Inherit="False" />
     <building>
       <maxItemsInCell>1</maxItemsInCell>
     </building>
@@ -44,7 +45,7 @@
 
   <ThingDef ParentName="Rhy_ThingSpawnerBase">
     <defName>Rhy_ThingSpawner</defName>
-    <label>生成器</label>
+    <label>thing spawner</label>
     <building>
       <defaultStorageSettings>
         <priority>Critical</priority>
@@ -54,6 +55,7 @@
     <modExtensions>
       <li Class="Rhynia.Overpower.DefModExt_ThingSpawner">
         <thingDefs>
+          <li>Rhy_ArchotechAssembly</li>
           <li>MealSurvivalPack</li>
           <li>MedicineHerbal</li>
           <li>MedicineIndustrial</li>

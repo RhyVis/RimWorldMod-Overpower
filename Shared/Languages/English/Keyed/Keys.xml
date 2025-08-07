@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- Common -->
+
+  <!-- Buildings -->
+
+  <RhyniaOverpower_Building_SpawnThing_Gizmo1_Label>Spawn Now</RhyniaOverpower_Building_SpawnThing_Gizmo1_Label>
+  <RhyniaOverpower_Building_SpawnThing_Gizmo1_Desc>Spawn Now: '{0}'</RhyniaOverpower_Building_SpawnThing_Gizmo1_Desc>
+  <RhyniaOverpower_Building_SpawnThing_Gizmo2_Desc>Current target item to spawn is '{0}'</RhyniaOverpower_Building_SpawnThing_Gizmo2_Desc>
+  <RhyniaOverpower_Building_SpawnThing_Gizmo2_Menu>Select Spawned Item</RhyniaOverpower_Building_SpawnThing_Gizmo2_Menu>
+  <RhyniaOverpower_Building_SpawnThing_Gizmo3_Label>Auto Spawn</RhyniaOverpower_Building_SpawnThing_Gizmo3_Label>
+  <RhyniaOverpower_Building_SpawnThing_Gizmo3_Desc>Game will attempt to replenish items every hour</RhyniaOverpower_Building_SpawnThing_Gizmo3_Desc>
+  <RhyniaOverpower_Building_SpawnThing_Mote1>Successfully replenished item: {0}</RhyniaOverpower_Building_SpawnThing_Mote1>
+  <RhyniaOverpower_Building_SpawnThing_Mote2>Successfully spawned item</RhyniaOverpower_Building_SpawnThing_Mote2>
+  <RhyniaOverpower_Building_SpawnThing_Mote3>Stored item type error, expected: {0}, actual: {1}</RhyniaOverpower_Building_SpawnThing_Mote3>
+
+  <RhyniaOverpower_WealthConvert_Gizmo1_Label>Auto Convert</RhyniaOverpower_WealthConvert_Gizmo1_Label>
+  <RhyniaOverpower_WealthConvert_Gizmo1_Desc>Current auto convert status is: {0}</RhyniaOverpower_WealthConvert_Gizmo1_Desc>
+  <RhyniaOverpower_WealthConvert_Gizmo2_Label>Auto Placement</RhyniaOverpower_WealthConvert_Gizmo2_Label>
+  <RhyniaOverpower_WealthConvert_Gizmo2_Desc>Current auto placement status is: {0}</RhyniaOverpower_WealthConvert_Gizmo2_Desc>
+  <RhyniaOverpower_WealthConvert_Gizmo3_Label>Immediate Convert</RhyniaOverpower_WealthConvert_Gizmo3_Label>
+  <RhyniaOverpower_WealthConvert_Gizmo3_Desc>Immediately convert items in the container to stored wealth</RhyniaOverpower_WealthConvert_Gizmo3_Desc>
+  <RhyniaOverpower_WealthConvert_Gizmo4_Label>Immediate Place</RhyniaOverpower_WealthConvert_Gizmo4_Label>
+  <RhyniaOverpower_WealthConvert_Gizmo4_Desc>Immediately place stored wealth in the container as silver or gold</RhyniaOverpower_WealthConvert_Gizmo4_Desc>
+  <RhyniaOverpower_WealthConvert_Gizmo5_Label>Current Mode: {0}</RhyniaOverpower_WealthConvert_Gizmo5_Label>
+  <RhyniaOverpower_WealthConvert_Gizmo5_Desc>Decide the target to convert to</RhyniaOverpower_WealthConvert_Gizmo5_Desc>
+  <RhyniaOverpower_WealthConvert_Info>Current stored wealth: {0}</RhyniaOverpower_WealthConvert_Info>
+  <RhyniaOverpower_WealthConvert_Mote>Converted wealth: {0}</RhyniaOverpower_WealthConvert_Mote>
+  <RhyniaOverpower_WealthConvert_MoteFailure>Failed to place wealth, remaining: {0}</RhyniaOverpower_WealthConvert_MoteFailure>
+
+  <!-- Comps -->
+
+  <RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>Last processed amount: {0}</RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>
+  <RhyniaOverpower_PhaseSnareBeacon_InvalidCore>Enemy phase core inactive: Check {0}/10</RhyniaOverpower_PhaseSnareBeacon_InvalidCore>
+
+  <!-- Designation -->
+
+  <RhyniaOverpower_Designation_PhaseSnare_Label>Phase Teleportation</RhyniaOverpower_Designation_PhaseSnare_Label>
+  <RhyniaOverpower_Designation_PhaseSnare_Desc>Transfer the marked object to the enemy phase core</RhyniaOverpower_Designation_PhaseSnare_Desc>
+  <RhyniaOverpower_Designation_PhaseSnare_Msg_MustPawn>Must mark a valid pawn, creature, or mechanoid</RhyniaOverpower_Designation_PhaseSnare_Msg_MustPawn>
+  <RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid>Current map does not have an enemy phase beacon, or the enemy phase core is inactive</RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid>
+
+  <!-- PlaceWorker -->
+
+  <RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>Enemy phase core can only exist once in the entire world</RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>
+  <RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon1>Enemy phase beacon can only exist once on the current map</RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon1>
+  <RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>Enemy phase core has not been initialized</RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>
+</LanguageData>

@@ -1,11 +1,9 @@
 namespace Rhynia.Overpower;
 
-public class Mod_Overpower(ModContentPack mod) : Mod(mod);
-
 [StaticConstructorOnStartup]
-public static class Mod_Init
+public class Mod_Overpower(ModContentPack mod) : Mod(mod)
 {
-    static Mod_Init()
+    static Mod_Overpower()
     {
         Out.Info("Mod Rhynia Overpower initialized.");
     }

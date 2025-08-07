@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <Rhy_ThingSpawner.label>物品生成器</Rhy_ThingSpawner.label>
+  <Rhy_ThingSpawner.description>可以自动向容器内补充指定物品。</Rhy_ThingSpawner.description>
+</LanguageData>

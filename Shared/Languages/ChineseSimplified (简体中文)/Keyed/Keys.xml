@@ -32,18 +32,18 @@
   <!-- Comps -->
 
   <RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>上一次处理数量：{0}</RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>
-  <RhyniaOverpower_PhaseSnareBeacon_InvalidCore>捕敌相位终端未生效：检查 {0}/10</RhyniaOverpower_PhaseSnareBeacon_InvalidCore>
+  <RhyniaOverpower_PhaseSnareBeacon_InvalidCore>捕敌相位核心未生效：检查 {0}/10</RhyniaOverpower_PhaseSnareBeacon_InvalidCore>
 
   <!-- Designation -->
 
   <RhyniaOverpower_Designation_PhaseSnare_Label>相位传送</RhyniaOverpower_Designation_PhaseSnare_Label>
-  <RhyniaOverpower_Designation_PhaseSnare_Desc>将标记的对象传送到捕敌相位终端</RhyniaOverpower_Designation_PhaseSnare_Desc>
+  <RhyniaOverpower_Designation_PhaseSnare_Desc>将标记的对象传送到捕敌相位核心</RhyniaOverpower_Designation_PhaseSnare_Desc>
   <RhyniaOverpower_Designation_PhaseSnare_Msg_MustPawn>必须标记有效小人、生物或机械族</RhyniaOverpower_Designation_PhaseSnare_Msg_MustPawn>
-  <RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid>当前地图不存在捕敌相位信标，或捕敌相位终端未生效</RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid>
+  <RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid>当前地图不存在捕敌相位信标，或捕敌相位核心未生效</RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid>
 
   <!-- PlaceWorker -->
 
-  <RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>捕敌相位终端在整个世界只能存在一个</RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>
+  <RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>捕敌相位核心在整个世界只能存在一个</RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>
   <RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon1>捕敌相位信标在当前地图只能存在一个</RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon1>
-  <RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>捕敌相位终端尚未初始化</RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>
+  <RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>捕敌相位核心尚未初始化</RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>
 </LanguageData>

@@ -10,8 +10,6 @@ public class Building_ThingSpawner : StorageBuilding
     private List<ThingDef> _thingDefs = [];
     private int _spawnThingIndex;
 
-    public override IEnumerable<InspectTabBase> GetInspectTabs() => [];
-
     private ThingDef SpawnThingDef => _thingDefs[_spawnThingIndex];
     private List<FloatMenuOption> FloatMenuOptions =>
         [
@@ -160,6 +158,7 @@ public class Building_ThingSpawner : StorageBuilding
             adder.stackCount = StackLimit;
             GenPlace.TryPlaceThing(adder, Position, Map, ThingPlaceMode.Direct);
             this.ThrowMote("RhyniaOverpower_Building_SpawnThing_Mote2".Translate());
+
             return;
         }
 

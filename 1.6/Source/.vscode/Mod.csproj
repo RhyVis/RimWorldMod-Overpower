@@ -11,9 +11,6 @@
         <Nullable>Enable</Nullable>
         <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
         <LangVersion>latestmajor</LangVersion>
-        <RimWorldPath>../../../../../RimWorldWin64_Data/Managed</RimWorldPath>
-        <RimWorldModsPath>../../../..</RimWorldModsPath>
-        <WorkShopPath>../../../../../../../workshop/content/294100</WorkShopPath>
     </PropertyGroup>
     <ItemGroup>
         <!-- Mod -->
@@ -24,7 +21,7 @@
             <Private>False</Private>
         </Reference>
         <!-- Mods -->
-        <Reference Include="$(RimWorldModsPath)/Rhynia Baseline/1.6/Assemblies/Rhynia.Baseline.dll">
+        <Reference Include="$(RimWorldModsPath)/[RHY] Baseline/1.6/Assemblies/Rhynia.Baseline.dll">
             <Private>False</Private>
         </Reference>
         <Reference Include="$(WorkShopPath)/2009463077/Current/Assemblies/0Harmony.dll">

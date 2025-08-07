@@ -30,8 +30,8 @@
 
   <ThingDef ParentName="Rhy_WealthConvertBase">
     <defName>Rhy_WealthConvert</defName>
-    <label>财富转化器</label>
-    <description>可以将容器内物品转化为白银或黄金。</description>
+    <label>wealth converter</label>
+    <description>Can convert items in the container into silver or gold.</description>
     <building>
       <fixedStorageSettings>
         <priority>Critical</priority>
