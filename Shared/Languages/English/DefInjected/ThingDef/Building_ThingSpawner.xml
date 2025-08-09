@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<LanguageData>
-  <Rhy_ThingSpawner.label>thing spawner</Rhy_ThingSpawner.label>
-  <Rhy_ThingSpawner.description>Can spawn specified items in the container.</Rhy_ThingSpawner.description>
-</LanguageData>

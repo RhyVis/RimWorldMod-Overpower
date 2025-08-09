@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <DesignatorDropdownGroupDef>
+    <label>resource net spawner</label>
+    <defName>Rhy_NetSpawnerDropdown</defName>
+  </DesignatorDropdownGroupDef>
+
+  <ThingDef Name="Rhy_NetSpawnerBase" ParentName="Rhy_FurnBase" Abstract="True">
+    <thingClass>Rhynia.Overpower.Building_NetSpawner</thingClass>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>RhyniaOverpower/Things/Building/Misc/NetSpawner</texPath>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1.2, 1.2)</drawSize>
+    </graphicData>
+    <statBases>
+      <MarketValue>1000</MarketValue>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>2500</WorkToBuild>
+      <Mass>20</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <size>(1, 1)</size>
+    <fillPercent>0.6</fillPercent>
+    <tickerType>Rare</tickerType>
+    <passability>PassThroughOnly</passability>
+    <rotatable>False</rotatable>
+    <costList Inherit="False">
+      <Steel>300</Steel>
+      <ComponentIndustrial>12</ComponentIndustrial>
+    </costList>
+    <designatorDropdown>Rhy_NetSpawnerDropdown</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_NetSpawnerBase" MayRequire="vanillaexpanded.vchemfuele">
+    <defName>Rhy_NetSpawner_Chemfuel</defName>
+    <label>Spawner (Chemfuel)</label>
+    <description>Spawn Chemfuel into the corresponding resource network.</description>
+    <costList>
+      <Chemfuel>200</Chemfuel>
+    </costList>
+    <comps>
+      <li Class="Rhynia.Overpower.CompProperties_NetSpawner">
+        <pipeNet>VCHE_ChemfuelNet</pipeNet>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_NetSpawnerBase" MayRequire="vanillaracesexpanded.android">
+    <defName>Rhy_NetSpawner_Neutroamine</defName>
+    <label>Spawner (Neutroamine)</label>
+    <description>Spawn Neutroamine into the corresponding resource network.</description>
+    <costList>
+      <Neutroamine>100</Neutroamine>
+    </costList>
+    <comps>
+      <li Class="Rhynia.Overpower.CompProperties_NetSpawner">
+        <pipeNet>VREA_NeutroamineNet</pipeNet>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_NetSpawnerBase" MayRequire="vanillaracesexpanded.sanguophage">
+    <defName>Rhy_NetSpawner_Hemogen</defName>
+    <label>Spawner (Hemogen)</label>
+    <description>Spawn Hemogen into the corresponding resource network.</description>
+    <costList>
+      <HemogenPack>20</HemogenPack>
+    </costList>
+    <comps>
+      <li Class="Rhynia.Overpower.CompProperties_NetSpawner">
+        <pipeNet>VRE_HemogenNet</pipeNet>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_NetSpawnerBase" MayRequire="fen.milirasunlightfuel.unofficiale">
+    <defName>Rhy_NetSpawner_SunLightFuel</defName>
+    <label>Spawner (SunLight Fuel)</label>
+    <description>Spawn SunLight Fuel into the corresponding resource network.</description>
+    <costList>
+      <Milira_SunLightFuel>80</Milira_SunLightFuel>
+    </costList>
+    <comps>
+      <li Class="Rhynia.Overpower.CompProperties_NetSpawner">
+        <pipeNet>MSUE_SunlightfuelNet</pipeNet>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

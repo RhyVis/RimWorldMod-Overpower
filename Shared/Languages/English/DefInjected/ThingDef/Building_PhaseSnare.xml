@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<LanguageData>
-  <Rhy_PhaseSnare_Beacon.label>phase snare beacon</Rhy_PhaseSnare_Beacon.label>
-  <Rhy_PhaseSnare_Beacon.description>This device is used to provide location information to the terminal. The map where it is located will be able to use the phase teleportation function.</Rhy_PhaseSnare_Beacon.description>
-  <Rhy_PhaseSnare_Core.label>phase snare core</Rhy_PhaseSnare_Core.label>
-  <Rhy_PhaseSnare_Core.description>Teleport enemies captured by the Phase Snare to this location, stunning them for about 5 seconds.</Rhy_PhaseSnare_Core.description>
-</LanguageData>

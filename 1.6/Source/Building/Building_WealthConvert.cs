@@ -15,7 +15,7 @@ public class Building_WealthConvert : StorageBuilding
 
     public override IEnumerable<Gizmo> GetGizmos()
     {
-        foreach (var gizmo in base.GetGizmos())
+        foreach (var gizmo in base.GetGizmos().RemoveStoreBuildingSpecGizmos())
             yield return gizmo;
         yield return new Command_Toggle
         {

@@ -32,7 +32,8 @@
   <!-- Comps -->
 
   <RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>Last processed amount: {0}</RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>
-  <RhyniaOverpower_PhaseSnareBeacon_InvalidCore>Enemy phase core inactive: Check {0}/10</RhyniaOverpower_PhaseSnareBeacon_InvalidCore>
+  <RhyniaOverpower_PhaseSnareBeacon_InvalidCore>Phase snare core inactive: Check {0}/10</RhyniaOverpower_PhaseSnareBeacon_InvalidCore>
+  <RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile>Capture Hostile</RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile>
 
   <!-- Designation -->
 

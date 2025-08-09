@@ -33,6 +33,7 @@
 
   <RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>上一次处理数量：{0}</RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>
   <RhyniaOverpower_PhaseSnareBeacon_InvalidCore>捕敌相位核心未生效：检查 {0}/10</RhyniaOverpower_PhaseSnareBeacon_InvalidCore>
+  <RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile>捕获敌人</RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile>
 
   <!-- Designation -->
 

@@ -10,12 +10,14 @@
         <DebugSymbols>False</DebugSymbols>
         <Nullable>Enable</Nullable>
         <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
+        <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+        <GenerateTargetFrameworkAttribute>False</GenerateTargetFrameworkAttribute>
         <LangVersion>latestmajor</LangVersion>
     </PropertyGroup>
     <ItemGroup>
         <!-- Mod -->
         <Compile Include="../**/*.cs" />
-        <Compile Remove="../.vscode/**/*.cs" />
+        <Compile Remove="../.project/**/*.cs" />
         <!-- Rimworld -->
         <Reference Include="$(RimWorldPath)/*.dll">
             <Private>False</Private>

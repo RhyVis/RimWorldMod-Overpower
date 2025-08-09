@@ -30,8 +30,7 @@ public static class PhaseSnareContainer
         }
     }
 
-    public static bool IsValid =>
-        Instance is not null && Instance.Spawned && Instance.Map is not null;
+    public static bool IsValid => Instance is { Spawned: true, Map: not null };
 
     private static readonly object _setLock = new();
     private static readonly HashSet<Pawn> _pendingPawns = [];
@@ -41,9 +40,7 @@ public static class PhaseSnareContainer
         lock (_setLock)
         {
             if (pawn is not null)
-            {
                 _pendingPawns.Add(pawn);
-            }
         }
     }
 
@@ -52,12 +49,8 @@ public static class PhaseSnareContainer
         lock (_setLock)
         {
             foreach (var pawn in pawns)
-            {
                 if (pawn is not null)
-                {
                     _pendingPawns.Add(pawn);
-                }
-            }
         }
     }
 
@@ -188,6 +181,7 @@ public class CompPhaseSnareBeacon : ThingComp
     private int _ticker = 30; // A little bit later than the main comp
     private int _removeCheck = 0;
     private bool _enabled = true;
+    private bool _captureHostile = false;
 
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
@@ -198,10 +192,14 @@ public class CompPhaseSnareBeacon : ThingComp
             defaultLabel = TranslationExtension.TranslateAsEnable(true),
             icon = TexCommand.DesirePower,
             isActive = () => _enabled,
-            toggleAction = delegate
-            {
-                _enabled = !_enabled;
-            },
+            toggleAction = () => _enabled = !_enabled,
+        };
+        yield return new Command_Toggle
+        {
+            defaultLabel = "RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile".Translate(),
+            icon = TexCommand.FireAtWill,
+            isActive = () => _captureHostile,
+            toggleAction = () => _captureHostile = !_captureHostile,
         };
     }
 
@@ -209,6 +207,7 @@ public class CompPhaseSnareBeacon : ThingComp
     {
         base.PostExposeData();
         Scribe_Values.Look(ref _enabled, "enabled", true);
+        Scribe_Values.Look(ref _captureHostile, "captureHostile", false);
     }
 
     public override void CompTick()
@@ -254,15 +253,24 @@ public class CompPhaseSnareBeacon : ThingComp
         if (pawns.NullOrEmpty())
             return;
 
-        var filteredPawns = pawns
-            .Where(x =>
-                x is Pawn pawn
-                && pawn.HasDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation)
-                && pawn.Spawned
-                && !pawn.Dead
-                && pawn.Faction?.IsPlayer != true
+        var validPawns = pawns
+            .OfType<Pawn>()
+            .Where(p =>
+                p is { Spawned: true, Dead: false } && (p.Faction is null || !p.Faction.IsPlayer)
             )
-            .OfType<Pawn>();
+            .ToHashSet();
+
+        if (_captureHostile)
+            foreach (var p in validPawns)
+                if (
+                    p.IsAnimal && p.InAggroMentalState
+                    || p?.Faction.HostileTo(Faction.OfPlayer) == true
+                )
+                    p.AddDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation);
+
+        var filteredPawns = validPawns.Where(p =>
+            p.HasDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation)
+        );
 
         if (filteredPawns.EnumerableNullOrEmpty())
             return;

@@ -5,45 +5,41 @@ namespace Rhynia.Overpower;
 
 public class Building_ThingSpawner : StorageBuilding
 {
+    private static readonly Lazy<List<ThingDef>> _thingDefs = new(
+        () => ThingSpawnDef.Named().spawnableDefs ?? []
+    );
+    private static readonly Lazy<ThingDef> _defaultDef = new(
+        () => ThingSpawnDef.Named().defaultDef
+    );
+
     private bool _active = true;
     private int _ticker = 1250;
-    private List<ThingDef> _thingDefs = [];
-    private int _spawnThingIndex;
-
-    private ThingDef SpawnThingDef => _thingDefs[_spawnThingIndex];
+    private ThingDef _spawnDef = null!;
+    private int StackLimit => _spawnDef.stackLimit;
     private List<FloatMenuOption> FloatMenuOptions =>
         [
-            .. _thingDefs.Select(def => new FloatMenuOption(
+            .. _thingDefs.Value.Select(def => new FloatMenuOption(
                 def.LabelCap,
-                () => HandleChangeThingDef(_thingDefs.IndexOf(def)),
+                () => ChangeThingDef(def),
                 def
             )),
         ];
-    private int StackLimit => SpawnThingDef.stackLimit;
 
     protected override void OnSpawn(Map map, SpawnMode spawnMode)
     {
         base.OnSpawn(map, spawnMode);
 
-        var modExt = def.GetModExtension<DefModExt_ThingSpawner>();
-        if (modExt is null || modExt.thingDefs.NullOrEmpty())
+        if (_thingDefs.Value.NullOrEmpty() || _defaultDef.Value is null)
         {
-            Out.曼($"No thing defs defined for {def.defName}");
+            Out.曼($"Valid 'ThingSpawnDef' for {this} is missing");
             Destroy();
             return;
         }
 
-        _thingDefs = modExt.thingDefs;
-
-        if (SpawnThingDef is null)
+        if (_spawnDef is null)
         {
-            _spawnThingIndex = 0;
-            if (SpawnThingDef is null)
-            {
-                Out.曼($"No valid thing defs found for {def.defName}");
-                Destroy();
-                return;
-            }
+            Out.Debug($"Resetting _spawnDef to default {_defaultDef}");
+            _spawnDef = _defaultDef.Value;
         }
         else if (def.building.maxItemsInCell > 1)
         {
@@ -53,8 +49,9 @@ public class Building_ThingSpawner : StorageBuilding
         }
 
         settings.filter.SetDisallowAll();
-        settings.filter.SetAllow(SpawnThingDef, true);
-        Out.Debug($"SpawnThingDef: {SpawnThingDef.defName}/{SpawnThingDef.label}");
+        settings.filter.SetAllow(_spawnDef, true);
+
+        Out.Debug($"SpawnThingDef: {_spawnDef.defName}/{_spawnDef.label}");
     }
 
     public override IEnumerable<Gizmo> GetGizmos()
@@ -65,9 +62,9 @@ public class Building_ThingSpawner : StorageBuilding
         {
             defaultLabel = "RhyniaOverpower_Building_SpawnThing_Gizmo1_Label".Translate(),
             defaultDesc = "RhyniaOverpower_Building_SpawnThing_Gizmo1_Desc".Translate(
-                SpawnThingDef.label
+                _spawnDef.label
             ),
-            icon = SpawnThingDef.uiIcon,
+            icon = _spawnDef.uiIcon,
             action = delegate
             {
                 _ticker = 1250;
@@ -76,11 +73,11 @@ public class Building_ThingSpawner : StorageBuilding
         };
         yield return new Command_Action
         {
-            defaultLabel = SpawnThingDef.LabelCap,
+            defaultLabel = _spawnDef.LabelCap,
             defaultDesc = "RhyniaOverpower_Building_SpawnThing_Gizmo2_Desc".Translate(
-                SpawnThingDef.label
+                _spawnDef.label
             ),
-            icon = SpawnThingDef.uiIcon,
+            icon = _spawnDef.uiIcon,
             action = delegate
             {
                 Find.WindowStack.Add(
@@ -109,7 +106,7 @@ public class Building_ThingSpawner : StorageBuilding
     {
         base.ExposeData();
         Scribe_Values.Look(ref _active, "active", true);
-        Scribe_Values.Look(ref _spawnThingIndex, "spawnThingIndex", 0);
+        Scribe_Defs.Look(ref _spawnDef, "spawnDef");
     }
 
     public override void TickRare()
@@ -128,33 +125,29 @@ public class Building_ThingSpawner : StorageBuilding
         _ticker = 1250;
     }
 
-    private void HandleChangeThingDef(int index)
+    private void ChangeThingDef(ThingDef def)
     {
-        if (index < 0 || index >= _thingDefs.Count)
-        {
-            Out.曼($"Invalid thing def index {index} for {def.defName}");
+        if (_spawnDef == def)
             return;
-        }
 
-        if (_spawnThingIndex == index)
-            return;
+        GetSlotGroup().HeldThings.FirstOrDefault()?.Destroy();
 
         settings.filter.SetDisallowAll();
-        settings.filter.SetAllow(_thingDefs[index], true);
+        settings.filter.SetAllow(def, true);
 
-        _spawnThingIndex = index;
+        _spawnDef = def;
     }
 
     private void DoSpawn()
     {
         var slot = GetSlotGroup();
         var exist = slot.HeldThings.FirstOrDefault();
-        if (exist?.def != SpawnThingDef)
+        if (exist is null || exist?.def != _spawnDef)
         {
             // Not the right thing or no thing exists
             exist?.Destroy();
 
-            var adder = ThingMaker.MakeThing(SpawnThingDef);
+            var adder = ThingMaker.MakeThing(_spawnDef);
             adder.stackCount = StackLimit;
             GenPlace.TryPlaceThing(adder, Position, Map, ThingPlaceMode.Direct);
             this.ThrowMote("RhyniaOverpower_Building_SpawnThing_Mote2".Translate());
