@@ -31,7 +31,9 @@
     Features:
 
     - Phase Snare: Teleport designated targets (across maps) to specific location, and stun them.
-    - Thing Spawner: Automatically spawn things in the container.
-    - Wealth Converter: Convert items to silver or gold, rate 100%.
+    - Thing Spawner: Automatically spawn things in the container. Needs ASF.
+    - Wealth Converter: Convert items to silver or gold, rate 100%. Needs ASF.
+    - Archotech Assembly: Some very powerful material.
+    - Net Spawner: Spawn resource into the pipe network (VE).
   </description>
 </ModMetaData>

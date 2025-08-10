@@ -29,6 +29,7 @@
     <burnableByRecipe>False</burnableByRecipe>
     <smeltable>True</smeltable>
     <stuffProps>
+      <isAirtight>True</isAirtight>
       <categories>
         <li>Metallic</li>
         <li>Woody</li>

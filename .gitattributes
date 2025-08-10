@@ -1,0 +1,101 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Windows specific files
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Unix specific files
+*.sh text eol=lf
+
+# Source code files
+*.cs text diff=csharp
+*.xml text
+*.json text
+*.yml text
+*.yaml text
+*.md text
+*.txt text
+*.props text
+*.targets text
+*.sln text
+*.csproj text
+
+# Image files - binary, no diff
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.bmp binary
+*.tiff binary
+*.tif binary
+*.webp binary
+*.dds binary
+
+# Vector graphics - binary, no text diff
+*.svg binary
+*.eps binary
+*.ai binary
+*.pdf binary
+
+# Audio files
+*.mp3 binary
+*.wav binary
+*.ogg binary
+*.flac binary
+*.aac binary
+
+# Video files
+*.mp4 binary
+*.avi binary
+*.mov binary
+*.wmv binary
+*.flv binary
+*.webm binary
+
+# Archive files
+*.zip binary
+*.7z binary
+*.rar binary
+*.tar binary
+*.gz binary
+
+# Application specific files
+*.dll binary
+*.exe binary
+*.so binary
+*.dylib binary
+
+# Font files
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+*.eot binary
+
+# Unity/Game engine assets
+*.unity binary
+*.prefab binary
+*.mat binary
+*.asset binary
+*.meta binary
+
+# Documentation
+*.rtf binary
+*.doc binary
+*.docx binary
+*.xls binary
+*.xlsx binary
+*.ppt binary
+*.pptx binary
+
+# Ignore files for language detection
+*.gitignore linguist-language=gitignore
+*.gitattributes linguist-language=gitattributes
+
+# Mark certain paths as generated
+**/bin/** linguist-generated=true
+**/obj/** linguist-generated=true
+**/Assemblies/** linguist-generated=true

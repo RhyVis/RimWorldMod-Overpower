@@ -1,5 +1,3 @@
-using System.Text;
-
 namespace Rhynia.Overpower;
 
 public static class PhaseSnareContainer
@@ -256,25 +254,28 @@ public class CompPhaseSnareBeacon : ThingComp
         var validPawns = pawns
             .OfType<Pawn>()
             .Where(p =>
-                p is { Spawned: true, Dead: false } && (p.Faction is null || !p.Faction.IsPlayer)
+                p is { Spawned: true, Dead: false, Downed: false }
+                && (p.Faction is null || !p.Faction.IsPlayer)
             )
             .ToHashSet();
 
         if (_captureHostile)
             foreach (var p in validPawns)
                 if (
-                    p.IsAnimal && p.InAggroMentalState
-                    || p?.Faction.HostileTo(Faction.OfPlayer) == true
+                    (
+                        p?.Faction.HostileTo(Faction.OfPlayer) == true
+                        && p is { IsPrisonerOfColony: false, IsSlaveOfColony: false }
+                    ) || p is { IsAnimal: true, InAggroMentalState: true }
                 )
                     p.AddDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation);
 
-        var filteredPawns = validPawns.Where(p =>
+        var processPawns = validPawns.Where(p =>
             p.HasDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation)
         );
 
-        if (filteredPawns.EnumerableNullOrEmpty())
+        if (processPawns.EnumerableNullOrEmpty())
             return;
 
-        PhaseSnareContainer.AddPawns(filteredPawns);
+        PhaseSnareContainer.AddPawns(processPawns);
     }
 }
