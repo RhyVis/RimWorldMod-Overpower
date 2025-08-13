@@ -1,12 +1,17 @@
 namespace Rhynia.Overpower;
 
+[StaticConstructorOnStartup]
 public class Designator_PhaseSnare : Designator
 {
+    public static readonly Texture2D PhaseSnareIcon = ContentFinder<Texture2D>.Get(
+        "RhyniaOverpower/UI/PhaseSnareDesignation"
+    );
+
     public Designator_PhaseSnare()
     {
         defaultLabel = "RhyniaOverpower_Designation_PhaseSnare_Label".Translate();
         defaultDesc = "RhyniaOverpower_Designation_PhaseSnare_Desc".Translate();
-        icon = ContentFinder<Texture2D>.Get("RhyniaOverpower/UI/PhaseSnareDesignation");
+        icon = PhaseSnareIcon;
         soundSucceeded = SoundDefOf.Click;
         useMouseIcon = true;
     }
@@ -22,7 +27,7 @@ public class Designator_PhaseSnare : Designator
 
         if (
             !Map.listerThings.ThingsOfDef(DefOf_Overpower.Rhy_PhaseSnare_Beacon).Any()
-            || !PhaseSnareContainer.IsValid
+            || !GameComponent_PhaseSnare.Instance.IsValid
         )
             return "RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid".Translate();
 
@@ -38,7 +43,7 @@ public class Designator_PhaseSnare : Designator
     {
         if (Map.designationManager.DesignationOn(t, Designation) is not null)
             return false;
-        return t is Pawn p && p.Faction != Faction.OfPlayer && !p.InBed() && !p.IsPrisonerOfColony;
+        return t is Pawn p && IsValidTargetPawn(p);
     }
 
     public override void DesignateSingleCell(IntVec3 c)
@@ -54,6 +59,12 @@ public class Designator_PhaseSnare : Designator
     public override void DesignateThing(Thing t)
     {
         Map.designationManager.RemoveAllDesignationsOn(t);
-        Map.designationManager.AddDesignation(new Designation(t, Designation));
+        Map.designationManager.AddDesignation(new(t, Designation));
     }
+
+    private static bool IsValidTargetPawn(Pawn pawn) =>
+        pawn.Faction != Faction.OfPlayer
+        && !pawn.InBed()
+        && !pawn.IsPrisonerOfColony
+        && !pawn.IsSlaveOfColony;
 }

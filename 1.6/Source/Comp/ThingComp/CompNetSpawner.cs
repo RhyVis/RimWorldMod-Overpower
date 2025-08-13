@@ -24,7 +24,7 @@ public class CompNetSpawner : CompResource
         base.PostSpawnSetup(respawningAfterLoad);
         if (PipeNet is null)
         {
-            Out.Warning("PipeNet is null, cannot initialize", this);
+            Warn("PipeNet is null, cannot initialize", this);
             parent.Destroy();
             return;
         }
@@ -91,18 +91,18 @@ public class CompNetSpawner : CompResource
         var net = PipeNet;
         if (net is null)
         {
-            Out.Warning("PipeNet is null, cannot spawn", this);
+            Warn("PipeNet is null, cannot spawn", this);
             return;
         }
         if (net.AvailableCapacity >= Props.spawnAmount)
         {
             net.DistributeAmongStorage(Props.spawnAmount, out var stored);
-            Out.Debug($"Spawned {stored} of {Props.spawnAmount} {PipeNet.def.resource.name}", this);
+            Debug($"Spawned {stored} of {Props.spawnAmount} {PipeNet.def.resource.name}", this);
         }
         else
         {
             net.DistributeAmongStorage(net.AvailableCapacity, out var stored);
-            Out.Debug($"Spawned {stored} of {Props.spawnAmount} {PipeNet.def.resource.name}", this);
+            Debug($"Spawned {stored} of {Props.spawnAmount} {PipeNet.def.resource.name}", this);
         }
     }
 }
@@ -119,7 +119,7 @@ public class Building_NetSpawner : Building
         var comp = GetComp<CompNetSpawner>();
         if (comp is null)
         {
-            Out.Warning("CompNetSpawner is null, cannot initialize", this);
+            Warn("CompNetSpawner is null, cannot initialize", this);
             Destroy();
             return;
         }
@@ -132,11 +132,11 @@ public class Building_NetSpawner : Building
 
         if (_color == Color.clear)
         {
-            Out.Warning("NetSpawner color is clear, cannot initialize", this);
+            Warn("NetSpawner color is clear, cannot initialize", this);
             Destroy();
         }
 
-        Out.Debug(
+        Debug(
             $"Initialized Building_NetSpawner with color {_color} and PipeNet {comp.PipeNet?.def?.defName ?? "null"}",
             this
         );

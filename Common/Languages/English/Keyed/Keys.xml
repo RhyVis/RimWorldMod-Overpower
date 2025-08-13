@@ -32,8 +32,11 @@
   <!-- Comps -->
 
   <RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>Last processed amount: {0}</RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>
-  <RhyniaOverpower_PhaseSnareBeacon_InvalidCore>Phase snare core inactive: Check {0}/10</RhyniaOverpower_PhaseSnareBeacon_InvalidCore>
+  <RhyniaOverpower_PhaseSnareCore_Msg_Setup>Phase snare core setup complete</RhyniaOverpower_PhaseSnareCore_Msg_Setup>
+  <RhyniaOverpower_PhaseSnareCore_Msg_Stop>Phase snare core stopped</RhyniaOverpower_PhaseSnareCore_Msg_Stop>
+  <RhyniaOverpower_PhaseSnareBeacon_InvalidCore>Phase snare core inactive</RhyniaOverpower_PhaseSnareBeacon_InvalidCore>
   <RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile>Capture Hostile</RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile>
+  <RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureFogged>Capture Fogged</RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureFogged>
 
   <!-- Designation -->
 

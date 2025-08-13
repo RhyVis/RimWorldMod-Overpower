@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <Rhy_PowerGenerator.label>能源生成器</Rhy_PowerGenerator.label>
+  <Rhy_PowerGenerator.description>一种强大的发电机，无需燃料。</Rhy_PowerGenerator.description>
+  <Rhy_PowerStorage.label>能源储存器</Rhy_PowerStorage.label>
+  <Rhy_PowerStorage.description>一种强大的能源储存单元，永远不会短路或故障。</Rhy_PowerStorage.description>
+</LanguageData>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <DesignatorDropdownGroupDef>
+    <defName>Rhy_Power_Dropdown</defName>
+  </DesignatorDropdownGroupDef>
+
+  <ThingDef Name="Rhy_PowerFacilityBase" ParentName="Rhy_FurnBase" Abstract="True">
+    <pathCost>30</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>False</castEdgeShadows>
+    <canOverlapZones>False</canOverlapZones>
+    <rotatable>False</rotatable>
+    <genericMarketSellable>False</genericMarketSellable>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <tickerType>Normal</tickerType>
+    <building>
+      <ai_chillDestination>False</ai_chillDestination>
+    </building>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>0</Beauty>
+    </statBases>
+    <thingCategories Inherit="False">
+      <li>BuildingsPower</li>
+    </thingCategories>
+    <constructEffect>ConstructMetal</constructEffect>
+    <minifiedDef IsNull="True" />
+    <thingCategories IsNull="True" />
+    <designatorDropdown>Rhy_Power_Dropdown</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_PowerFacilityBase">
+    <defName>Rhy_PowerGenerator</defName>
+    <label>power generator</label>
+    <description>A powerful generator that doesn't require fuel.</description>
+    <graphicData>
+      <texPath>RhyniaOverpower/Things/Building/Production/PowerGenerator</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2, 1.2)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>800</MaxHitPoints>
+      <WorkToBuild>2000</WorkToBuild>
+      <Mass>25</Mass>
+    </statBases>
+    <size>(1, 1)</size>
+    <costList>
+      <Steel>400</Steel>
+      <ComponentIndustrial>8</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-200000</basePowerConsumption>
+        <transmitsPower>True</transmitsPower>
+        <soundAmbientProducingPower>GeothermalPlant_Ambience</soundAmbientProducingPower>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>1</glowRadius>
+        <glowColor>(14,223,49,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_PowerFacilityBase">
+    <defName>Rhy_PowerStorage</defName>
+    <label>power storage</label>
+    <description>A powerful energy storage unit that never short circuits.</description>
+    <thingClass>Building_Battery</thingClass>
+    <graphicData>
+      <texPath>RhyniaOverpower/Things/Building/Production/PowerStorage</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2, 1.2)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>1800</MaxHitPoints>
+      <WorkToBuild>4000</WorkToBuild>
+      <Mass>60</Mass>
+    </statBases>
+    <size>(1, 1)</size>
+    <costList>
+      <Steel>800</Steel>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Battery">
+        <storedEnergyMax>2000000</storedEnergyMax>
+        <efficiency>1</efficiency>
+        <shortCircuitInRain>False</shortCircuitInRain>
+        <transmitsPower>True</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" MayRequire="DrilledHead.HybridPoweredGravships" />
+      <li Class="CompProperties_GravshipFacility" MayRequire="DrilledHead.HybridPoweredGravships">
+        <componentTypeDef>FuelStorage</componentTypeDef>
+        <providesFuel>True</providesFuel>
+        <requiresLOS>False</requiresLOS>
+        <showMaxSimultaneous>False</showMaxSimultaneous>
+        <maxSimultaneous>800</maxSimultaneous>
+        <maxDistance>500</maxDistance>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

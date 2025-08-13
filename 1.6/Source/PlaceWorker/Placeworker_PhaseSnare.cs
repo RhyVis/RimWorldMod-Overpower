@@ -14,13 +14,14 @@ public class PlaceWorker_PhaseSnareCore : PlaceWorker
         if (!base.AllowsPlacing(checkingDef, loc, rot, map, thingToIgnore, thing).Accepted)
             return false;
 
-        if (PhaseSnareContainer.IsValid)
+        var container = GameComponent_PhaseSnare.Instance;
+
+        if (container.IsValid)
         {
-            if (Prefs.DevMode && ModSettings_Baseline.DebugMode)
+            if (Prefs.DevMode && DebugSettings.godMode)
             {
-                Out.曼("Force removing existing PhaseSnareCore.");
-                PhaseSnareContainer.Instance!.Destroy();
-                PhaseSnareContainer.Instance = null;
+                Error("Force removing existing PhaseSnareCore.");
+                container.RemoveInstance(true);
                 return true;
             }
             return "RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore".Translate();
@@ -47,7 +48,7 @@ public class PlaceWorker_PhaseSnareBeacon : PlaceWorker
         if (map.listerThings.ThingsOfDef(DefOf_Overpower.Rhy_PhaseSnare_Beacon).Any())
             return "RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon1".Translate();
 
-        if (!PhaseSnareContainer.IsValid)
+        if (!GameComponent_PhaseSnare.Instance.IsValid)
             return "RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2".Translate();
 
         return true;

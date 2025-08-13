@@ -11,29 +11,38 @@
     <li>
       <packageId>Rhynia.Mod.Baseline</packageId>
       <displayName>[RHY] Baseline</displayName>
-      <steamWorkshopUrl />
+      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3548120229</steamWorkshopUrl>
     </li>
     <li>
       <packageId>adaptive.storage.framework</packageId>
       <displayName>Adaptive Storage Framework</displayName>
       <steamWorkshopUrl>https://steamcommunity.com/workshop/filedetails/?id=3033901359</steamWorkshopUrl>
     </li>
+    <li>
+      <packageId>imranfish.xmlextensions</packageId>
+      <displayName>XML Extensions</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2574315206</steamWorkshopUrl>
+      <downloadUrl>https://github.com/15adhami/XmlExtensions/releases</downloadUrl>
+    </li>
   </modDependencies>
   <loadAfter>
     <li>Rhynia.Mod.Baseline</li>
     <li>brrainz.harmony</li>
+    <li>imranfish.XmlExtensions</li>
     <li>oskarpotocki.vanillafactionsexpanded.core</li>
     <li>adaptive.storage.framework</li>
   </loadAfter>
-  <description>
-    Homemade overpowered stuffs.
+  <description><![CDATA[
+Homemade overpowered stuffs.
 
-    Features:
+Features:
 
-    - Phase Snare: Teleport designated targets (across maps) to specific location, and stun them.
-    - Thing Spawner: Automatically spawn things in the container. Needs ASF.
-    - Wealth Converter: Convert items to silver or gold, rate 100%. Needs ASF.
-    - Archotech Assembly: Some very powerful material.
-    - Net Spawner: Spawn resource into the pipe network (VE).
+- Phase Snare: Teleport designated targets (across maps) to specific location, and stun them.
+- Thing Spawner: Automatically spawn things in the container. Needs ASF.
+- Wealth Converter: Convert items to silver or gold, rate 100%. Needs ASF.
+- Archotech Assembly: Some very powerful material.
+- Net Spawner: Spawn resource into the pipe network (VE).
+- Small Anomaly Facilities: Smaller version of Anomaly related buildings.
+]]>
   </description>
 </ModMetaData>

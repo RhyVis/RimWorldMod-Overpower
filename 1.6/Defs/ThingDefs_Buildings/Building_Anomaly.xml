@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <ThingDef Name="Rhy_SmallHoldingPlatformBase" ParentName="FurnitureBase" Abstract="True">
+    <thingClass>Building_HoldingPlatform</thingClass>
+    <containedPawnsSelectable>True</containedPawnsSelectable>
+    <passability>PassThroughOnly</passability>
+    <rotatable>False</rotatable>
+    <fillPercent>0.4</fillPercent>
+    <drawerType>RealtimeOnly</drawerType>
+    <tickerType>Normal</tickerType>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <uiOrder>100</uiOrder>
+    <pathCost>30</pathCost>
+    <canOverlapZones>False</canOverlapZones>
+    <size>(2, 2)</size>
+    <defaultPlacingRot>North</defaultPlacingRot>
+    <minMonolithLevel>1</minMonolithLevel>
+    <descriptionHyperlinks>
+      <ThingDef>Electroharvester</ThingDef>
+      <ThingDef>ElectricInhibitor</ThingDef>
+      <ThingDef>ShardInhibitor</ThingDef>
+      <ThingDef>BioferriteHarvester</ThingDef>
+    </descriptionHyperlinks>
+    <thingCategories Inherit="False">
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <inspectorTabs>
+      <li>ITab_Entity</li>
+    </inspectorTabs>
+    <designationCategory>Anomaly</designationCategory>
+    <statBases>
+      <MeditationFocusStrength>0</MeditationFocusStrength>
+    </statBases>
+    <building>
+      <buildingTags>
+        <li>Anomaly</li>
+      </buildingTags>
+    </building>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>Electroharvester</li>
+          <li>ElectricInhibitor</li>
+          <li>ShardInhibitor</li>
+          <li>BioferriteHarvester</li>
+        </linkableFacilities>
+      </li>
+      <li Class="CompProperties_MeditationFocus">
+        <statDef>MeditationFocusStrength</statDef>
+        <focusTypes>
+          <li>Void</li>
+        </focusTypes>
+        <offsets>
+          <li Class="FocusStrengthOffset_OccupiedHoldingPlatform">
+            <offset>0.16</offset>
+          </li>
+        </offsets>
+      </li>
+      <li Class="CompProperties_AttachPoints">
+        <points>
+          <li>
+            <offset>(0, 0, 0)</offset>
+            <type>CableConnection0</type>
+          </li>
+          <li>
+            <offset>(0, 0, 0)</offset>
+            <type>CableConnection1</type>
+          </li>
+          <li>
+            <offset>(0, 0, 0)</offset>
+            <type>CableConnection2</type>
+          </li>
+          <li>
+            <offset>(0, 0, 0)</offset>
+            <type>CableConnection3</type>
+          </li>
+          <li>
+            <offset>(-0.8, 0, 0.8)</offset>
+            <type>PlatformRestraint0</type>
+          </li>
+          <li>
+            <offset>(0.8, 0, 0.8)</offset>
+            <type>PlatformRestraint1</type>
+          </li>
+          <li>
+            <offset>(0.8, 0, -0.8)</offset>
+            <type>PlatformRestraint2</type>
+          </li>
+          <li>
+            <offset>(-0.8, 0, -0.8)</offset>
+            <type>PlatformRestraint3</type>
+          </li>
+        </points>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_SmallHoldingPlatformBase">
+    <defName>Rhy_SmallHoldingSpot</defName>
+    <label>small holding spot</label>
+    <description>A spot for holding dangerous entities. Not as good as a steel holding platform, but a lot better than nothing.\n\nDowned entities can be secured at a holding spot where they can be studied. Increase containment strength by building strong walls and doors, and other special containment devices.</description>
+    <fillPercent>0</fillPercent>
+    <pathCost>0</pathCost>
+    <canOverlapZones>True</canOverlapZones>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <scatterableOnMapGen>False</scatterableOnMapGen>
+    <useHitPoints>False</useHitPoints>
+    <passability>Standable</passability>
+    <graphicData>
+      <texPath>Things/Building/HoldingSpot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2, 2)</drawSize>
+    </graphicData>
+    <building>
+      <sowTag>SupportPlantsOnly</sowTag>
+      <canPlaceOverImpassablePlant>False</canPlaceOverImpassablePlant>
+      <ai_chillDestination>False</ai_chillDestination>
+      <wakeDormantPawnsOnConstruction>False</wakeDormantPawnsOnConstruction>
+      <artificialForMeditationPurposes>False</artificialForMeditationPurposes>
+    </building>
+    <statBases>
+      <MaxHitPoints>0</MaxHitPoints>
+      <WorkToBuild>0</WorkToBuild>
+    </statBases>
+    <minifiedDef IsNull="True" />
+    <thingCategories Inherit="False" />
+    <comps>
+      <li Class="CompProperties_EntityHolderPlatform">
+        <containmentFactor>0.7</containmentFactor>
+        <untetheredGraphicTexPath>Things/Building/HoldingPlatform/HoldingPlatform_RopesUntethered</untetheredGraphicTexPath>
+        <tilingChainTexPath>Things/Building/HoldingPlatform/HoldingPlatform_EntityRope</tilingChainTexPath>
+        <baseChainFastenerTexPath>Things/Building/HoldingPlatform/HoldingPlatform_ChainFastener</baseChainFastenerTexPath>
+        <targetChainFastenerTexPath>Things/Building/HoldingPlatform/HoldingPlatform_ChainFastener_StrongOutline</targetChainFastenerTexPath>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_SmallHoldingPlatformBase">
+    <defName>Rhy_SmallHoldingPlatform</defName>
+    <label>small holding platform</label>
+    <description>A platform for holding dangerous entities. The corners have eyelets where strong chains can be attached.\n\nDowned entities can be captured and secured on a holding platform, where they can be studied for Anomaly knowledge. Increase containment strength by building strong walls and doors, and other special containment devices.</description>
+    <graphicData>
+      <texPath>Things/Building/HoldingPlatform/HoldingPlatform</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2, 2)</drawSize>
+    </graphicData>
+    <researchPrerequisites>
+      <li>EntityContainment</li>
+    </researchPrerequisites>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <WorkToBuild>1000</WorkToBuild>
+      <Mass>20</Mass>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <costList>
+      <Steel>30</Steel>
+    </costList>
+    <comps>
+      <li Class="CompProperties_EntityHolderPlatform">
+        <untetheredGraphicTexPath>Things/Building/HoldingPlatform/HoldingPlatform_ChainsUntethered</untetheredGraphicTexPath>
+        <tilingChainTexPath>Things/Building/HoldingPlatform/HoldingPlatform_EntityChain_StrongOutline</tilingChainTexPath>
+        <baseChainFastenerTexPath>Things/Building/HoldingPlatform/HoldingPlatform_ChainFastener</baseChainFastenerTexPath>
+        <targetChainFastenerTexPath>Things/Building/HoldingPlatform/HoldingPlatform_ChainFastener_StrongOutline</targetChainFastenerTexPath>
+        <entityLungeSoundHi>EntityChainHigh</entityLungeSoundHi>
+        <entityLungeSoundLow>EntityChainLow</entityLungeSoundLow>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>Rhy_SmallPsychicRitualSpot</defName>
+    <label>small psychic ritual spot</label>
+    <description>A spot for performing psychic rituals. Rituals can only be cast if the area around the ritual spot is unobstructed.</description>
+    <tickerType>Normal</tickerType>
+    <passability>Standable</passability>
+    <scatterableOnMapGen>False</scatterableOnMapGen>
+    <building>
+      <sowTag>SupportPlantsOnly</sowTag>
+      <canPlaceOverImpassablePlant>False</canPlaceOverImpassablePlant>
+      <ai_chillDestination>False</ai_chillDestination>
+      <wakeDormantPawnsOnConstruction>False</wakeDormantPawnsOnConstruction>
+      <artificialForMeditationPurposes>False</artificialForMeditationPurposes>
+      <buildingTags>
+        <li>Anomaly</li>
+      </buildingTags>
+    </building>
+    <uiOrder>200</uiOrder>
+    <graphicData>
+      <texPath>Things/Building/PsychicRitualSpot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+    <size>(1, 1)</size>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <researchPrerequisites>
+      <li>BasicPsychicRituals</li>
+    </researchPrerequisites>
+    <inspectorTabs>
+      <li>ITab_Entity</li>
+    </inspectorTabs>
+    <designationCategory>Anomaly</designationCategory>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <selectable>True</selectable>
+    <rotatable>False</rotatable>
+    <statBases>
+      <WorkToBuild>0</WorkToBuild>
+      <MeditationFocusStrength>0.08</MeditationFocusStrength>
+    </statBases>
+    <useHitPoints>False</useHitPoints>
+    <placeWorkers>
+      <li>PlaceWorker_NeverAdjacentUnstandableRadial</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>True</drawPlaceWorkersWhileSelected>
+    <comps>
+      <li Class="CompProperties_PsychicRitualSpot" />
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ShardBeacon</li>
+          <li>VoidSculpture</li>
+        </linkableFacilities>
+      </li>
+      <li Class="CompProperties_MeditationFocus">
+        <statDef>MeditationFocusStrength</statDef>
+        <focusTypes>
+          <li>Void</li>
+        </focusTypes>
+        <offsets>
+          <li Class="FocusStrengthOffset_BuildingDefs">
+            <defs>
+              <li>ShardBeacon</li>
+            </defs>
+            <offsetPerBuilding>0.02</offsetPerBuilding>
+            <radius>9.9</radius>
+            <maxBuildings>4</maxBuildings>
+            <explanationKey>MeditationFocusPerBuilding</explanationKey>
+            <explanationKeyAbstract>MeditationFocusPerBuildingAbstract</explanationKeyAbstract>
+          </li>
+          <li Class="FocusStrengthOffset_BuildingDefs">
+            <defs>
+              <li>VoidSculpture</li>
+            </defs>
+            <offsetPerBuilding>0.02</offsetPerBuilding>
+            <radius>9.9</radius>
+            <maxBuildings>6</maxBuildings>
+            <explanationKey>MeditationFocusPerBuilding</explanationKey>
+            <explanationKeyAbstract>MeditationFocusPerBuildingAbstract</explanationKeyAbstract>
+          </li>
+        </offsets>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

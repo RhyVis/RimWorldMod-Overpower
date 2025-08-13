@@ -15,7 +15,7 @@ public class Building_WealthConvert : StorageBuilding
 
     public override IEnumerable<Gizmo> GetGizmos()
     {
-        foreach (var gizmo in base.GetGizmos().RemoveStoreBuildingSpecGizmos())
+        foreach (var gizmo in base.GetGizmos())
             yield return gizmo;
         yield return new Command_Toggle
         {
@@ -177,7 +177,7 @@ public class Building_WealthConvert : StorageBuilding
                     }
                     else
                     {
-                        Out.Error($"Failed to place silver {silverLimit} at {Position}");
+                        Error($"Failed to place silver {silverLimit} at {Position}");
                         this.ThrowMote(
                             "RhyniaOverpower_WealthConvert_MoteFailure".Translate(
                                 _leftoverSilverValue
@@ -196,7 +196,7 @@ public class Building_WealthConvert : StorageBuilding
                     }
                     else
                     {
-                        Out.Error($"Failed to place silver {_leftoverSilverValue} at {Position}");
+                        Error($"Failed to place silver {_leftoverSilverValue} at {Position}");
                         this.ThrowMote(
                             "RhyniaOverpower_WealthConvert_MoteFailure".Translate(
                                 _leftoverSilverValue
@@ -225,7 +225,7 @@ public class Building_WealthConvert : StorageBuilding
                     }
                     else
                     {
-                        Out.Error($"Failed to place gold {goldLimit} at {Position}");
+                        Error($"Failed to place gold {goldLimit} at {Position}");
                         this.ThrowMote(
                             "RhyniaOverpower_WealthConvert_MoteFailure".Translate(
                                 _leftoverSilverValue
@@ -245,7 +245,7 @@ public class Building_WealthConvert : StorageBuilding
                     }
                     else
                     {
-                        Out.Error($"Failed to place gold {goldCount} at {Position}");
+                        Error($"Failed to place gold {goldCount} at {Position}");
                         this.ThrowMote(
                             "RhyniaOverpower_WealthConvert_MoteFailure".Translate(
                                 _leftoverSilverValue

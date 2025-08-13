@@ -1,82 +1,5 @@
 namespace Rhynia.Overpower;
 
-public static class PhaseSnareContainer
-{
-    private static readonly object _lock = new();
-    private static Thing? _instance;
-    public static Thing? Instance
-    {
-        get
-        {
-            lock (_lock)
-            {
-                return _instance;
-            }
-        }
-        set
-        {
-            lock (_lock)
-            {
-                if (_instance is not null)
-                {
-                    Out.Warning(
-                        "FieldFocusContainer.Instance is being overwritten. Previous instance will be lost."
-                    );
-                }
-                _instance = value;
-            }
-        }
-    }
-
-    public static bool IsValid => Instance is { Spawned: true, Map: not null };
-
-    private static readonly object _setLock = new();
-    private static readonly HashSet<Pawn> _pendingPawns = [];
-
-    public static void AddPawn(Pawn pawn)
-    {
-        lock (_setLock)
-        {
-            if (pawn is not null)
-                _pendingPawns.Add(pawn);
-        }
-    }
-
-    public static void AddPawns(IEnumerable<Pawn> pawns)
-    {
-        lock (_setLock)
-        {
-            foreach (var pawn in pawns)
-                if (pawn is not null)
-                    _pendingPawns.Add(pawn);
-        }
-    }
-
-    public static List<Pawn> GetPendingPawns()
-    {
-        lock (_setLock)
-        {
-            if (_pendingPawns.Count == 0)
-                return [];
-
-            var list = _pendingPawns.ToList();
-            _pendingPawns.Clear();
-            return list;
-        }
-    }
-
-    public static int PendingPawnCount
-    {
-        get
-        {
-            lock (_setLock)
-            {
-                return _pendingPawns.Count;
-            }
-        }
-    }
-}
-
 public class CompProperties_PhaseSnareCore : CompProperties
 {
     public CompProperties_PhaseSnareCore() => compClass = typeof(CompPhaseSnareCore);
@@ -86,17 +9,62 @@ public class CompPhaseSnareCore : ThingComp
 {
     private int _ticker;
     private int _lastProcessedCount;
+    private bool _enabled;
+
+    private GameComponent_PhaseSnare _container = null!;
+
+    public bool IsEnabled => _enabled;
 
     public override void PostSpawnSetup(bool respawningAfterLoad)
     {
         base.PostSpawnSetup(respawningAfterLoad);
-        PhaseSnareContainer.Instance = parent;
+
+        var component = GameComponent_PhaseSnare.Instance;
+        if (component is null)
+        {
+            Log.Error("PhaseSnareContainer component not found in game. This should not happen.");
+            parent.Destroy();
+            return;
+        }
+
+        Messages.Message(
+            "RhyniaOverpower_PhaseSnareCore_Msg_Setup".Translate(),
+            MessageTypeDefOf.NeutralEvent
+        );
+
+        _container = component;
+        _container.SetInstance(this);
     }
 
     public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
     {
         base.PostDeSpawn(map, mode);
-        PhaseSnareContainer.Instance = null;
+
+        Messages.Message(
+            "RhyniaOverpower_PhaseSnareCore_Msg_Stop".Translate(),
+            MessageTypeDefOf.NeutralEvent
+        );
+
+        _container.RemoveInstance();
+    }
+
+    public override void PostExposeData()
+    {
+        base.PostExposeData();
+        Scribe_Values.Look(ref _enabled, "enabled", true);
+    }
+
+    public override IEnumerable<Gizmo> CompGetGizmosExtra()
+    {
+        foreach (var gizmo in base.CompGetGizmosExtra())
+            yield return gizmo;
+        yield return new Command_Toggle
+        {
+            defaultLabel = TranslationExtension.TranslateAsEnable(true),
+            icon = Designator_PhaseSnare.PhaseSnareIcon,
+            isActive = () => _enabled,
+            toggleAction = () => _enabled = !_enabled,
+        };
     }
 
     public override string CompInspectStringExtra()
@@ -112,20 +80,27 @@ public class CompPhaseSnareCore : ThingComp
     public override void CompTick()
     {
         base.CompTick();
+
+        if (parent.Spawned is false || parent.Map is null)
+            return;
+
         if (_ticker <= 0)
         {
-            DoTick();
+            Action();
             _ticker = 60;
         }
         else
         {
-            --_ticker;
+            _ticker--;
         }
     }
 
-    private void DoTick()
+    private void Action()
     {
-        var pawns = PhaseSnareContainer.GetPendingPawns();
+        if (!_enabled)
+            return;
+
+        var pawns = _container.PopPawns();
 
         if (pawns.NullOrEmpty())
         {
@@ -133,18 +108,15 @@ public class CompPhaseSnareCore : ThingComp
             return;
         }
 
-        Out.Debug($"PhaseSnareContainer has {pawns.Count} pawns to process.");
+        Debug($"CompPhaseSnareCore has {pawns.Count} pawns to process.", this);
 
         var processedCount = 0;
         foreach (var pawn in pawns)
         {
-            pawn.stances?.stunner.StunFor(300, null, false, false);
-            pawn.jobs?.StopAll(false, false);
-
             if (pawn.Map is null || !pawn.Spawned)
             {
                 pawn.RemoveDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation);
-                Out.Warning($"Pawn {pawn} is not spawned or has no map. Skipping teleport.");
+                Warn($"Pawn {pawn} is not spawned or has no map. Skipping teleport.", this);
                 continue;
             }
 
@@ -154,6 +126,9 @@ public class CompPhaseSnareCore : ThingComp
                 pawn.SpawnToThing(parent);
                 pawn.AddDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation);
             }
+
+            pawn.stances?.stunner.StunFor(300, null, false, false);
+            pawn.jobs?.StopAll(false, false);
 
             pawn.Position = parent.Position;
             pawn.Notify_Teleported();
@@ -165,7 +140,7 @@ public class CompPhaseSnareCore : ThingComp
         }
 
         _lastProcessedCount = processedCount;
-        Out.Debug($"Processed {processedCount} pawns in this tick.");
+        Debug($"Processed {processedCount} pawns in this tick.", this);
     }
 }
 
@@ -177,9 +152,26 @@ public class CompProperties_PhaseSnareBeacon : CompProperties
 public class CompPhaseSnareBeacon : ThingComp
 {
     private int _ticker = 30; // A little bit later than the main comp
-    private int _removeCheck = 0;
     private bool _enabled = true;
     private bool _captureHostile = false;
+    private bool _captureFogged = false;
+
+    private GameComponent_PhaseSnare _container = null!;
+
+    public override void PostSpawnSetup(bool respawningAfterLoad)
+    {
+        base.PostSpawnSetup(respawningAfterLoad);
+
+        var component = GameComponent_PhaseSnare.Instance;
+        if (component is null)
+        {
+            Log.Error("PhaseSnare component not found in game. This should not happen.");
+            parent.Destroy();
+            return;
+        }
+
+        _container = component;
+    }
 
     public override IEnumerable<Gizmo> CompGetGizmosExtra()
     {
@@ -188,17 +180,29 @@ public class CompPhaseSnareBeacon : ThingComp
         yield return new Command_Toggle
         {
             defaultLabel = TranslationExtension.TranslateAsEnable(true),
-            icon = TexCommand.DesirePower,
+            icon = Designator_PhaseSnare.PhaseSnareIcon,
             isActive = () => _enabled,
             toggleAction = () => _enabled = !_enabled,
         };
-        yield return new Command_Toggle
+        if (_enabled)
         {
-            defaultLabel = "RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile".Translate(),
-            icon = TexCommand.FireAtWill,
-            isActive = () => _captureHostile,
-            toggleAction = () => _captureHostile = !_captureHostile,
-        };
+            yield return new Command_Toggle
+            {
+                defaultLabel = "RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile".Translate(),
+                icon = TexCommand.FireAtWill,
+                isActive = () => _captureHostile,
+                toggleAction = () => _captureHostile = !_captureHostile,
+            };
+            if (_captureHostile)
+                yield return new Command_Toggle
+                {
+                    defaultLabel =
+                        "RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureFogged".Translate(),
+                    icon = TexCommand.FireAtWill,
+                    isActive = () => _captureFogged,
+                    toggleAction = () => _captureFogged = !_captureFogged,
+                };
+        }
     }
 
     public override void PostExposeData()
@@ -206,11 +210,15 @@ public class CompPhaseSnareBeacon : ThingComp
         base.PostExposeData();
         Scribe_Values.Look(ref _enabled, "enabled", true);
         Scribe_Values.Look(ref _captureHostile, "captureHostile", false);
+        Scribe_Values.Look(ref _captureFogged, "captureFogged", false);
     }
 
     public override void CompTick()
     {
         base.CompTick();
+
+        if (parent.Spawned is false || parent.Map is null)
+            return;
 
         if (_ticker <= 0)
         {
@@ -228,24 +236,15 @@ public class CompPhaseSnareBeacon : ThingComp
         if (!_enabled)
             return;
 
-        if (!PhaseSnareContainer.IsValid)
+        if (!_container.IsValid)
         {
-            if (_removeCheck > 10)
-            {
-                parent.Destroy();
-                return;
-            }
-            _removeCheck++;
-            Out.Warning(
-                $"PhaseSnareContainer is not valid. Waiting for it to become valid or for {10 - _removeCheck} more ticks."
-            );
-            this.ThrowMote("RhyniaOverpower_PhaseSnareBeacon_InvalidCore".Translate(_removeCheck));
+            Warn($"PhaseSnareCore is not valid, disabling this beacon", this);
+            this.ThrowMote("RhyniaOverpower_PhaseSnareBeacon_InvalidCore".Translate());
+            _enabled = false;
             return;
         }
-        else
-        {
-            _removeCheck = 0;
-        }
+        else if (!_container.IsEnabled)
+            return;
 
         var pawns = parent.Map.listerThings.ThingsInGroup(ThingRequestGroup.Pawn);
         if (pawns.NullOrEmpty())
@@ -255,19 +254,25 @@ public class CompPhaseSnareBeacon : ThingComp
             .OfType<Pawn>()
             .Where(p =>
                 p is { Spawned: true, Dead: false, Downed: false }
-                && (p.Faction is null || !p.Faction.IsPlayer)
+                && p.Faction?.IsPlayer is not true
             )
             .ToHashSet();
 
         if (_captureHostile)
             foreach (var p in validPawns)
-                if (
+            {
+                var shouldCapture =
                     (
-                        p?.Faction.HostileTo(Faction.OfPlayer) == true
+                        p.Faction?.HostileTo(Faction.OfPlayer) is true
                         && p is { IsPrisonerOfColony: false, IsSlaveOfColony: false }
-                    ) || p is { IsAnimal: true, InAggroMentalState: true }
-                )
+                    ) || p is { IsAnimal: true, InAggroMentalState: true };
+                if (shouldCapture)
+                {
+                    if (!_captureFogged && p.Position.Fogged(p.Map))
+                        continue;
                     p.AddDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation);
+                }
+            }
 
         var processPawns = validPawns.Where(p =>
             p.HasDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation)
@@ -276,6 +281,71 @@ public class CompPhaseSnareBeacon : ThingComp
         if (processPawns.EnumerableNullOrEmpty())
             return;
 
-        PhaseSnareContainer.AddPawns(processPawns);
+        _container.PushPawns(processPawns);
     }
+}
+
+public class GameComponent_PhaseSnare : GameComponent
+{
+    public GameComponent_PhaseSnare(Game game)
+    {
+        Debug($"Initialized on {game.Info.RealPlayTimeInteracting}.", this);
+    }
+
+    private readonly AtomicContainerNullable<CompPhaseSnareCore> _instance = new();
+    private readonly AtomicContainer<HashSet<Pawn>> _pendingPawns = new([]);
+
+    public bool IsValid => _instance.Value?.parent is { Spawned: true, Map: not null };
+    public bool IsEnabled => _instance.Value?.IsEnabled ?? false;
+
+    public override void LoadedGame()
+    {
+        base.LoadedGame();
+        Debug("Clearing instance for check", this);
+        _instance.Value = null;
+    }
+
+    public void SetInstance(CompPhaseSnareCore comp)
+    {
+        if (comp is null)
+            throw new ArgumentNullException(nameof(comp));
+        if (_instance.Value is not null)
+            throw new InvalidOperationException("Instance already set.");
+        _instance.Value = comp;
+        Debug($"Instance set to {comp}.", this);
+    }
+
+    public void RemoveInstance(bool tryDestroy = false)
+    {
+        Debug("Removing instance.", this);
+
+        if (tryDestroy)
+            _instance.Value?.parent.Destroy();
+
+        _instance.Value = null;
+    }
+
+    public void PushPawns(IEnumerable<Pawn> pawns)
+    {
+        if (pawns.EnumerableNullOrEmpty())
+            return;
+        _pendingPawns.SynchronizedAction((set) => set.UnionWith(pawns));
+    }
+
+    public List<Pawn> PopPawns()
+    {
+        return _pendingPawns.SynchronizedAction(
+            (set) =>
+            {
+                if (set.Count == 0)
+                    return [];
+                var list = set.ToList();
+                set.Clear();
+                return list;
+            }
+        );
+    }
+
+    public static GameComponent_PhaseSnare Instance =>
+        Current.Game.GetComponent<GameComponent_PhaseSnare>();
 }

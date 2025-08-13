@@ -12,6 +12,11 @@ public class Building_ThingSpawner : StorageBuilding
         () => ThingSpawnDef.Named().defaultDef
     );
 
+    private static readonly string _filterLabel1 = "CommandCopyZoneSettingsLabel".Translate();
+    private static readonly string _filterLabel2 = "CommandPasteZoneSettingsLabel".Translate();
+    private static readonly string _filterLabel3 = "LinkStorageSettings".Translate();
+
+    private bool _initialized;
     private bool _active = true;
     private int _ticker = 1250;
     private ThingDef _spawnDef = null!;
@@ -31,33 +36,45 @@ public class Building_ThingSpawner : StorageBuilding
 
         if (_thingDefs.Value.NullOrEmpty() || _defaultDef.Value is null)
         {
-            Out.曼($"Valid 'ThingSpawnDef' for {this} is missing");
+            Error("Valid 'ThingSpawnDef' is missing", this);
             Destroy();
             return;
         }
 
         if (_spawnDef is null)
         {
-            Out.Debug($"Resetting _spawnDef to default {_defaultDef}");
+            Debug($"Resetting _spawnDef to default {_defaultDef}", this);
             _spawnDef = _defaultDef.Value;
         }
         else if (def.building.maxItemsInCell > 1)
         {
-            Out.曼($"Only single item stacks are supported for {def.defName}");
+            Error($"Only single item stacks are supported for {def.defName}", this);
             Destroy();
             return;
         }
 
         settings.filter.SetDisallowAll();
         settings.filter.SetAllow(_spawnDef, true);
+        settings.Priority = StoragePriority.Critical;
 
-        Out.Debug($"SpawnThingDef: {_spawnDef.defName}/{_spawnDef.label}");
+        Debug($"SpawnThingDef: {_spawnDef.defName}/{_spawnDef.label}", this);
     }
 
     public override IEnumerable<Gizmo> GetGizmos()
     {
         foreach (var gizmo in base.GetGizmos())
+        {
+            if (
+                gizmo is Command_Action action
+                && (
+                    action.defaultLabel == _filterLabel1
+                    || action.defaultLabel == _filterLabel2
+                    || action.defaultLabel == _filterLabel3
+                )
+            )
+                continue;
             yield return gizmo;
+        }
         yield return new Command_Action
         {
             defaultLabel = "RhyniaOverpower_Building_SpawnThing_Gizmo1_Label".Translate(),
@@ -115,6 +132,14 @@ public class Building_ThingSpawner : StorageBuilding
         if (!_active || !Spawned || Map is null)
             return;
 
+        if (!_initialized)
+        {
+            settings.filter.SetDisallowAll();
+            settings.filter.SetAllow(_spawnDef, true);
+            settings.Priority = StoragePriority.Critical;
+            _initialized = true;
+        }
+
         _ticker -= 250;
 
         if (_ticker > 0)
@@ -134,6 +159,7 @@ public class Building_ThingSpawner : StorageBuilding
 
         settings.filter.SetDisallowAll();
         settings.filter.SetAllow(def, true);
+        settings.Priority = StoragePriority.Critical;
 
         _spawnDef = def;
     }
