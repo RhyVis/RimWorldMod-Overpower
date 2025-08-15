@@ -41,9 +41,10 @@
   <!-- Designation -->
 
   <RhyniaOverpower_Designation_PhaseSnare_Label>Phase Teleportation</RhyniaOverpower_Designation_PhaseSnare_Label>
-  <RhyniaOverpower_Designation_PhaseSnare_Desc>Transfer the marked object to the enemy phase core</RhyniaOverpower_Designation_PhaseSnare_Desc>
-  <RhyniaOverpower_Designation_PhaseSnare_Msg_MustPawn>Must mark a valid pawn, creature, or mechanoid</RhyniaOverpower_Designation_PhaseSnare_Msg_MustPawn>
-  <RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid>Current map does not have an enemy phase beacon, or the enemy phase core is inactive</RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid>
+  <RhyniaOverpower_Designation_PhaseSnare_Desc>Transfer the designated object to the enemy phase core</RhyniaOverpower_Designation_PhaseSnare_Desc>
+  <RhyniaOverpower_Designation_PhaseSnare_Msg_MustPawn>Must designate a valid pawn, animal, or mechanoid</RhyniaOverpower_Designation_PhaseSnare_Msg_MustPawn>
+  <RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid_Core>Phase snare core is inactive</RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid_Core>
+  <RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid_Beacon>Current map does not have a phase snare beacon</RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid_Beacon>
 
   <!-- PlaceWorker -->
 

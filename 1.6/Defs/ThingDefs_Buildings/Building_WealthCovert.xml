@@ -47,11 +47,7 @@
       </fixedStorageSettings>
       <defaultStorageSettings>
         <priority>Critical</priority>
-        <filter>
-          <categories>
-            <li>BodyPartsNatural</li>
-          </categories>
-        </filter>
+        <filter />
       </defaultStorageSettings>
     </building>
   </ThingDef>

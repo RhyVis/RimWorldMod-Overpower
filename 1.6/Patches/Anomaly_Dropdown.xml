@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+  <Operation Class="XmlExtensions.PatchOperationAddOrReplace">
+    <xpath>/Defs/ThingDef[defName = 'HoldingSpot']</xpath>
+    <value>
+      <designatorDropdown>Rhy_HoldingSpotDropdown</designatorDropdown>
+    </value>
+  </Operation>
+  <Operation Class="XmlExtensions.PatchOperationAddOrReplace">
+    <xpath>/Defs/ThingDef[defName = 'HoldingPlatform']</xpath>
+    <value>
+      <designatorDropdown>Rhy_HoldingPlatformDropdown</designatorDropdown>
+    </value>
+  </Operation>
+  <Operation Class="XmlExtensions.PatchOperationAddOrReplace">
+    <xpath>/Defs/ThingDef[defName = 'PsychicRitualSpot']</xpath>
+    <value>
+      <designatorDropdown>Rhy_PsychicRitualSpotDropdown</designatorDropdown>
+    </value>
+  </Operation>
+</Patch>

@@ -25,18 +25,17 @@ public class Designator_PhaseSnare : Designator
         if (!loc.InBounds(Map) || loc.Fogged(Map))
             return false;
 
-        if (
-            !Map.listerThings.ThingsOfDef(DefOf_Overpower.Rhy_PhaseSnare_Beacon).Any()
-            || !GameComponent_PhaseSnare.Instance.IsValid
-        )
-            return "RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid".Translate();
+        if (Map.listerThings.ThingsOfDef(DefOf_Overpower.Rhy_PhaseSnare_Beacon).Empty())
+            return "RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid_Beacon".Translate();
 
-        var pawnFirst = loc.GetFirstPawn(Map);
-        if (pawnFirst is null)
+        if (!GameComponent_PhaseSnare.Instance.IsValid)
+            return "RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid_Core".Translate();
+
+        var pawn = loc.GetFirstPawn(Map);
+        if (pawn is null)
             return "RhyniaOverpower_Designation_PhaseSnare_Msg_MustPawn".Translate();
 
-        var tryReport = CanDesignateThing(pawnFirst);
-        return tryReport.Accepted ? true : tryReport;
+        return CanDesignateThing(pawn);
     }
 
     public override AcceptanceReport CanDesignateThing(Thing t)
@@ -63,8 +62,13 @@ public class Designator_PhaseSnare : Designator
     }
 
     private static bool IsValidTargetPawn(Pawn pawn) =>
-        pawn.Faction != Faction.OfPlayer
-        && !pawn.InBed()
-        && !pawn.IsPrisonerOfColony
-        && !pawn.IsSlaveOfColony;
+        pawn
+            is {
+                Faction: null or { IsPlayer: false },
+                IsPrisonerOfColony: false,
+                IsSlaveOfColony: false,
+                Downed: false,
+                Dead: false
+            }
+        && !pawn.InBed();
 }

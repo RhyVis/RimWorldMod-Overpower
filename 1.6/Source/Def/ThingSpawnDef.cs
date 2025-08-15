@@ -1,10 +1,12 @@
 namespace Rhynia.Overpower;
 
+#nullable disable
+
 public class ThingSpawnDef : Def
 {
-    public List<ThingDef> spawnableDefs = null!;
-    public ThingDef defaultDef = null!;
+    public List<ThingDef> spawnableDefs;
+    public ThingDef defaultDef;
 
-    public static ThingSpawnDef Named(string defName = "Rhy_ThingSpawn") =>
+    public static ThingSpawnDef Named(string defName) =>
         DefDatabase<ThingSpawnDef>.GetNamed(defName);
 }

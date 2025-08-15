@@ -29,6 +29,9 @@
     <minifiedDef IsNull="True" />
     <thingCategories IsNull="True" />
     <designatorDropdown>Rhy_Power_Dropdown</designatorDropdown>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
   </ThingDef>
 
   <ThingDef ParentName="Rhy_PowerFacilityBase">
@@ -60,7 +63,7 @@
       <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Glower">
         <glowRadius>1</glowRadius>
-        <glowColor>(14,223,49,0)</glowColor>
+        <glowColor>(226, 234, 244, 0)</glowColor>
       </li>
     </comps>
   </ThingDef>

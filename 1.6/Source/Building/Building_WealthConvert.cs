@@ -9,7 +9,7 @@ public class Building_WealthConvert : StorageBuilding
     private bool _autoPlace = true;
     private long _leftoverSilverValue;
     private int _mode; // 0: Convert to silver, 1: Convert to gold
-    private int _ticks = 1250;
+    private int _ticker = 1250;
 
     private string ModeLabel => _mode == 0 ? ThingDefOf.Silver.label : ThingDefOf.Gold.label;
 
@@ -26,7 +26,7 @@ public class Building_WealthConvert : StorageBuilding
             toggleAction = delegate
             {
                 _autoConvert = !_autoConvert;
-                _ticks = 1250;
+                _ticker = 1250;
             },
         };
         yield return new Command_Toggle
@@ -38,7 +38,7 @@ public class Building_WealthConvert : StorageBuilding
             toggleAction = delegate
             {
                 _autoPlace = !_autoPlace;
-                _ticks = 1250;
+                _ticker = 1250;
             },
         };
         yield return new Command_Action
@@ -95,33 +95,17 @@ public class Building_WealthConvert : StorageBuilding
             TryPlace();
     }
 
-    protected override void Tick()
-    {
-        base.Tick();
-        TickDown(1);
-    }
-
     public override void TickRare()
     {
         base.TickRare();
-        TickDown(250);
-    }
 
-    public override void TickLong()
-    {
-        base.TickLong();
-        TickDown(2500);
-    }
-
-    private void TickDown(int ticks)
-    {
         if (!_autoConvert)
             return;
 
-        if (_ticks <= 0)
+        if (_ticker <= 0)
             DoConvert();
         else
-            _ticks -= ticks;
+            _ticker -= 250;
     }
 
     private void DoConvert()
@@ -151,7 +135,7 @@ public class Building_WealthConvert : StorageBuilding
 
         TryPlace();
 
-        _ticks = 1250;
+        _ticker = 1250;
     }
 
     private void TryPlace(bool calledByPlayer = false)

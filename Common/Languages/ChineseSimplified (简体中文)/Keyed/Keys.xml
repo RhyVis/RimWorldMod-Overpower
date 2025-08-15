@@ -43,7 +43,8 @@
   <RhyniaOverpower_Designation_PhaseSnare_Label>相位传送</RhyniaOverpower_Designation_PhaseSnare_Label>
   <RhyniaOverpower_Designation_PhaseSnare_Desc>将标记的对象传送到捕敌相位核心</RhyniaOverpower_Designation_PhaseSnare_Desc>
   <RhyniaOverpower_Designation_PhaseSnare_Msg_MustPawn>必须标记有效小人、生物或机械族</RhyniaOverpower_Designation_PhaseSnare_Msg_MustPawn>
-  <RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid>当前地图不存在捕敌相位信标，或捕敌相位核心未生效</RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid>
+  <RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid_Core>捕敌相位核心未生效</RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid_Core>
+  <RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid_Beacon>当前地图不存在捕敌相位信标</RhyniaOverpower_Designation_PhaseSnare_Msg_Invalid_Beacon>
 
   <!-- PlaceWorker -->
 

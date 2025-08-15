@@ -133,6 +133,7 @@
         <targetChainFastenerTexPath>Things/Building/HoldingPlatform/HoldingPlatform_ChainFastener_StrongOutline</targetChainFastenerTexPath>
       </li>
     </comps>
+    <designatorDropdown>Rhy_HoldingSpotDropdown</designatorDropdown>
   </ThingDef>
 
   <ThingDef ParentName="Rhy_SmallHoldingPlatformBase">
@@ -166,6 +167,7 @@
         <entityLungeSoundLow>EntityChainLow</entityLungeSoundLow>
       </li>
     </comps>
+    <designatorDropdown>Rhy_HoldingPlatformDropdown</designatorDropdown>
   </ThingDef>
 
   <ThingDef ParentName="BuildingBase">
@@ -249,5 +251,18 @@
         </offsets>
       </li>
     </comps>
+    <designatorDropdown>Rhy_PsychicRitualSpotDropdown</designatorDropdown>
   </ThingDef>
+
+  <DesignatorDropdownGroupDef>
+    <defName>Rhy_HoldingSpotDropdown</defName>
+  </DesignatorDropdownGroupDef>
+
+  <DesignatorDropdownGroupDef>
+    <defName>Rhy_HoldingPlatformDropdown</defName>
+  </DesignatorDropdownGroupDef>
+
+  <DesignatorDropdownGroupDef>
+    <defName>Rhy_PsychicRitualSpotDropdown</defName>
+  </DesignatorDropdownGroupDef>
 </Defs>

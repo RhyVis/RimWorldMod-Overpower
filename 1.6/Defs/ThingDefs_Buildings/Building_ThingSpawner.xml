@@ -60,7 +60,7 @@
   </AdaptiveStorage.GraphicsDef>
 
   <Rhynia.Overpower.ThingSpawnDef>
-    <defName>Rhy_ThingSpawn</defName>
+    <defName>Rhy_ThingSpawner</defName>
     <spawnableDefs>
       <li>Rhy_ArchotechAssembly</li>
       <li>MealSurvivalPack</li>
