@@ -29,6 +29,17 @@
   <RhyniaOverpower_WealthConvert_Mote>转化财富: {0}</RhyniaOverpower_WealthConvert_Mote>
   <RhyniaOverpower_WealthConvert_MoteFailure>放置财富失败, 剩余: {0}</RhyniaOverpower_WealthConvert_MoteFailure>
 
+  <RhyniaOverpower_HediffGiver_Gizmo_Desc>选择效果附加的范围</RhyniaOverpower_HediffGiver_Gizmo_Desc>
+  <RhyniaOverpower_HediffGiver_Gizmo_LabelA>停止</RhyniaOverpower_HediffGiver_Gizmo_LabelA>
+  <RhyniaOverpower_HediffGiver_Gizmo_LabelB>所有</RhyniaOverpower_HediffGiver_Gizmo_LabelB>
+  <RhyniaOverpower_HediffGiver_Gizmo_LabelC>敌对</RhyniaOverpower_HediffGiver_Gizmo_LabelC>
+  <RhyniaOverpower_HediffGiver_Gizmo_LabelD>非玩家</RhyniaOverpower_HediffGiver_Gizmo_LabelD>
+  <RhyniaOverpower_HediffGiver_Gizmo_LabelE>囚犯</RhyniaOverpower_HediffGiver_Gizmo_LabelE>
+  <RhyniaOverpower_HediffGiver_Gizmo_LabelF>奴隶</RhyniaOverpower_HediffGiver_Gizmo_LabelF>
+  <RhyniaOverpower_HediffGiver_Def_Label>状态作用机 ({0})</RhyniaOverpower_HediffGiver_Def_Label>
+  <RhyniaOverpower_HediffGiver_Def_DescSeg1>此机器对范围内的生物产生{0}影响。</RhyniaOverpower_HediffGiver_Def_DescSeg1>
+  <RhyniaOverpower_HediffGiver_Def_DescSeg2>受{0}影响。</RhyniaOverpower_HediffGiver_Def_DescSeg2>
+
   <!-- Comps -->
 
   <RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>上一次处理数量：{0}</RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>
@@ -37,6 +48,15 @@
   <RhyniaOverpower_PhaseSnareBeacon_InvalidCore>捕敌相位核心未生效</RhyniaOverpower_PhaseSnareBeacon_InvalidCore>
   <RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile>捕获敌人</RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile>
   <RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureFogged>捕获不可见</RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureFogged>
+
+  <RhyniaOverpower_GenPlatform_Gizmo_Label>生成轨道平台</RhyniaOverpower_GenPlatform_Gizmo_Label>
+  <RhyniaOverpower_GenPlatform_Gizmo_Desc>生成一个轨道平台</RhyniaOverpower_GenPlatform_Gizmo_Desc>
+  <RhyniaOverpower_GenPlatform_GenLabel>轨道平台</RhyniaOverpower_GenPlatform_GenLabel>
+  <RhyniaOverpower_GenPlatform_Cooldown>距离冷却结束仍有 {0}</RhyniaOverpower_GenPlatform_Cooldown>
+  <RhyniaOverpower_GenPlatform_Found>已发现轨道平台</RhyniaOverpower_GenPlatform_Found>
+
+  <RhyniaOverpower_NetSpawner_Def_Label>管道资源生成器 ({0})</RhyniaOverpower_NetSpawner_Def_Label>
+  <RhyniaOverpower_NetSpawner_Def_Label>生成{0}到管道网络</RhyniaOverpower_NetSpawner_Def_Label>
 
   <!-- Designation -->
 

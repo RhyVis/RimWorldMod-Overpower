@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <ThoughtDef>
+    <defName>Rhy_UpsetExtreme</defName>
+    <thoughtClass>VEF.Cooking.Thought_Hediff</thoughtClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <stackLimit>3</stackLimit>
+    <durationDays>1</durationDays>
+    <stages>
+      <li>
+        <label>extremely upset</label>
+        <description>Why am I so sad?</description>
+        <baseMoodEffect>-80</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

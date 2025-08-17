@@ -8,6 +8,8 @@
 
   <ThingDef Name="Rhy_NetSpawnerBase" ParentName="Rhy_FurnBase" Abstract="True">
     <thingClass>Rhynia.Overpower.Building_NetSpawner</thingClass>
+    <label>net spawner</label>
+    <description>Spawn X into the corresponding resource network.</description>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
       <texPath>RhyniaOverpower/Things/Building/Misc/NetSpawner</texPath>
@@ -35,8 +37,6 @@
 
   <ThingDef ParentName="Rhy_NetSpawnerBase" MayRequire="vanillaexpanded.vchemfuele">
     <defName>Rhy_NetSpawner_Chemfuel</defName>
-    <label>Spawner (Chemfuel)</label>
-    <description>Spawn Chemfuel into the corresponding resource network.</description>
     <costList>
       <Chemfuel>200</Chemfuel>
     </costList>
@@ -49,8 +49,6 @@
 
   <ThingDef ParentName="Rhy_NetSpawnerBase" MayRequire="vanillaracesexpanded.android">
     <defName>Rhy_NetSpawner_Neutroamine</defName>
-    <label>Spawner (Neutroamine)</label>
-    <description>Spawn Neutroamine into the corresponding resource network.</description>
     <costList>
       <Neutroamine>100</Neutroamine>
     </costList>
@@ -63,8 +61,6 @@
 
   <ThingDef ParentName="Rhy_NetSpawnerBase" MayRequire="vanillaracesexpanded.sanguophage">
     <defName>Rhy_NetSpawner_Hemogen</defName>
-    <label>Spawner (Hemogen)</label>
-    <description>Spawn Hemogen into the corresponding resource network.</description>
     <costList>
       <HemogenPack>20</HemogenPack>
     </costList>
@@ -77,8 +73,6 @@
 
   <ThingDef ParentName="Rhy_NetSpawnerBase" MayRequire="fen.milirasunlightfuel.unofficiale">
     <defName>Rhy_NetSpawner_SunLightFuel</defName>
-    <label>Spawner (SunLight Fuel)</label>
-    <description>Spawn SunLight Fuel into the corresponding resource network.</description>
     <costList>
       <Milira_SunLightFuel>80</Milira_SunLightFuel>
     </costList>

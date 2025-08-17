@@ -106,39 +106,3 @@ public class CompNetSpawner : CompResource
         }
     }
 }
-
-public class Building_NetSpawner : Building
-{
-    private Color _color = Color.clear;
-
-    public override Color DrawColor => _color;
-
-    public override void SpawnSetup(Map map, bool respawningAfterLoad)
-    {
-        base.SpawnSetup(map, respawningAfterLoad);
-        var comp = GetComp<CompNetSpawner>();
-        if (comp is null)
-        {
-            Warn("CompNetSpawner is null, cannot initialize", this);
-            Destroy();
-            return;
-        }
-
-        var oColor = comp.PipeNet.def.overlayOptions.overlayColor;
-        if (oColor != Color.clear)
-            _color = oColor;
-        else if (comp.PipeNet.def.resource is { } resource)
-            _color = resource.color;
-
-        if (_color == Color.clear)
-        {
-            Warn("NetSpawner color is clear, cannot initialize", this);
-            Destroy();
-        }
-
-        Debug(
-            $"Initialized Building_NetSpawner with color {_color} and PipeNet {comp.PipeNet?.def?.defName ?? "null"}",
-            this
-        );
-    }
-}

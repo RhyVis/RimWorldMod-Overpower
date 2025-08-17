@@ -29,6 +29,20 @@
   <RhyniaOverpower_WealthConvert_Mote>Converted wealth: {0}</RhyniaOverpower_WealthConvert_Mote>
   <RhyniaOverpower_WealthConvert_MoteFailure>Failed to place wealth, remaining: {0}</RhyniaOverpower_WealthConvert_MoteFailure>
 
+  <RhyniaOverpower_HediffGiver_Gizmo_Desc>Choose who the hediff will be applied to</RhyniaOverpower_HediffGiver_Gizmo_Desc>
+  <RhyniaOverpower_HediffGiver_Gizmo_LabelA>None</RhyniaOverpower_HediffGiver_Gizmo_LabelA>
+  <RhyniaOverpower_HediffGiver_Gizmo_LabelB>All</RhyniaOverpower_HediffGiver_Gizmo_LabelB>
+  <RhyniaOverpower_HediffGiver_Gizmo_LabelC>Hostile</RhyniaOverpower_HediffGiver_Gizmo_LabelC>
+  <RhyniaOverpower_HediffGiver_Gizmo_LabelD>Non-Player</RhyniaOverpower_HediffGiver_Gizmo_LabelD>
+  <RhyniaOverpower_HediffGiver_Gizmo_LabelE>Prisoner</RhyniaOverpower_HediffGiver_Gizmo_LabelE>
+  <RhyniaOverpower_HediffGiver_Gizmo_LabelF>Slave</RhyniaOverpower_HediffGiver_Gizmo_LabelF>
+  <RhyniaOverpower_HediffGiver_Def_Label>hediff giver ({0})</RhyniaOverpower_HediffGiver_Def_Label>
+  <RhyniaOverpower_HediffGiver_Def_DescSeg1>The machine causes {0} on pawns in radius.</RhyniaOverpower_HediffGiver_Def_DescSeg1>
+  <RhyniaOverpower_HediffGiver_Def_DescSeg2>Influenced by {0}.</RhyniaOverpower_HediffGiver_Def_DescSeg2>
+
+  <RhyniaOverpower_NetSpawner_Def_Label>net spawner ({0})</RhyniaOverpower_NetSpawner_Def_Label>
+  <RhyniaOverpower_NetSpawner_Def_Label>Spawn {0} into the resource pipe network</RhyniaOverpower_NetSpawner_Def_Label>
+
   <!-- Comps -->
 
   <RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>Last processed amount: {0}</RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>
@@ -37,6 +51,12 @@
   <RhyniaOverpower_PhaseSnareBeacon_InvalidCore>Phase snare core inactive</RhyniaOverpower_PhaseSnareBeacon_InvalidCore>
   <RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile>Capture Hostile</RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile>
   <RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureFogged>Capture Fogged</RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureFogged>
+
+  <RhyniaOverpower_GenPlatform_Gizmo_Label>Spawn orbital platform</RhyniaOverpower_GenPlatform_Gizmo_Label>
+  <RhyniaOverpower_GenPlatform_Gizmo_Desc>Spawn an orbital platform in space</RhyniaOverpower_GenPlatform_Gizmo_Desc>
+  <RhyniaOverpower_GenPlatform_GenLabel>asteroid platform</RhyniaOverpower_GenPlatform_GenLabel>
+  <RhyniaOverpower_GenPlatform_Cooldown>There's still {0} to cooldown</RhyniaOverpower_GenPlatform_Cooldown>
+  <RhyniaOverpower_GenPlatform_Found>Found an orbital platform</RhyniaOverpower_GenPlatform_Found>
 
   <!-- Designation -->
 

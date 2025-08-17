@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <HediffDef Name="Rhy_MiscHediffBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.11, 0.56, 1)</defaultLabelColor>
+    <isBad>False</isBad>
+    <alwaysAllowMothball>True</alwaysAllowMothball>
+    <alwaysAllowMothballCached>True</alwaysAllowMothballCached>
+  </HediffDef>
+
+  <HediffDef Name="Rhy_MiscHediffBaseWithHour" ParentName="Rhy_MiscHediffBase" Abstract="True">
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>1250</disappearsAfterTicks>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef Name="Rhy_MiscHediffBaseWithSecond" ParentName="Rhy_MiscHediffBase" Abstract="True">
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>60</disappearsAfterTicks>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <!-- Bad -->
+
+  <HediffDef ParentName="Rhy_MiscHediffBaseWithSecond">
+    <defName>Rhy_BerserkHediff</defName>
+    <label>Berserk</label>
+    <description>Greatly increase the chance to enter a berserk mental state, and immune to pain.</description>
+    <stages>
+      <li>
+        <socialFightChanceFactor>20.0</socialFightChanceFactor>
+        <painFactor>0</painFactor>
+        <mentalStateGivers>
+          <li>
+            <mentalState>Berserk</mentalState>
+            <mtbDays>0.01</mtbDays>
+          </li>
+        </mentalStateGivers>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="Rhy_MiscHediffBaseWithSecond">
+    <defName>Rhy_HungerHediff</defName>
+    <label>Hunger</label>
+    <description>Greatly increases hunger rate.</description>
+    <stages>
+      <li>
+        <hungerRateFactor>50.0</hungerRateFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="Rhy_MiscHediffBaseWithSecond">
+    <defName>Rhy_VomitHediff</defName>
+    <label>Vomit</label>
+    <description>Greatly increases the chance to vomit.</description>
+    <stages>
+      <li>
+        <vomitMtbDays>0.01</vomitMtbDays>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="Rhy_MiscHediffBaseWithHour">
+    <defName>Rhy_UpsetHediff</defName>
+    <label>Upset</label>
+    <description>Extreme sadness.</description>
+    <stages>
+      <li>
+        <painFactor>1.05</painFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="Rhy_MiscHediffBaseWithSecond">
+    <defName>Rhy_SuppressionHediff</defName>
+    <label>Suppression</label>
+    <description>Suppressed to no consciousness.</description>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.01</setMax>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="Rhy_MiscHediffBase">
+    <defName>Rhy_SlowHediff</defName>
+    <label>Slow</label>
+    <description>You shall not move.</description>
+    <stages>
+      <li>
+        <statFactors>
+          <MoveSpeed>0.01</MoveSpeed>
+        </statFactors>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>300</disappearsAfterTicks>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef ParentName="Rhy_MiscHediffBase">
+    <defName>Rhy_ForgettingHediff</defName>
+    <label>Forgetting</label>
+    <description>Slowly forget skills.</description>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <disappearsAfterTicks>3600</disappearsAfterTicks>
+      </li>
+      <li Class="Rhynia.Overpower.HediffCompProperties_SkillDeplete">
+        <checkInterval>1250</checkInterval>
+        <depleteAmount>10000</depleteAmount>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>Rhy_DeathHediff</defName>
+    <label>Death</label>
+    <description>Death due to losing consciousness.</description>
+    <defaultLabelColor>(100, 0, 0)</defaultLabelColor>
+    <lethalSeverity>0</lethalSeverity>
+    <maxSeverity>1</maxSeverity>
+    <alwaysAllowMothball>True</alwaysAllowMothball>
+    <alwaysAllowMothballCached>True</alwaysAllowMothballCached>
+    <isBad>True</isBad>
+    <stages>
+      <li>
+        <minSeverity>0.1</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-1000000</offset>
+            <setMax>0</setMax>
+            <postFactor>0</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+</Defs>

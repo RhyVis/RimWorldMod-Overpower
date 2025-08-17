@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <MapGeneratorDef ParentName="SpaceMapGenerator">
+    <defName>Rhy_AsteroidPlatformGenerator</defName>
+    <!-- <label>asteroid</label> -->
+    <genSteps>
+      <li>Rhy_AsteroidPlatform</li>
+    </genSteps>
+  </MapGeneratorDef>
+
+  <GenStepDef>
+    <defName>Rhy_AsteroidPlatform</defName>
+    <order>200</order>
+    <genStep Class="Rhynia.Overpower.GenStep_AsteroidPlatform" />
+  </GenStepDef>
+</Defs>

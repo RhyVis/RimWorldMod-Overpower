@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <WorldObjectDef ParentName="ClaimableSpace">
+    <worldObjectClass>SpaceMapParent</worldObjectClass>
+    <defName>Rhy_AsteroidPlatformWorldObject</defName>
+    <label>asteroid platform</label>
+    <expandingIconTexture>World/WorldObjects/Expanding/SettlementPlatform</expandingIconTexture>
+    <expandingIconDrawSize>1.1</expandingIconDrawSize>
+    <overrideMapSize>(225, 1, 225)</overrideMapSize>
+    <mapGenerator>Rhy_AsteroidPlatformGenerator</mapGenerator>
+    <IncidentTargetTags Inherit="True" />
+  </WorldObjectDef>
+</Defs>

@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  
+  <!-- EN: phase snare beacon -->
   <Rhy_PhaseSnare_Beacon.label>相位捕敌信标</Rhy_PhaseSnare_Beacon.label>
+  <!-- EN: This device is used to provide location information to the core. The map where it is located will be able to use the phase teleportation function. -->
   <Rhy_PhaseSnare_Beacon.description>相位捕敌信标用于向终端提供位置信息。所在的地图将可以使用相位传送功能。</Rhy_PhaseSnare_Beacon.description>
+  
+  <!-- EN: phase snare core -->
   <Rhy_PhaseSnare_Core.label>相位捕敌核心</Rhy_PhaseSnare_Core.label>
-  <Rhy_PhaseSnare_Core.description>将捕敌相位核心捕获的敌人传送至此位置，并对其造成约5秒的眩晕。</Rhy_PhaseSnare_Core.description>
+  <!-- EN: Teleport enemies captured by the phase snare beacon to this location, stunning them for about 5 seconds. -->
+  <Rhy_PhaseSnare_Core.description>将捕敌相位信标提供的敌人传送至此位置，并对其造成约5秒的眩晕。</Rhy_PhaseSnare_Core.description>
+  
 </LanguageData>

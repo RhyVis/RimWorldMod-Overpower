@@ -1,9 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  
+  <!-- EN: small holding platform -->
   <Rhy_SmallHoldingPlatform.label>小型收容平台</Rhy_SmallHoldingPlatform.label>
+  <!-- EN: A platform for holding dangerous entities. The corners have eyelets where strong chains can be attached.\n\nDowned entities can be captured and secured on a holding platform, where they can be studied for Anomaly knowledge. Increase containment strength by building strong walls and doors, and other special containment devices. -->
   <Rhy_SmallHoldingPlatform.description>用于收容危险实体的平台。四角有孔眼，用以拴上结实的铁链。\n\n倒地的实体可以捕获并安置在收容平台上，对其进行调查能获取异象知识。通过建造坚固的墙体、门以及其他特殊的收容设备来提高收容强度。</Rhy_SmallHoldingPlatform.description>
+  
+  <!-- EN: small holding spot -->
   <Rhy_SmallHoldingSpot.label>小型收容点</Rhy_SmallHoldingSpot.label>
+  <!-- EN: A spot for holding dangerous entities. Not as good as a steel holding platform, but a lot better than nothing.\n\nDowned entities can be secured at a holding spot where they can be studied. Increase containment strength by building strong walls and doors, and other special containment devices. -->
   <Rhy_SmallHoldingSpot.description>用于收容危险实体的位置。不如钢制的收容平台结实，但聊胜于无。\n\n倒地的实体可以捕获并安置在收容平台上，对其进行调查能获取异象知识。通过建造坚固的墙体、门以及其他特殊的收容设备来提高收容强度。</Rhy_SmallHoldingSpot.description>
+  
+  <!-- EN: small psychic ritual spot -->
   <Rhy_SmallPsychicRitualSpot.label>小型心灵仪式举办点</Rhy_SmallPsychicRitualSpot.label>
+  <!-- EN: A spot for performing psychic rituals. Rituals can only be cast if the area around the ritual spot is unobstructed. -->
   <Rhy_SmallPsychicRitualSpot.description>用于举行心灵仪式的地点。仪式地点周围必须无遮挡才可进行仪式。</Rhy_SmallPsychicRitualSpot.description>
+  
 </LanguageData>

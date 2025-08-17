@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <DesignatorDropdownGroupDef>
+    <defName>Rhy_HediffGiverPositive</defName>
+    <label>positive hediff giver</label>
+  </DesignatorDropdownGroupDef>
+
+  <DesignatorDropdownGroupDef>
+    <defName>Rhy_HediffGiverNegative</defName>
+    <label>negative hediff giver</label>
+  </DesignatorDropdownGroupDef>
+
+  <ThingDef Name="Rhy_HediffGiverBase" ParentName="Rhy_FurnBase" Abstract="True">
+    <thingClass>Rhynia.Overpower.Building_HediffGiver</thingClass>
+    <label>hediff giver</label>
+    <description>The machine causes X in nearby pawns.</description>
+    <blockWind>False</blockWind>
+    <blockLight>False</blockLight>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>RhyniaOverpower/Things/Building/Misc/HediffGiver</texPath>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <building>
+      <expandHomeArea>False</expandHomeArea>
+    </building>
+    <size>(1, 1)</size>
+    <passability>Standable</passability>
+    <fillPercent>0</fillPercent>
+    <rotatable>False</rotatable>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>0</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Mass>10</Mass>
+    </statBases>
+    <size>(1, 1)</size>
+    <useHitPoints>False</useHitPoints>
+    <tickerType>Normal</tickerType>
+    <costList Inherit="False" />
+    <thingCategories Inherit="False" />
+    <minifiedDef IsNull="True" />
+  </ThingDef>
+
+  <ThingDef Name="Rhy_HediffGiverBasePositive" ParentName="Rhy_HediffGiverBase" Abstract="True">
+    <designatorDropdown>Rhy_HediffGiverPositive</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef Name="Rhy_HediffGiverBaseNegative" ParentName="Rhy_HediffGiverBase" Abstract="True">
+    <designatorDropdown>Rhy_HediffGiverNegative</designatorDropdown>
+  </ThingDef>
+
+  <!-- Positive -->
+
+  <ThingDef ParentName="Rhy_HediffGiverBasePositive">
+    <defName>Rhy_HediffGiver_GoJuiceHigh</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>GoJuiceHigh</hediffDef>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>0.7</severityAdjust>
+        <radius>4.9</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_HediffGiverBasePositive">
+    <defName>Rhy_HediffGiver_Pregnant</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>Pregnant</hediffDef>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>0.3</severityAdjust>
+        <radius>1</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <!-- Negative -->
+
+  <ThingDef ParentName="Rhy_HediffGiverBaseNegative">
+    <defName>Rhy_HediffGiver_BloodLoss</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>BloodLoss</hediffDef>
+        <stats>
+          <li>PsychicSensitivity</li>
+        </stats>
+        <isNegative>True</isNegative>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>0.3</severityAdjust>
+        <radius>4.9</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_HediffGiverBaseNegative">
+    <defName>Rhy_HediffGiver_Hunger</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>Rhy_HungerHediff</hediffDef>
+        <stats>
+          <li>PsychicSensitivity</li>
+        </stats>
+        <isNegative>True</isNegative>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>1.0</severityAdjust>
+        <radius>4.9</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_HediffGiverBaseNegative">
+    <defName>Rhy_HediffGiver_Berserk</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>Rhy_BerserkHediff</hediffDef>
+        <stats>
+          <li>PsychicSensitivity</li>
+        </stats>
+        <isNegative>True</isNegative>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>1.0</severityAdjust>
+        <radius>4.9</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_HediffGiverBaseNegative">
+    <defName>Rhy_HediffGiver_Vomit</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>Rhy_VomitHediff</hediffDef>
+        <stats>
+          <li>PsychicSensitivity</li>
+        </stats>
+        <isNegative>True</isNegative>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>1.0</severityAdjust>
+        <radius>4.9</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_HediffGiverBaseNegative">
+    <defName>Rhy_HediffGiver_Breakdown</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>CatatonicBreakdown</hediffDef>
+        <stats>
+          <li>PsychicSensitivity</li>
+        </stats>
+        <isNegative>True</isNegative>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>0.5</severityAdjust>
+        <radius>4.9</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_HediffGiverBaseNegative">
+    <defName>Rhy_HediffGiver_Anesthetic</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>Anesthetic</hediffDef>
+        <isNegative>True</isNegative>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>0.3</severityAdjust>
+        <radius>4.9</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_HediffGiverBaseNegative">
+    <defName>Rhy_HediffGiver_Toxic</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>ToxicBuildup</hediffDef>
+        <isNegative>True</isNegative>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>0.3</severityAdjust>
+        <radius>4.9</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_HediffGiverBaseNegative">
+    <defName>Rhy_HediffGiver_Suppression</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>Rhy_SuppressionHediff</hediffDef>
+        <isNegative>True</isNegative>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>1.0</severityAdjust>
+        <radius>4.9</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_HediffGiverBaseNegative">
+    <defName>Rhy_HediffGiver_Death</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>Rhy_DeathHediff</hediffDef>
+        <isNegative>True</isNegative>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>2.0</severityAdjust>
+        <radius>2.9</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+</Defs>

@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  
+  <!-- EN: archotech assembly -->
   <Rhy_ArchotechAssembly.label>超凡流形</Rhy_ArchotechAssembly.label>
+  <!-- EN: A substance with extraordinary properties that can change its form and material according to needs. -->
   <Rhy_ArchotechAssembly.description>一种具有超凡特性的物质，能够根据需求改变形态和材质。</Rhy_ArchotechAssembly.description>
+  <!-- EN: archotech assembly -->
   <Rhy_ArchotechAssembly.stuffProps.stuffAdjective>超凡流形</Rhy_ArchotechAssembly.stuffProps.stuffAdjective>
+  
 </LanguageData>

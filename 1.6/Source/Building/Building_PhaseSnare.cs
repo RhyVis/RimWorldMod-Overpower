@@ -97,7 +97,6 @@ public class Building_PhaseSnareCore : Building
             return;
 
         var pawns = _container.PopPawns();
-
         if (pawns.NullOrEmpty())
         {
             _lastProcessedCount = 0;
@@ -109,7 +108,7 @@ public class Building_PhaseSnareCore : Building
         var processedCount = 0;
         foreach (var pawn in pawns)
         {
-            if (!pawn.Spawned || pawn.Map is null)
+            if (pawn is { Spawned: false } or { Map: null })
             {
                 pawn.RemoveDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation);
                 Warn($"Pawn {pawn} is not spawned or has no map. Skipping teleport", this);
@@ -118,6 +117,7 @@ public class Building_PhaseSnareCore : Building
 
             if (pawn.Map.uniqueID != Map.uniqueID)
             {
+                Debug($"Teleport pawn from {pawn.Map.uniqueID} to {Map.uniqueID}", this);
                 pawn.ExitMap(false, Rot4.Invalid);
                 pawn.SpawnToThing(this);
                 pawn.AddDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation);
@@ -266,21 +266,12 @@ public class Building_PhaseSnareBeacon : Building
         if (!Enabled)
             return;
 
-        var pawns = Map.listerThings.ThingsInGroup(ThingRequestGroup.Pawn);
-        if (pawns.NullOrEmpty())
+        var pawns = Map.mapPawns.AllPawnsSpawned;
+        if (pawns is null or { Count: 0 })
             return;
 
         var validPawns = pawns
-            .OfType<Pawn>()
-            .Where(p =>
-                p
-                    is {
-                        Spawned: true,
-                        Dead: false,
-                        Downed: false,
-                        Faction: null or { IsPlayer: false }
-                    }
-            )
+            .Where(p => p is { Dead: false, Downed: false, Faction: null or { IsPlayer: false } })
             .ToHashSet();
 
         if (_captureHostile)
@@ -290,7 +281,7 @@ public class Building_PhaseSnareBeacon : Building
                     (
                         pawn.Faction?.HostileTo(Faction.OfPlayer) is true
                         && pawn is { IsPrisonerOfColony: false, IsSlaveOfColony: false }
-                    ) || pawn is { IsAnimal: true, InAggroMentalState: true };
+                    ) || (pawn.AnimalOrWildMan() && pawn.InAggroMentalState);
                 if (shouldCapture)
                 {
                     if (!_captureFogged && pawn.Position.Fogged(pawn.Map))
