@@ -54,6 +54,8 @@
   <RhyniaOverpower_PhaseSnareBeacon_OptQuick>快速标记</RhyniaOverpower_PhaseSnareBeacon_OptQuick>
   <RhyniaOverpower_PhaseSnareBeacon_OptQuick_WildAnimal>野生动物</RhyniaOverpower_PhaseSnareBeacon_OptQuick_WildAnimal>
 
+  <RhyniaOverpower_EnvControlUnit_Gizmo_ClearGas>清除气体</RhyniaOverpower_EnvControlUnit_Gizmo_ClearGas>
+
   <!-- Comps -->
 
   <RhyniaOverpower_GenPlatform_Gizmo_Label>生成轨道平台</RhyniaOverpower_GenPlatform_Gizmo_Label>

@@ -34,8 +34,5 @@
       <li>FloorCoverings</li>
       <li>Building</li>
     </blocksAltitudes>
-    <comps>
-      <li Class="CompProperties_Flickable" />
-    </comps>
   </ThingDef>
 </Defs>

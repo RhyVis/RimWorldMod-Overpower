@@ -9,6 +9,7 @@ public class Building_EnvControlUnit : Building
     private const float OffsetMinus10 = -10f;
     private const float OffsetPlus1 = 1f;
     private const float OffsetPlus10 = 10f;
+    private const float DefaultTemperature = 21f;
 
     private static readonly Texture2D IconLower = ContentFinder<Texture2D>.Get(
         "UI/Commands/TempLower"
@@ -20,30 +21,24 @@ public class Building_EnvControlUnit : Building
         "UI/Commands/TempReset"
     );
 
-    private CompFlickable _compFlickable = null!;
-
+    private bool _active;
+    private bool _clearGas;
     private float _temperature = -10000f;
+
+    private bool IsRoomValid => this.GetRoom() is { UsesOutdoorTemperature: false };
 
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
         base.SpawnSetup(map, respawningAfterLoad);
 
-        _compFlickable = GetComp<CompFlickable>();
-
-        if (_compFlickable is null)
-        {
-            Error($"Spawned without CompFlickable", this);
-            Destroy();
-            return;
-        }
-
         if (_temperature < -2000f)
-            _temperature = 21f;
+            _temperature = DefaultTemperature;
     }
 
     public override void ExposeData()
     {
         base.ExposeData();
+        Scribe_Values.Look(ref _active, "controlActive");
         Scribe_Values.Look(ref _temperature, "controlTemperature");
     }
 
@@ -59,6 +54,25 @@ public class Building_EnvControlUnit : Building
     {
         foreach (var gizmo in base.GetGizmos())
             yield return gizmo;
+        yield return new Command_Toggle()
+        {
+            defaultLabel = _active.TranslateAsEnable(),
+            icon = TexCommand.DesirePower,
+            isActive = () => _active,
+            toggleAction = () => _active = !_active,
+        };
+        yield return new Command_Toggle()
+        {
+            defaultLabel = "RhyniaOverpower_EnvControlUnit_Gizmo_ClearGas".Translate(),
+            icon = TexCommand.ToggleVent,
+            isActive = () => _clearGas,
+            toggleAction = () =>
+            {
+                _clearGas = !_clearGas;
+                if (_clearGas)
+                    ClearGasInRoom();
+            },
+        };
         yield return new Command_Action()
         {
             defaultLabel = RoundOffset(OffsetMinus1).ToStringTemperatureOffset("F0"),
@@ -104,14 +118,16 @@ public class Building_EnvControlUnit : Building
     public override void TickRare()
     {
         base.TickRare();
-        if (!_compFlickable.SwitchIsOn || !Spawned || this.GetRoom() is not { } room)
+        if (!_active || !Spawned || !IsRoomValid)
             return;
-        room.Temperature = _temperature;
+        this.GetRoom().Temperature = _temperature;
+        if (_clearGas)
+            ClearGasInRoom();
     }
 
     private void ResetTemperature()
     {
-        _temperature = 21f;
+        _temperature = DefaultTemperature;
         SoundDefOf.Tick_Tiny.PlayOneShotOnCamera();
         ThrowTemperature();
     }
@@ -125,6 +141,13 @@ public class Building_EnvControlUnit : Building
     }
 
     private void ThrowTemperature() => this.ThrowMote(_temperature.ToStringTemperature("F0"));
+
+    private void ClearGasInRoom()
+    {
+        foreach (var cell in this.GetRoom().Cells)
+            Map.gasGrid.ClearCellUnsafe(cell);
+        Map.mapDrawer.WholeMapChanged(MapMeshFlagDefOf.Gas);
+    }
 
     private static float RoundOffset(float celsius) =>
         GenTemperature.ConvertTemperatureOffset(
