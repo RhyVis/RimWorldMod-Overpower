@@ -7,7 +7,7 @@
 
   <!-- Abstract -->
 
-  <ThingDef Name="Rhy_ThingSpawnerBase" ParentName="AdaptiveStorageMinifiableBase" Abstract="True">
+  <ThingDef Name="Rhy_ThingSpawnerBase" ParentName="AdaptiveStorageBase" Abstract="True">
     <thingClass>Rhynia.Overpower.Building_ThingSpawner</thingClass>
     <label>thing spawner</label>
     <description>Can spawn specified items in the container.</description>
@@ -15,9 +15,8 @@
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
       <texPath>RhyniaOverpower/Things/Building/Misc/Barrel</texPath>
-      <damageData>
-        <enabled>False</enabled>
-      </damageData>
+      <color>(200, 200, 200)</color>
+      <colorTwo>(178, 255, 255)</colorTwo>
     </graphicData>
     <size>(1, 1)</size>
     <defaultPlacingRot>North</defaultPlacingRot>
@@ -38,8 +37,8 @@
     <tickerType>Rare</tickerType>
     <statBases>
       <MaxHitPoints>160</MaxHitPoints>
-      <Mass>18</Mass>
       <WorkToBuild>1200</WorkToBuild>
+      <Mass>20</Mass>
     </statBases>
     <modExtensions>
       <li Class="AdaptiveStorage.Extension">
@@ -65,6 +64,8 @@
           <shaderType>CutoutComplex</shaderType>
           <texPath>RhyniaOverpower/Things/Building/Misc/Barrel</texPath>
         </graphicData>
+        <colorOneSource>ColorOne</colorOneSource>
+        <colorTwoSource>ColorTwo</colorTwoSource>
       </li>
     </graphics>
   </AdaptiveStorage.GraphicsDef>

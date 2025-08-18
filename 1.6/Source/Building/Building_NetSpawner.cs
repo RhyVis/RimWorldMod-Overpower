@@ -10,6 +10,7 @@ public class Building_NetSpawner : Building
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
         base.SpawnSetup(map, respawningAfterLoad);
+
         var prop = def.GetCompProperties<CompProperties_NetSpawner>();
         if (prop is null)
         {

@@ -10,19 +10,22 @@ public class Building_ThingSpawner : StorageBuilding
     private static readonly string _filterLabel2 = "CommandPasteZoneSettingsLabel".Translate();
     private static readonly string _filterLabel3 = "LinkStorageSettings".Translate();
 
-    private static Color ActiveColor = new(102 / 255, 1, 102 / 255);
-    public override Color DrawColor => _active ? ActiveColor : Color.clear;
-    public override Color DrawColorTwo => Color.cyan;
-
     private DefModExt_ThingSpawner _spawnerDef = null!;
     private List<ThingDef> ThingDefs => _spawnerDef.spawnableDefs;
     private ThingDef DefaultThingDef => _spawnerDef.defaultDef;
+    private List<FloatMenuOption> Options =>
+        [
+            .. ThingDefs.Select(def => new FloatMenuOption(
+                def.LabelCap,
+                () => ChangeThingDef(def),
+                def
+            )),
+        ];
 
     private bool _initialized;
     private bool _active = true;
     private int _ticker = 1250;
 
-    private List<FloatMenuOption> _options = [];
     private ThingDef _spawnTargetDef = null!;
     private int StackLimit => _spawnTargetDef.stackLimit;
 
@@ -48,15 +51,6 @@ public class Building_ThingSpawner : StorageBuilding
             return;
         }
 
-        _options =
-        [
-            .. ThingDefs.Select(def => new FloatMenuOption(
-                def.LabelCap,
-                () => ChangeThingDef(def),
-                def
-            )),
-        ];
-
         if (_spawnTargetDef is null)
         {
             Debug($"Resetting _spawnDef to default {DefaultThingDef}", this);
@@ -69,10 +63,7 @@ public class Building_ThingSpawner : StorageBuilding
             return;
         }
 
-        Notify_ColorChanged();
-
-        SetDef(_spawnTargetDef);
-
+        UpdateAllow(_spawnTargetDef);
         Debug($"SpawnThingDef: {_spawnTargetDef.defName}/{_spawnTargetDef.label}", this);
     }
 
@@ -115,7 +106,7 @@ public class Building_ThingSpawner : StorageBuilding
             {
                 FloatMenuHelper.SpawnMenuTitled(
                     "RhyniaOverpower_ThingSpawner_Gizmo2_Menu".Translate(),
-                    _options
+                    Options
                 );
                 _ticker = 1250;
             },
@@ -126,11 +117,7 @@ public class Building_ThingSpawner : StorageBuilding
             defaultDesc = "RhyniaOverpower_ThingSpawner_Gizmo3_Desc".Translate(),
             icon = TexCommand.DesirePower,
             isActive = () => _active,
-            toggleAction = () =>
-            {
-                _active = !_active;
-                Notify_ColorChanged();
-            },
+            toggleAction = () => _active = !_active,
         };
     }
 
@@ -149,7 +136,7 @@ public class Building_ThingSpawner : StorageBuilding
 
         if (!_initialized)
         {
-            SetDef(_spawnTargetDef);
+            UpdateAllow(_spawnTargetDef);
             _initialized = true;
             Debug($"Initialized with spawnDef: {_spawnTargetDef.defName}, bugs off, please!", this);
         }
@@ -169,7 +156,7 @@ public class Building_ThingSpawner : StorageBuilding
             return;
 
         GetSlotGroup().HeldThings.FirstOrDefault()?.Destroy();
-        SetDef(def);
+        UpdateAllow(def);
 
         _spawnTargetDef = def;
     }
@@ -206,7 +193,7 @@ public class Building_ThingSpawner : StorageBuilding
         exist.stackCount = StackLimit;
     }
 
-    private void SetDef(ThingDef def)
+    private void UpdateAllow(ThingDef def)
     {
         settings.filter.SetDisallowAll();
         settings.filter.SetAllow(def, true);

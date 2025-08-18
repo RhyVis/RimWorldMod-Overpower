@@ -14,6 +14,9 @@ public class Building_HediffGiver : Building
 
     private int _workingType;
 
+    private TaggedString _cachedInspectStr2;
+    private TaggedString _cachedInspectStr3;
+
     private TaggedString GizmoLabel =>
         _workingType switch
         {
@@ -38,27 +41,25 @@ public class Building_HediffGiver : Building
             _ => TexCommand.CannotShoot,
         };
 
-    public override Color DrawColor
-    {
-        get
-        {
-            if (_props is { isNegative: { } negative })
-                return negative ? Color.red : Color.green;
-            else
-                return Color.clear;
-        }
-    }
+    public override Color DrawColor => _props.color;
 
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
         base.SpawnSetup(map, respawningAfterLoad);
+
         _props = def.GetModExtension<DefModExt_HediffGiver>();
         if (_props.hediffDef is null)
         {
-            Error($"Got null hediffDef in {nameof(Building_HediffGiver)} for {this}", this);
+            Error($"Got null hediffDef in Building_HediffGiver", this);
             Destroy();
             return;
         }
+
+        _cachedInspectStr2 = "RhyniaOverpower_HediffGiver_Inspect2".Translate(_props.radius);
+        _cachedInspectStr3 = "RhyniaOverpower_HediffGiver_Inspect3".Translate(
+            _props.hediffDef.label
+        );
+
         Notify_ColorChanged();
     }
 
@@ -86,6 +87,15 @@ public class Building_HediffGiver : Building
         base.DrawExtraSelectionOverlays();
         if (_props is { radius: > 0.1f })
             GenDraw.DrawRadiusRing(Position, _props.radius);
+    }
+
+    public override string GetInspectString()
+    {
+        var builder = new StringBuilder(base.GetInspectString());
+        builder.AppendLine("RhyniaOverpower_HediffGiver_Inspect1".Translate(GizmoLabel));
+        builder.AppendLine(_cachedInspectStr2);
+        builder.AppendLine(_cachedInspectStr3);
+        return builder.ToString().TrimEnd();
     }
 
     protected override void Tick()

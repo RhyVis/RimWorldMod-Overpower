@@ -14,6 +14,12 @@
       <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3549873617</steamWorkshopUrl>
     </li>
     <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+    <li>
       <packageId>adaptive.storage.framework</packageId>
       <displayName>Adaptive Storage Framework</displayName>
       <steamWorkshopUrl>https://steamcommunity.com/workshop/filedetails/?id=3033901359</steamWorkshopUrl>

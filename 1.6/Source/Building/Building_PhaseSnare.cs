@@ -12,6 +12,7 @@ public class Building_PhaseSnareCore : Building
 
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
+        Debug($"Spawning PhaseSnareCore {def.defName}", this);
         base.SpawnSetup(map, respawningAfterLoad);
 
         var component = GameComponent_PhaseSnare.Instance;

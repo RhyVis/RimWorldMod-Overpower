@@ -38,6 +38,9 @@
   <RhyniaOverpower_HediffGiver_Gizmo_LabelD>非玩家</RhyniaOverpower_HediffGiver_Gizmo_LabelD>
   <RhyniaOverpower_HediffGiver_Gizmo_LabelE>囚犯</RhyniaOverpower_HediffGiver_Gizmo_LabelE>
   <RhyniaOverpower_HediffGiver_Gizmo_LabelF>奴隶</RhyniaOverpower_HediffGiver_Gizmo_LabelF>
+  <RhyniaOverpower_HediffGiver_Inspect1>作用目标：{0}</RhyniaOverpower_HediffGiver_Inspect1>
+  <RhyniaOverpower_HediffGiver_Inspect2>作用范围：{0}</RhyniaOverpower_HediffGiver_Inspect2>
+  <RhyniaOverpower_HediffGiver_Inspect3>作用效果：{0}</RhyniaOverpower_HediffGiver_Inspect3>
   <RhyniaOverpower_HediffGiver_Def_Label>状态作用机 ({0})</RhyniaOverpower_HediffGiver_Def_Label>
   <RhyniaOverpower_HediffGiver_Def_DescSeg1>此机器对范围内的生物产生{0}影响。</RhyniaOverpower_HediffGiver_Def_DescSeg1>
   <RhyniaOverpower_HediffGiver_Def_DescSeg2>受{0}影响。</RhyniaOverpower_HediffGiver_Def_DescSeg2>

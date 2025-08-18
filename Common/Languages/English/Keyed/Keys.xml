@@ -38,6 +38,9 @@
   <RhyniaOverpower_HediffGiver_Gizmo_LabelD>Non-Player</RhyniaOverpower_HediffGiver_Gizmo_LabelD>
   <RhyniaOverpower_HediffGiver_Gizmo_LabelE>Prisoner</RhyniaOverpower_HediffGiver_Gizmo_LabelE>
   <RhyniaOverpower_HediffGiver_Gizmo_LabelF>Slave</RhyniaOverpower_HediffGiver_Gizmo_LabelF>
+  <RhyniaOverpower_HediffGiver_Inspect1>Target type: {0}</RhyniaOverpower_HediffGiver_Inspect1>
+  <RhyniaOverpower_HediffGiver_Inspect2>Target radius: {0}</RhyniaOverpower_HediffGiver_Inspect2>
+  <RhyniaOverpower_HediffGiver_Inspect3>Target hediff: {0}</RhyniaOverpower_HediffGiver_Inspect3>
   <RhyniaOverpower_HediffGiver_Def_Label>hediff giver ({0})</RhyniaOverpower_HediffGiver_Def_Label>
   <RhyniaOverpower_HediffGiver_Def_DescSeg1>The machine causes {0} on pawns in radius.</RhyniaOverpower_HediffGiver_Def_DescSeg1>
   <RhyniaOverpower_HediffGiver_Def_DescSeg2>Influenced by {0}.</RhyniaOverpower_HediffGiver_Def_DescSeg2>

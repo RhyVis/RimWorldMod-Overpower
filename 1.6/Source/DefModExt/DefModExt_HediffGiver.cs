@@ -10,6 +10,14 @@ public class DefModExt_HediffGiver : DefModExtension
 
     public bool isNegative = false;
 
+    [Unsaved]
+    public Color color = Color.white;
+
     public HediffDef hediffDef;
     public List<StatDef> stats = [];
+
+    public override void ResolveReferences(Def parentDef)
+    {
+        color = isNegative ? Color.red : Color.green;
+    }
 }

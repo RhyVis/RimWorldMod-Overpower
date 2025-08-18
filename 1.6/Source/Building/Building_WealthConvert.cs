@@ -1,16 +1,9 @@
-using System.Text;
-using AdaptiveStorage;
 using StorageBuilding = AdaptiveStorage.ThingClass;
 
 namespace Rhynia.Overpower;
 
 public class Building_WealthConvert : StorageBuilding
 {
-    private static Color ActiveColor = new(51 / 255, 1, 153 / 255);
-    private static Color FrameColor = new(178 / 255, 102 / 255, 1);
-    public override Color DrawColor => _autoConvert ? ActiveColor : Color.clear;
-    public override Color DrawColorTwo => FrameColor;
-
     private bool _autoConvert = true;
     private bool _autoPlace = true;
     private long _leftoverSilverValue;
@@ -18,12 +11,6 @@ public class Building_WealthConvert : StorageBuilding
     private int _ticker = 1250;
 
     private string ModeLabel => _mode == 0 ? ThingDefOf.Silver.label : ThingDefOf.Gold.label;
-
-    protected override void OnSpawn(Map map, SpawnMode spawnMode)
-    {
-        base.OnSpawn(map, spawnMode);
-        Notify_ColorChanged();
-    }
 
     public override IEnumerable<Gizmo> GetGizmos()
     {
@@ -35,11 +22,10 @@ public class Building_WealthConvert : StorageBuilding
             defaultDesc = "RhyniaOverpower_WealthConvert_Gizmo1_Desc".Translate(),
             icon = TexCommand.DesirePower,
             isActive = () => _autoConvert,
-            toggleAction = delegate
+            toggleAction = () =>
             {
                 _autoConvert = !_autoConvert;
                 _ticker = 1250;
-                Notify_ColorChanged();
             },
         };
         yield return new Command_Toggle
@@ -48,7 +34,7 @@ public class Building_WealthConvert : StorageBuilding
             defaultDesc = "RhyniaOverpower_WealthConvert_Gizmo2_Desc".Translate(),
             icon = TexCommand.DesirePower,
             isActive = () => _autoPlace,
-            toggleAction = delegate
+            toggleAction = () =>
             {
                 _autoPlace = !_autoPlace;
                 _ticker = 1250;
@@ -66,20 +52,14 @@ public class Building_WealthConvert : StorageBuilding
             defaultLabel = "RhyniaOverpower_WealthConvert_Gizmo4_Label".Translate(),
             defaultDesc = "RhyniaOverpower_WealthConvert_Gizmo4_Desc".Translate(),
             icon = TexCommand.ForbidOff,
-            action = delegate
-            {
-                TryPlace(true);
-            },
+            action = () => TryPlace(true),
         };
         yield return new Command_Action
         {
             defaultLabel = "RhyniaOverpower_WealthConvert_Gizmo5_Label".Translate(ModeLabel),
             defaultDesc = "RhyniaOverpower_WealthConvert_Gizmo5_Desc".Translate(),
             icon = _mode == 0 ? ThingDefOf.Silver.uiIcon : ThingDefOf.Gold.uiIcon,
-            action = delegate
-            {
-                _mode = _mode == 0 ? 1 : 0;
-            },
+            action = () => _mode = _mode == 0 ? 1 : 0,
         };
     }
 

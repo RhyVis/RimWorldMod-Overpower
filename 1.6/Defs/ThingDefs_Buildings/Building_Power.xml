@@ -15,6 +15,11 @@
     <genericMarketSellable>False</genericMarketSellable>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>RhyniaOverpower/Things/Building/Production/Power</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
     <building>
       <ai_chillDestination>False</ai_chillDestination>
     </building>
@@ -39,9 +44,7 @@
     <label>power generator</label>
     <description>A powerful generator that doesn't require fuel.</description>
     <graphicData>
-      <texPath>RhyniaOverpower/Things/Building/Production/PowerGenerator</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(1.2, 1.2)</drawSize>
+      <color>(255, 200, 200)</color>
     </graphicData>
     <statBases>
       <MaxHitPoints>800</MaxHitPoints>
@@ -58,12 +61,13 @@
         <compClass>CompPowerPlant</compClass>
         <basePowerConsumption>-200000</basePowerConsumption>
         <transmitsPower>True</transmitsPower>
+        <shortCircuitInRain>False</shortCircuitInRain>
         <soundAmbientProducingPower>GeothermalPlant_Ambience</soundAmbientProducingPower>
       </li>
       <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Glower">
         <glowRadius>1</glowRadius>
-        <glowColor>(226, 234, 244, 0)</glowColor>
+        <glowColor>(255, 200, 200)</glowColor>
       </li>
     </comps>
   </ThingDef>
@@ -74,9 +78,7 @@
     <description>A powerful energy storage unit that never short circuits.</description>
     <thingClass>Building_Battery</thingClass>
     <graphicData>
-      <texPath>RhyniaOverpower/Things/Building/Production/PowerStorage</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(1.2, 1.2)</drawSize>
+      <color>(200, 255, 200)</color>
     </graphicData>
     <statBases>
       <MaxHitPoints>1800</MaxHitPoints>
@@ -92,8 +94,12 @@
       <li Class="CompProperties_Battery">
         <storedEnergyMax>2000000</storedEnergyMax>
         <efficiency>1</efficiency>
-        <shortCircuitInRain>False</shortCircuitInRain>
         <transmitsPower>True</transmitsPower>
+        <shortCircuitInRain>False</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>1</glowRadius>
+        <glowColor>(200, 255, 200)</glowColor>
       </li>
       <li Class="CompProperties_Breakdownable" MayRequire="DrilledHead.HybridPoweredGravships" />
       <li Class="CompProperties_GravshipFacility" MayRequire="DrilledHead.HybridPoweredGravships">

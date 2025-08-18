@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
+
   <ThingDef Name="Rhy_WealthConvertBase" ParentName="AdaptiveStorageMinifiableBase" Abstract="True">
     <thingClass>Rhynia.Overpower.Building_WealthConvert</thingClass>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
       <texPath>RhyniaOverpower/Things/Building/Misc/Barrel</texPath>
-      <damageData>
-        <enabled>False</enabled>
-      </damageData>
+      <color>(200, 200, 200)</color>
+      <colorTwo>(216, 191, 216)</colorTwo>
     </graphicData>
     <size>(1, 1)</size>
     <defaultPlacingRot>North</defaultPlacingRot>
     <rotatable>False</rotatable>
+    <tickerType>Rare</tickerType>
     <building>
-      <maxItemsInCell>16</maxItemsInCell>
+      <maxItemsInCell>32</maxItemsInCell>
     </building>
     <costList>
       <Steel>160</Steel>
       <Silver>120</Silver>
     </costList>
-    <tickerType>Rare</tickerType>
     <statBases>
       <MaxHitPoints>250</MaxHitPoints>
       <WorkToBuild>100</WorkToBuild>
@@ -64,7 +64,10 @@
           <shaderType>CutoutComplex</shaderType>
           <texPath>RhyniaOverpower/Things/Building/Misc/Barrel</texPath>
         </graphicData>
+        <colorOneSource>ColorOne</colorOneSource>
+        <colorTwoSource>ColorTwo</colorTwoSource>
       </li>
     </graphics>
   </AdaptiveStorage.GraphicsDef>
+
 </Defs>
