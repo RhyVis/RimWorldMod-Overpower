@@ -63,7 +63,7 @@
   <RhyniaOverpower_GenPlatform_Found>已发现轨道平台</RhyniaOverpower_GenPlatform_Found>
 
   <RhyniaOverpower_NetSpawner_Def_Label>管道资源生成器 ({0})</RhyniaOverpower_NetSpawner_Def_Label>
-  <RhyniaOverpower_NetSpawner_Def_Label>生成{0}到管道网络</RhyniaOverpower_NetSpawner_Def_Label>
+  <RhyniaOverpower_NetSpawner_Def_Desc>生成{0}到管道网络</RhyniaOverpower_NetSpawner_Def_Desc>
 
   <!-- Designation -->
 

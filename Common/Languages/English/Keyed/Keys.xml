@@ -46,7 +46,7 @@
   <RhyniaOverpower_HediffGiver_Def_DescSeg2>Influenced by {0}.</RhyniaOverpower_HediffGiver_Def_DescSeg2>
 
   <RhyniaOverpower_NetSpawner_Def_Label>net spawner ({0})</RhyniaOverpower_NetSpawner_Def_Label>
-  <RhyniaOverpower_NetSpawner_Def_Label>Spawn {0} into the resource pipe network</RhyniaOverpower_NetSpawner_Def_Label>
+  <RhyniaOverpower_NetSpawner_Def_Desc>Spawn {0} into the resource pipe network</RhyniaOverpower_NetSpawner_Def_Desc>
 
   <!-- Comps -->
 
