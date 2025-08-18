@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <ThingDef ParentName="Rhy_FloorStructureBase">
+    <defName>Rhy_FloorEnvControlUnit</defName>
+    <thingClass>Rhynia.Overpower.Building_EnvControlUnit</thingClass>
+    <label>floor environmental control unit</label>
+    <description>A environmental control unit designed to be installed in the floor.</description>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>RhyniaOverpower/Things/Building/Misc/Vent</texPath>
+    </graphicData>
+    <building>
+      <isInert>True</isInert>
+      <paintable>True</paintable>
+    </building>
+    <costList>
+      <Steel>120</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <WorkToBuild>1000</WorkToBuild>
+      <MaxHitPoints>120</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <tickerType>Rare</tickerType>
+    <researchPrerequisites>
+      <li>AirConditioning</li>
+    </researchPrerequisites>
+    <placeWorkers>
+      <li>Rhynia.Overpower.PlaceWorker_RoomEdgeCyan</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>True</drawPlaceWorkersWhileSelected>
+    <blocksAltitudes>
+      <li>FloorCoverings</li>
+      <li>Building</li>
+    </blocksAltitudes>
+    <comps>
+      <li Class="CompProperties_Flickable" />
+    </comps>
+  </ThingDef>
+</Defs>

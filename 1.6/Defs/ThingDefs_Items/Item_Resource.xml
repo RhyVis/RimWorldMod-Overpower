@@ -10,6 +10,7 @@
     </graphicData>
     <generateCommonality>0</generateCommonality>
     <generateAllowChance>0</generateAllowChance>
+    <deepCommonality>0</deepCommonality>
     <soundInteract>Metal_Drop</soundInteract>
     <soundDrop>Metal_Drop</soundDrop>
     <useHitPoints>False</useHitPoints>
@@ -25,7 +26,6 @@
     <thingCategories>
       <li>ResourcesRaw</li>
     </thingCategories>
-    <deepCommonality>0</deepCommonality>
     <burnableByRecipe>False</burnableByRecipe>
     <smeltable>True</smeltable>
     <stuffProps>

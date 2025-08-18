@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 3223949828
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 2fca3204c693750f48681c46e39c04c5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2612ac43db082a73502ee80f2eceb73f
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 2fca3204c693750f48681c46e39c04c5
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Item/Resource/ArchotechAssembly/ArchotechAssembly_b.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/NetSpawner.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/Vent.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Security/PhaseSnare_Core.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/Power.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Security/PhaseSnare_Beacon.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/UI/PhaseSnareDesignation.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/Barrel.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Item/Resource/ArchotechAssembly/ArchotechAssembly_a.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/Barrel_m.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Security/PhaseSnare_Beacon_m.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Item/Resource/ArchotechAssembly/ArchotechAssembly_c.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/HediffGiver_m.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/Power_m.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/HediffGiver.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/NetSpawner_m.png
+Dependencies: []
