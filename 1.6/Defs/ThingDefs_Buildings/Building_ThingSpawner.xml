@@ -106,4 +106,27 @@
     <targetDef>Rhy_ThingSpawner_Material</targetDef>
   </AdaptiveStorage.GraphicsDef>
 
+  <ThingDef ParentName="Rhy_ThingSpawnerBase">
+    <defName>Rhy_ThingSpawner_Component</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_ThingSpawner">
+        <name>component</name>
+        <searches>
+          <li>
+            <type>DefName</type>
+            <what>component</what>
+            <categoryRestricts>
+              <li>Manufactured</li>
+            </categoryRestricts>
+          </li>
+        </searches>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <AdaptiveStorage.GraphicsDef ParentName="Rhy_ThingSpawnerGraphicBase">
+    <defName>Rhy_ThingSpawner_Component_Graphics</defName>
+    <targetDef>Rhy_ThingSpawner_Component</targetDef>
+  </AdaptiveStorage.GraphicsDef>
+
 </Defs>

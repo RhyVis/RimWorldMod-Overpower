@@ -34,7 +34,7 @@ public class Building_ThingSpawner : StorageBuilding
         base.OnSpawn(map, spawnMode);
 
         _spawnerDef = def.GetModExtension<DefModExt_ThingSpawner>();
-        if (_spawnerDef is null || !_spawnerDef.valid)
+        if (_spawnerDef is null || !_spawnerDef.Valid)
         {
             Error($"No valid 'DefModExt_ThingSpawner' found for {def.defName}", this);
             Destroy();
@@ -220,7 +220,7 @@ public class Building_ThingSpawner : StorageBuilding
         foreach (var def in pending)
         {
             var ext = def.GetModExtension<DefModExt_ThingSpawner>();
-            if (ext is null || !ext.valid)
+            if (ext is null || !ext.Valid)
             {
                 Error($"Invalid 'DefModExt_ThingSpawner' found for {def.defName}", def);
                 continue;
