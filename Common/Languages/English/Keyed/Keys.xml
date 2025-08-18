@@ -5,15 +5,17 @@
 
   <!-- Buildings -->
 
-  <RhyniaOverpower_Building_SpawnThing_Gizmo1_Label>Spawn Now</RhyniaOverpower_Building_SpawnThing_Gizmo1_Label>
-  <RhyniaOverpower_Building_SpawnThing_Gizmo1_Desc>Spawn Now: '{0}'</RhyniaOverpower_Building_SpawnThing_Gizmo1_Desc>
-  <RhyniaOverpower_Building_SpawnThing_Gizmo2_Desc>Current target item to spawn is '{0}'</RhyniaOverpower_Building_SpawnThing_Gizmo2_Desc>
-  <RhyniaOverpower_Building_SpawnThing_Gizmo2_Menu>Select Spawned Item</RhyniaOverpower_Building_SpawnThing_Gizmo2_Menu>
-  <RhyniaOverpower_Building_SpawnThing_Gizmo3_Label>Auto Spawn</RhyniaOverpower_Building_SpawnThing_Gizmo3_Label>
-  <RhyniaOverpower_Building_SpawnThing_Gizmo3_Desc>Game will attempt to replenish items every hour</RhyniaOverpower_Building_SpawnThing_Gizmo3_Desc>
-  <RhyniaOverpower_Building_SpawnThing_Mote1>Successfully replenished item: {0}</RhyniaOverpower_Building_SpawnThing_Mote1>
-  <RhyniaOverpower_Building_SpawnThing_Mote2>Successfully spawned item</RhyniaOverpower_Building_SpawnThing_Mote2>
-  <RhyniaOverpower_Building_SpawnThing_Mote3>Stored item type error, expected: {0}, actual: {1}</RhyniaOverpower_Building_SpawnThing_Mote3>
+  <RhyniaOverpower_ThingSpawner_Gizmo1_Label>Spawn Now</RhyniaOverpower_ThingSpawner_Gizmo1_Label>
+  <RhyniaOverpower_ThingSpawner_Gizmo1_Desc>Spawn Now: '{0}'</RhyniaOverpower_ThingSpawner_Gizmo1_Desc>
+  <RhyniaOverpower_ThingSpawner_Gizmo2_Desc>Current target item to spawn is '{0}'</RhyniaOverpower_ThingSpawner_Gizmo2_Desc>
+  <RhyniaOverpower_ThingSpawner_Gizmo2_Menu>Select Spawned Item</RhyniaOverpower_ThingSpawner_Gizmo2_Menu>
+  <RhyniaOverpower_ThingSpawner_Gizmo3_Label>Auto Spawn</RhyniaOverpower_ThingSpawner_Gizmo3_Label>
+  <RhyniaOverpower_ThingSpawner_Gizmo3_Desc>Game will attempt to replenish items every hour</RhyniaOverpower_ThingSpawner_Gizmo3_Desc>
+  <RhyniaOverpower_ThingSpawner_Mote1>Successfully replenished item: {0}</RhyniaOverpower_ThingSpawner_Mote1>
+  <RhyniaOverpower_ThingSpawner_Mote2>Successfully spawned item</RhyniaOverpower_ThingSpawner_Mote2>
+  <RhyniaOverpower_ThingSpawner_Mote3>Stored item type error, expected: {0}, actual: {1}</RhyniaOverpower_ThingSpawner_Mote3>
+  <RhyniaOverpower_ThingSpawner_Def_Label>thing spawner ({0})</RhyniaOverpower_ThingSpawner_Def_Label>
+  <RhyniaOverpower_ThingSpawner_Def_Desc>Spawn {0} type things in the container.</RhyniaOverpower_ThingSpawner_Def_Desc>
 
   <RhyniaOverpower_WealthConvert_Gizmo1_Label>Auto Convert</RhyniaOverpower_WealthConvert_Gizmo1_Label>
   <RhyniaOverpower_WealthConvert_Gizmo1_Desc>Current auto convert status is: {0}</RhyniaOverpower_WealthConvert_Gizmo1_Desc>

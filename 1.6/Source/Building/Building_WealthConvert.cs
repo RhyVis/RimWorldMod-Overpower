@@ -1,10 +1,16 @@
 using System.Text;
+using AdaptiveStorage;
 using StorageBuilding = AdaptiveStorage.ThingClass;
 
 namespace Rhynia.Overpower;
 
 public class Building_WealthConvert : StorageBuilding
 {
+    private static Color ActiveColor = new(51 / 255, 1, 153 / 255);
+    private static Color FrameColor = new(178 / 255, 102 / 255, 1);
+    public override Color DrawColor => _autoConvert ? ActiveColor : Color.clear;
+    public override Color DrawColorTwo => FrameColor;
+
     private bool _autoConvert = true;
     private bool _autoPlace = true;
     private long _leftoverSilverValue;
@@ -12,6 +18,12 @@ public class Building_WealthConvert : StorageBuilding
     private int _ticker = 1250;
 
     private string ModeLabel => _mode == 0 ? ThingDefOf.Silver.label : ThingDefOf.Gold.label;
+
+    protected override void OnSpawn(Map map, SpawnMode spawnMode)
+    {
+        base.OnSpawn(map, spawnMode);
+        Notify_ColorChanged();
+    }
 
     public override IEnumerable<Gizmo> GetGizmos()
     {
@@ -27,6 +39,7 @@ public class Building_WealthConvert : StorageBuilding
             {
                 _autoConvert = !_autoConvert;
                 _ticker = 1250;
+                Notify_ColorChanged();
             },
         };
         yield return new Command_Toggle

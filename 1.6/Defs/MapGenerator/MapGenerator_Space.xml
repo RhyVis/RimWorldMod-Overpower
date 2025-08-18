@@ -2,7 +2,6 @@
 <Defs>
   <MapGeneratorDef ParentName="SpaceMapGenerator">
     <defName>Rhy_AsteroidPlatformGenerator</defName>
-    <!-- <label>asteroid</label> -->
     <genSteps>
       <li>Rhy_AsteroidPlatform</li>
     </genSteps>

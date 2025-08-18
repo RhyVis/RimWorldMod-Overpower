@@ -5,15 +5,17 @@
 
   <!-- Buildings -->
 
-  <RhyniaOverpower_Building_SpawnThing_Gizmo1_Label>立即生成</RhyniaOverpower_Building_SpawnThing_Gizmo1_Label>
-  <RhyniaOverpower_Building_SpawnThing_Gizmo1_Desc>立即生成：'{0}'</RhyniaOverpower_Building_SpawnThing_Gizmo1_Desc>
-  <RhyniaOverpower_Building_SpawnThing_Gizmo2_Desc>目前生成的目标物品为 '{0}'</RhyniaOverpower_Building_SpawnThing_Gizmo2_Desc>
-  <RhyniaOverpower_Building_SpawnThing_Gizmo2_Menu>选择生成的物品</RhyniaOverpower_Building_SpawnThing_Gizmo2_Menu>
-  <RhyniaOverpower_Building_SpawnThing_Gizmo3_Label>自动生成</RhyniaOverpower_Building_SpawnThing_Gizmo3_Label>
-  <RhyniaOverpower_Building_SpawnThing_Gizmo3_Desc>游戏内每1小时都会尝试补充物品</RhyniaOverpower_Building_SpawnThing_Gizmo3_Desc>
-  <RhyniaOverpower_Building_SpawnThing_Mote1>成功补充物品: {0}</RhyniaOverpower_Building_SpawnThing_Mote1>
-  <RhyniaOverpower_Building_SpawnThing_Mote2>成功生成物品</RhyniaOverpower_Building_SpawnThing_Mote2>
-  <RhyniaOverpower_Building_SpawnThing_Mote3>存储物品类型错误, 期望: {0}, 实际: {1}</RhyniaOverpower_Building_SpawnThing_Mote3>
+  <RhyniaOverpower_ThingSpawner_Gizmo1_Label>立即生成</RhyniaOverpower_ThingSpawner_Gizmo1_Label>
+  <RhyniaOverpower_ThingSpawner_Gizmo1_Desc>立即生成：'{0}'</RhyniaOverpower_ThingSpawner_Gizmo1_Desc>
+  <RhyniaOverpower_ThingSpawner_Gizmo2_Desc>目前生成的目标物品为 '{0}'</RhyniaOverpower_ThingSpawner_Gizmo2_Desc>
+  <RhyniaOverpower_ThingSpawner_Gizmo2_Menu>选择生成的物品</RhyniaOverpower_ThingSpawner_Gizmo2_Menu>
+  <RhyniaOverpower_ThingSpawner_Gizmo3_Label>自动生成</RhyniaOverpower_ThingSpawner_Gizmo3_Label>
+  <RhyniaOverpower_ThingSpawner_Gizmo3_Desc>游戏内每1小时都会尝试补充物品</RhyniaOverpower_ThingSpawner_Gizmo3_Desc>
+  <RhyniaOverpower_ThingSpawner_Mote1>成功补充物品: {0}</RhyniaOverpower_ThingSpawner_Mote1>
+  <RhyniaOverpower_ThingSpawner_Mote2>成功生成物品</RhyniaOverpower_ThingSpawner_Mote2>
+  <RhyniaOverpower_ThingSpawner_Mote3>存储物品类型错误, 期望: {0}, 实际: {1}</RhyniaOverpower_ThingSpawner_Mote3>
+  <RhyniaOverpower_ThingSpawner_Def_Label>物品生成器 ({0})</RhyniaOverpower_ThingSpawner_Def_Label>
+  <RhyniaOverpower_ThingSpawner_Def_Desc>在容器内生成{0}类型的物品。</RhyniaOverpower_ThingSpawner_Def_Desc>
 
   <RhyniaOverpower_WealthConvert_Gizmo1_Label>自动转化</RhyniaOverpower_WealthConvert_Gizmo1_Label>
   <RhyniaOverpower_WealthConvert_Gizmo1_Desc>当前自动转化状态为: {0}</RhyniaOverpower_WealthConvert_Gizmo1_Desc>
@@ -40,14 +42,16 @@
   <RhyniaOverpower_HediffGiver_Def_DescSeg1>此机器对范围内的生物产生{0}影响。</RhyniaOverpower_HediffGiver_Def_DescSeg1>
   <RhyniaOverpower_HediffGiver_Def_DescSeg2>受{0}影响。</RhyniaOverpower_HediffGiver_Def_DescSeg2>
 
-  <!-- Comps -->
-
   <RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>上一次处理数量：{0}</RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>
   <RhyniaOverpower_PhaseSnareCore_Msg_Setup>捕敌相位核心已生效</RhyniaOverpower_PhaseSnareCore_Msg_Setup>
   <RhyniaOverpower_PhaseSnareCore_Msg_Stop>捕敌相位核心已停止</RhyniaOverpower_PhaseSnareCore_Msg_Stop>
   <RhyniaOverpower_PhaseSnareBeacon_InvalidCore>捕敌相位核心未生效</RhyniaOverpower_PhaseSnareBeacon_InvalidCore>
   <RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile>捕获敌人</RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile>
   <RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureFogged>捕获不可见</RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureFogged>
+  <RhyniaOverpower_PhaseSnareBeacon_OptQuick>快速标记</RhyniaOverpower_PhaseSnareBeacon_OptQuick>
+  <RhyniaOverpower_PhaseSnareBeacon_OptQuick_WildAnimal>野生动物</RhyniaOverpower_PhaseSnareBeacon_OptQuick_WildAnimal>
+
+  <!-- Comps -->
 
   <RhyniaOverpower_GenPlatform_Gizmo_Label>生成轨道平台</RhyniaOverpower_GenPlatform_Gizmo_Label>
   <RhyniaOverpower_GenPlatform_Gizmo_Desc>生成一个轨道平台</RhyniaOverpower_GenPlatform_Gizmo_Desc>

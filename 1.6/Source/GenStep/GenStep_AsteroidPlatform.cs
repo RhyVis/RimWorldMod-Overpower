@@ -14,13 +14,19 @@ public class GenStep_AsteroidPlatform : GenStep
 
     private void Action(Map map, GenStepParams parms)
     {
-        Debug($"Starting generation on {map.uniqueID} with parms {parms}");
         var center = map.Center;
+        const float radius = 4.9f;
+        Debug(
+            $"Starting generation on {map.uniqueID} with parms {parms}, center {center}, radius {radius}"
+        );
 
+        using var __ = TimingScope.Start(
+            (t) => Debug($"Finished generation on {map.uniqueID} in {t.TotalMilliseconds} ms")
+        );
         using var _ = map.pathing.DisableIncrementalScope();
 
         var platform = new List<IntVec3>();
-        foreach (var c in GenRadial.RadialCellsAround(center, 4.9f, true))
+        foreach (var c in GenRadial.RadialCellsAround(center, radius, true))
         {
             map.terrainGrid.SetTerrain(c, TerrainDefOf.OrbitalPlatform);
             platform.Add(c);

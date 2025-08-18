@@ -8,6 +8,6 @@
     <expandingIconDrawSize>1.1</expandingIconDrawSize>
     <overrideMapSize>(225, 1, 225)</overrideMapSize>
     <mapGenerator>Rhy_AsteroidPlatformGenerator</mapGenerator>
-    <IncidentTargetTags Inherit="True" />
+    <IncidentTargetTags Inherit="False" />
   </WorldObjectDef>
 </Defs>

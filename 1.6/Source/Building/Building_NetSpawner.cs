@@ -10,18 +10,18 @@ public class Building_NetSpawner : Building
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
         base.SpawnSetup(map, respawningAfterLoad);
-        var comp = GetComp<CompNetSpawner>();
-        if (comp is null)
+        var prop = def.GetCompProperties<CompProperties_NetSpawner>();
+        if (prop is null)
         {
-            Warn("CompNetSpawner is null, cannot initialize", this);
+            Warn("CompProperties_NetSpawner is null, cannot initialize", this);
             Destroy();
             return;
         }
 
-        var oColor = comp.PipeNet.def.overlayOptions.overlayColor;
+        var oColor = prop.pipeNet.overlayOptions.overlayColor;
         if (oColor != Color.clear)
             _color = oColor;
-        else if (comp.PipeNet.def.resource is { } resource)
+        else if (prop.pipeNet.resource is { } resource)
             _color = resource.color;
 
         if (_color == Color.clear)
@@ -31,18 +31,18 @@ public class Building_NetSpawner : Building
         }
 
         Debug(
-            $"Initialized Building_NetSpawner with color {_color} and PipeNet {comp.PipeNet?.def?.defName ?? "null"}",
+            $"Initialized Building_NetSpawner with color {_color} and PipeNet {prop.pipeNet.defName}",
             this
         );
     }
-
-    private const string DefNamePrefix = "Rhy_NetSpawner_";
 
     static Building_NetSpawner()
     {
         using var _ = TimingScope.Start(
             (elapsed) => Debug($"Finished processing net spawner defs in {elapsed.Milliseconds} ms")
         );
+
+        const string DefNamePrefix = "Rhy_NetSpawner_";
 
         var pending = DefDatabase<ThingDef>
             .AllDefs.Where(def =>

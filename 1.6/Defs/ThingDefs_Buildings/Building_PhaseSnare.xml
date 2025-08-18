@@ -14,6 +14,9 @@
       <graphicClass>Graphic_Single</graphicClass>
       <texPath>RhyniaOverpower/Things/Building/Security/PhaseSnare_Core</texPath>
     </graphicData>
+    <building>
+      <expandHomeArea>False</expandHomeArea>
+    </building>
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <WorkToBuild>0</WorkToBuild>

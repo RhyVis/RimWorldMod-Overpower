@@ -117,21 +117,20 @@ public class Building_HediffGiver : Building
             3 => pawns.Where(pawn => pawn.Faction is null or { IsPlayer: false }),
             4 => pawns.Where(pawn => pawn.IsPrisoner),
             5 => pawns.Where(pawn => pawn.IsSlave),
-            _ => throw new NotImplementedException(),
+            _ => throw new NotImplementedException($"Unexpected working type {_workingType}"),
         };
 
         foreach (var pawn in valid.ToList())
             pawn.ApplyHediffWithStat(_props.hediffDef, _props.stats, _props.severityAdjust);
     }
 
-    private const string DefNamePrefix = "Rhy_HediffGiver_";
-
     static Building_HediffGiver()
     {
         using var _ = TimingScope.Start(
-            (elapsed) =>
-                Debug($"Finished processing hediff giver defs in {elapsed.Milliseconds} ms")
+            (t) => Debug($"Finished processing hediff giver defs in {t.Milliseconds} ms")
         );
+
+        const string DefNamePrefix = "Rhy_HediffGiver_";
 
         var pending = DefDatabase<ThingDef>
             .AllDefs.Where(def =>

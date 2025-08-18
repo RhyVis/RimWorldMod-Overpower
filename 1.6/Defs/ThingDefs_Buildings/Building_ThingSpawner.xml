@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
+
+  <DesignatorDropdownGroupDef>
+    <defName>Rhy_ThingSpawner_Dropdown</defName>
+  </DesignatorDropdownGroupDef>
+
+  <!-- Abstract -->
+
   <ThingDef Name="Rhy_ThingSpawnerBase" ParentName="AdaptiveStorageMinifiableBase" Abstract="True">
     <thingClass>Rhynia.Overpower.Building_ThingSpawner</thingClass>
+    <label>thing spawner</label>
     <description>Can spawn specified items in the container.</description>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
-      <texPath>RhyniaOverpower/Things/Building/Misc/Crate1</texPath>
+      <shaderType>CutoutComplex</shaderType>
+      <texPath>RhyniaOverpower/Things/Building/Misc/Barrel</texPath>
       <damageData>
         <enabled>False</enabled>
       </damageData>
@@ -16,10 +25,14 @@
     <inspectorTabs Inherit="False" />
     <building>
       <maxItemsInCell>1</maxItemsInCell>
+      <defaultStorageSettings>
+        <priority>Critical</priority>
+        <filter />
+      </defaultStorageSettings>
     </building>
     <costList>
       <Steel>100</Steel>
-      <Silver>180</Silver>
+      <Silver>100</Silver>
       <ComponentSpacer>1</ComponentSpacer>
     </costList>
     <tickerType>Rare</tickerType>
@@ -28,7 +41,19 @@
       <Mass>18</Mass>
       <WorkToBuild>1200</WorkToBuild>
     </statBases>
+    <modExtensions>
+      <li Class="AdaptiveStorage.Extension">
+        <temperature>
+          <coolingOffset>400</coolingOffset>
+          <coolingMin>-10</coolingMin>
+          <requiresPower>False</requiresPower>
+          <requiresSwitchOn>False</requiresSwitchOn>
+          <requiresFuel>False</requiresFuel>
+        </temperature>
+      </li>
+    </modExtensions>
     <designationCategory>Rhy_MainCategory</designationCategory>
+    <designatorDropdown>Rhy_ThingSpawner_Dropdown</designatorDropdown>
   </ThingDef>
 
   <AdaptiveStorage.GraphicsDef Name="Rhy_ThingSpawnerGraphicBase" Abstract="True">
@@ -37,37 +62,47 @@
       <li>
         <graphicData>
           <graphicClass>Graphic_Single</graphicClass>
-          <texPath>RhyniaOverpower/Things/Building/Misc/Crate1</texPath>
+          <shaderType>CutoutComplex</shaderType>
+          <texPath>RhyniaOverpower/Things/Building/Misc/Barrel</texPath>
         </graphicData>
       </li>
     </graphics>
   </AdaptiveStorage.GraphicsDef>
 
+  <!-- Content -->
+
   <ThingDef ParentName="Rhy_ThingSpawnerBase">
-    <defName>Rhy_ThingSpawner</defName>
-    <label>thing spawner</label>
-    <building>
-      <defaultStorageSettings>
-        <priority>Critical</priority>
-        <filter />
-      </defaultStorageSettings>
-    </building>
+    <defName>Rhy_ThingSpawner_Medical</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_ThingSpawner">
+        <name>medical</name>
+        <category>Medicine</category>
+      </li>
+    </modExtensions>
   </ThingDef>
 
   <AdaptiveStorage.GraphicsDef ParentName="Rhy_ThingSpawnerGraphicBase">
-    <defName>Rhy_ThingSpawner_Graphics</defName>
-    <targetDef>Rhy_ThingSpawner</targetDef>
+    <defName>Rhy_ThingSpawner_Medical_Graphics</defName>
+    <targetDef>Rhy_ThingSpawner_Medical</targetDef>
   </AdaptiveStorage.GraphicsDef>
 
-  <Rhynia.Overpower.ThingSpawnDef>
-    <defName>Rhy_ThingSpawner</defName>
-    <spawnableDefs>
-      <li>Rhy_ArchotechAssembly</li>
-      <li>MealSurvivalPack</li>
-      <li>MedicineHerbal</li>
-      <li>MedicineIndustrial</li>
-      <li>MedicineUltratech</li>
-    </spawnableDefs>
-    <defaultDef>Rhy_ArchotechAssembly</defaultDef>
-  </Rhynia.Overpower.ThingSpawnDef>
+  <ThingDef ParentName="Rhy_ThingSpawnerBase">
+    <defName>Rhy_ThingSpawner_Material</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_ThingSpawner">
+        <name>material</name>
+        <category>ResourcesRaw</category>
+        <spawnableDefs>
+          <li>Rhy_ArchotechAssembly</li>
+        </spawnableDefs>
+        <defaultDef>Rhy_ArchotechAssembly</defaultDef>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <AdaptiveStorage.GraphicsDef ParentName="Rhy_ThingSpawnerGraphicBase">
+    <defName>Rhy_ThingSpawner_Material_Graphics</defName>
+    <targetDef>Rhy_ThingSpawner_Material</targetDef>
+  </AdaptiveStorage.GraphicsDef>
+
 </Defs>

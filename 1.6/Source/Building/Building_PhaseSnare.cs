@@ -140,21 +140,26 @@ public class Building_PhaseSnareCore : Building
     }
 }
 
+[StaticConstructorOnStartup]
 public class Building_PhaseSnareBeacon : Building
 {
+    private static readonly Color ColorActive = new(0.365f, 0.886f, 0.906f);
+    private static readonly Color ColorInactive = new(0.980f, 0.549f, 0.549f);
+    private static readonly Texture2D IconBatch = ContentFinder<Texture2D>.Get(
+        "UI/Commands/CopySettings"
+    );
+
     private int _ticker = 30; // A little bit later than the main comp
     private bool _enabled = true;
     private bool _captureHostile = false;
     private bool _captureFogged = false;
 
+    private List<FloatMenuOption> _optionsQuick = [];
     private bool _cachedCoreEnable = false;
 
     private GameComponent_PhaseSnare _container = null!;
 
     private bool Enabled => _enabled && _cachedCoreEnable;
-
-    private static readonly Color ColorActive = new(0.365f, 0.886f, 0.906f);
-    private static readonly Color ColorInactive = new(0.980f, 0.549f, 0.549f);
 
     public override Color DrawColor => Enabled && _cachedCoreEnable ? ColorActive : ColorInactive;
 
@@ -182,6 +187,14 @@ public class Building_PhaseSnareBeacon : Building
         }
 
         _cachedCoreEnable = isEnabled;
+
+        _optionsQuick =
+        [
+            new(
+                "RhyniaOverpower_PhaseSnareBeacon_OptQuick_WildAnimal".Translate(),
+                OptQuickWildAnimal
+            ),
+        ];
     }
 
     public override IEnumerable<Gizmo> GetGizmos()
@@ -199,7 +212,7 @@ public class Building_PhaseSnareBeacon : Building
                 Notify_ColorChanged();
             },
         };
-        if (_enabled)
+        if (Enabled)
         {
             yield return new Command_Toggle
             {
@@ -217,6 +230,12 @@ public class Building_PhaseSnareBeacon : Building
                     isActive = () => _captureFogged,
                     toggleAction = () => _captureFogged = !_captureFogged,
                 };
+            yield return new Command_Action
+            {
+                defaultLabel = "RhyniaOverpower_PhaseSnareBeacon_OptQuick".Translate(),
+                icon = IconBatch,
+                action = () => FloatMenuHelper.SpawnMenu(_optionsQuick),
+            };
         }
     }
 
@@ -298,6 +317,19 @@ public class Building_PhaseSnareBeacon : Building
             return;
 
         _container.PushPawns(processPawns);
+    }
+
+    private void OptQuickWildAnimal()
+    {
+        var pawns = Map.mapPawns.AllPawnsSpawned;
+        if (pawns is null or { Count: 0 })
+            return;
+
+        var wildAnimals = pawns
+            .Where(p => p.AnimalOrWildMan() && p is { Faction: null, Dead: false })
+            .ToHashSet();
+        foreach (var animal in wildAnimals)
+            animal.AddDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation);
     }
 }
 
