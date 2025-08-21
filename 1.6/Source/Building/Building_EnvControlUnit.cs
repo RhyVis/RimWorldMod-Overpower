@@ -21,11 +21,14 @@ public class Building_EnvControlUnit : Building
         "UI/Commands/TempReset"
     );
 
-    private bool _active;
-    private bool _clearGas;
+    private bool _active = true;
+    private bool _clearGas = false;
+    private bool _clearFilth = false;
     private float _temperature = -10000f;
 
-    private bool IsRoomValid => this.GetRoom() is { UsesOutdoorTemperature: false };
+    private Room Room => this.GetRoom();
+    private bool IsRoomValid => Room is { TouchesMapEdge: false };
+    private bool IsRoomSealed => Room is { UsesOutdoorTemperature: false };
 
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
@@ -38,8 +41,10 @@ public class Building_EnvControlUnit : Building
     public override void ExposeData()
     {
         base.ExposeData();
-        Scribe_Values.Look(ref _active, "controlActive");
-        Scribe_Values.Look(ref _temperature, "controlTemperature");
+        Scribe_Values.Look(ref _active, "controlActive", true);
+        Scribe_Values.Look(ref _temperature, "controlTemperature", DefaultTemperature);
+        Scribe_Values.Look(ref _clearGas, "controlClearGas", false);
+        Scribe_Values.Look(ref _clearFilth, "controlClearFilth", false);
     }
 
     public override string GetInspectString()
@@ -71,6 +76,18 @@ public class Building_EnvControlUnit : Building
                 _clearGas = !_clearGas;
                 if (_clearGas)
                     ClearGasInRoom();
+            },
+        };
+        yield return new Command_Toggle()
+        {
+            defaultLabel = "RhyniaOverpower_EnvControlUnit_Gizmo_ClearFilth".Translate(),
+            icon = TexCommand.ToggleVent,
+            isActive = () => _clearFilth,
+            toggleAction = () =>
+            {
+                _clearFilth = !_clearFilth;
+                if (_clearFilth)
+                    ClearFilthInRoom();
             },
         };
         yield return new Command_Action()
@@ -120,16 +137,18 @@ public class Building_EnvControlUnit : Building
         base.TickRare();
         if (!_active || !Spawned || !IsRoomValid)
             return;
-        this.GetRoom().Temperature = _temperature;
+        if (IsRoomSealed)
+            SetTemperature();
         if (_clearGas)
             ClearGasInRoom();
+        if (_clearFilth)
+            ClearFilthInRoom();
     }
 
-    private void ResetTemperature()
+    private void SetTemperature()
     {
-        _temperature = DefaultTemperature;
-        SoundDefOf.Tick_Tiny.PlayOneShotOnCamera();
-        ThrowTemperature();
+        Debug($"Setting room temperature to {_temperature}", this);
+        Room.Temperature = _temperature;
     }
 
     private void ChangeTargetTemperature(float offset)
@@ -140,13 +159,28 @@ public class Building_EnvControlUnit : Building
         ThrowTemperature();
     }
 
+    private void ResetTemperature()
+    {
+        _temperature = DefaultTemperature;
+        SoundDefOf.Tick_Tiny.PlayOneShotOnCamera();
+        ThrowTemperature();
+    }
+
     private void ThrowTemperature() => this.ThrowMote(_temperature.ToStringTemperature("F0"));
 
     private void ClearGasInRoom()
     {
+        Debug("Clearing gas in the room", this);
         foreach (var cell in this.GetRoom().Cells)
             Map.gasGrid.ClearCellUnsafe(cell);
         Map.mapDrawer.WholeMapChanged(MapMeshFlagDefOf.Gas);
+    }
+
+    private void ClearFilthInRoom()
+    {
+        Debug("Clearing filth in the room", this);
+        foreach (var item in this.GetRoom().ThingGrid().OfType<Filth>().ToList())
+            item.Destroy(DestroyMode.Vanish);
     }
 
     private static float RoundOffset(float celsius) =>

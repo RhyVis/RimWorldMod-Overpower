@@ -49,6 +49,7 @@
   <RhyniaOverpower_NetSpawner_Def_Desc>Spawn {0} into the resource pipe network</RhyniaOverpower_NetSpawner_Def_Desc>
 
   <RhyniaOverpower_EnvControlUnit_Gizmo_ClearGas>clear gas</RhyniaOverpower_EnvControlUnit_Gizmo_ClearGas>
+  <RhyniaOverpower_EnvControlUnit_Gizmo_ClearFilth>clear filth</RhyniaOverpower_EnvControlUnit_Gizmo_ClearFilth>
 
   <!-- Comps -->
 

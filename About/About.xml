@@ -44,19 +44,5 @@
     <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
     <li>adaptive.storage.framework</li>
   </loadAfter>
-  <description><![CDATA[
-Homemade overpowered stuffs.
-
-Features:
-
-- Phase Snare: Teleport designated targets (across maps) to specific location, and stun them.
-- Thing Spawner: Automatically spawn things in the container. Needs ASF.
-- Wealth Converter: Convert items to silver or gold, rate 100%. Needs ASF.
-- Archotech Assembly: Some very powerful material.
-- Net Spawner: Spawn resource into the pipe network (VE).
-- Small Anomaly Facilities: Smaller version of Anomaly related buildings.
-- Orbital Platform: Create an orbital platform in the scanner, no incidents will happen on that map.
-- Hediff Giver: A building that gives a positive or negative hediff to pawns.
-]]>
-  </description>
+  <description>Homemade overpowered stuffs.</description>
 </ModMetaData>

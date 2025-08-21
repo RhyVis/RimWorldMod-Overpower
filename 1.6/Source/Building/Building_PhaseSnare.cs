@@ -154,13 +154,18 @@ public class Building_PhaseSnareBeacon : Building
     private bool _enabled = true;
     private bool _captureHostile = false;
     private bool _captureFogged = false;
-
-    private List<FloatMenuOption> _optionsQuick = [];
     private bool _cachedCoreEnable = false;
 
     private GameComponent_PhaseSnare _container = null!;
 
     private bool Enabled => _enabled && _cachedCoreEnable;
+    private List<FloatMenuOption> OptionsQuick =>
+        [
+            new(
+                "RhyniaOverpower_PhaseSnareBeacon_OptQuick_WildAnimal".Translate(),
+                OptQuickWildAnimal
+            ),
+        ];
 
     public override Color DrawColor => Enabled && _cachedCoreEnable ? ColorActive : ColorInactive;
 
@@ -188,14 +193,6 @@ public class Building_PhaseSnareBeacon : Building
         }
 
         _cachedCoreEnable = isEnabled;
-
-        _optionsQuick =
-        [
-            new(
-                "RhyniaOverpower_PhaseSnareBeacon_OptQuick_WildAnimal".Translate(),
-                OptQuickWildAnimal
-            ),
-        ];
     }
 
     public override IEnumerable<Gizmo> GetGizmos()
@@ -235,7 +232,7 @@ public class Building_PhaseSnareBeacon : Building
             {
                 defaultLabel = "RhyniaOverpower_PhaseSnareBeacon_OptQuick".Translate(),
                 icon = IconBatch,
-                action = () => FloatMenuHelper.SpawnMenu(_optionsQuick),
+                action = () => FloatMenuHelper.SpawnMenu(OptionsQuick),
             };
         }
     }
