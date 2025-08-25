@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <TerrainDef ParentName="FloorBase">
+    <defName>Rhy_ArchotechAssemblyPlate</defName>
+    <label>archotech assembly plate</label>
+    <description>Special tiles with special cleanliness-enhancing properties. It's quick to clean and increases the containment strength of nearby holding platforms.</description>
+    <texturePath>Terrain/Surfaces/GenericFloorTile</texturePath>
+    <constructEffect>ConstructMetal</constructEffect>
+    <edgeType>Hard</edgeType>
+    <renderPrecedence>240</renderPrecedence>
+    <color>(192, 192, 192)</color>
+    <fertility>0</fertility>
+    <isPaintable>True</isPaintable>
+    <statBases>
+      <WorkToBuild>600</WorkToBuild>
+      <Beauty>4</Beauty>
+      <Cleanliness>2.0</Cleanliness>
+      <CleaningTimeFactor>0.2</CleaningTimeFactor>
+      <Flammability>0</Flammability>
+      <ContainmentStrength>1000</ContainmentStrength>
+    </statBases>
+    <costList>
+      <Rhy_ArchotechAssembly>2</Rhy_ArchotechAssembly>
+    </costList>
+    <affordances>
+      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+    </affordances>
+    <designationCategory>Rhy_MainCategory</designationCategory>
+    <constructionSkillPrerequisite>1</constructionSkillPrerequisite>
+    <takeFootprints>False</takeFootprints>
+    <holdSnowOrSand>False</holdSnowOrSand>
+    <canBePolluted>False</canBePolluted>
+  </TerrainDef>
+</Defs>

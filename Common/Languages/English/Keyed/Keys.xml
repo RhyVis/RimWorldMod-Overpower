@@ -50,6 +50,8 @@
 
   <RhyniaOverpower_EnvControlUnit_Gizmo_ClearGas>clear gas</RhyniaOverpower_EnvControlUnit_Gizmo_ClearGas>
   <RhyniaOverpower_EnvControlUnit_Gizmo_ClearFilth>clear filth</RhyniaOverpower_EnvControlUnit_Gizmo_ClearFilth>
+  <RhyniaOverpower_EnvControlUnit_Gizmo_ClearFire>extinguish fire</RhyniaOverpower_EnvControlUnit_Gizmo_ClearFire>
+  <RhyniaOverpower_EnvControlUnit_Inspect_RoomInvalid>room is not sealed, not functioning</RhyniaOverpower_EnvControlUnit_Inspect_RoomInvalid>
 
   <!-- Comps -->
 

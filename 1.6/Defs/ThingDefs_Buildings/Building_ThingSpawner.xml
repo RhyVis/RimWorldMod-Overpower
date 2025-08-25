@@ -77,7 +77,9 @@
     <modExtensions>
       <li Class="Rhynia.Overpower.DefModExt_ThingSpawner">
         <name>medical</name>
-        <category>Medicine</category>
+        <categories>
+          <li>Medicine</li>
+        </categories>
       </li>
     </modExtensions>
   </ThingDef>
@@ -92,7 +94,9 @@
     <modExtensions>
       <li Class="Rhynia.Overpower.DefModExt_ThingSpawner">
         <name>material</name>
-        <category>ResourcesRaw</category>
+        <categories>
+          <li>ResourcesRaw</li>
+        </categories>
         <spawnableDefs>
           <li>Rhy_ArchotechAssembly</li>
         </spawnableDefs>
@@ -127,6 +131,23 @@
   <AdaptiveStorage.GraphicsDef ParentName="Rhy_ThingSpawnerGraphicBase">
     <defName>Rhy_ThingSpawner_Component_Graphics</defName>
     <targetDef>Rhy_ThingSpawner_Component</targetDef>
+  </AdaptiveStorage.GraphicsDef>
+
+  <ThingDef ParentName="Rhy_ThingSpawnerBase">
+    <defName>Rhy_ThingSpawner_Textile</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_ThingSpawner">
+        <name>textile</name>
+        <categories>
+          <li>Textiles</li>
+        </categories>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <AdaptiveStorage.GraphicsDef ParentName="Rhy_ThingSpawnerGraphicBase">
+    <defName>Rhy_ThingSpawner_Textile_Graphics</defName>
+    <targetDef>Rhy_ThingSpawner_Textile</targetDef>
   </AdaptiveStorage.GraphicsDef>
 
 </Defs>

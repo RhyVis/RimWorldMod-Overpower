@@ -6,7 +6,7 @@ public class DefModExt_ThingSpawner : DefModExtension
 {
     [MustTranslate]
     public string name;
-    public ThingCategoryDef category;
+    public List<ThingCategoryDef> categories;
     public List<Search> searches;
     public List<ThingDef> spawnableDefs;
     public ThingDef defaultDef;
@@ -35,7 +35,7 @@ public class DefModExt_ThingSpawner : DefModExtension
         using var _ = TimingScope.Start(
             (t) =>
                 Debug(
-                    $"Finished resolving DefModExt_ThingSpawner for {parentDef.defName} in {t.TotalMilliseconds}ms",
+                    $"Finished resolving DefModExt_ThingSpawner for {parentDef.defName} in {t.TotalMilliseconds} ms",
                     this
                 )
         );
@@ -43,21 +43,19 @@ public class DefModExt_ThingSpawner : DefModExtension
         spawnableDefs ??= [];
         spawnableDefs.RemoveAll(def => def is null);
 
-        if (category is not null)
+        if (!categories.NullOrEmpty())
         {
-            Debug($"Resolving category: {category.defName}", this);
-            var defs = DefDatabase<ThingDef>
-                .AllDefsListForReading.Where(def =>
-                    def.thingCategories?.Contains(category) ?? false
-                )
-                .ToHashSet();
-            spawnableDefs ??= [];
-            spawnableDefs.AddRangeUnique(defs);
-            defaultDef ??= spawnableDefs.FirstOrDefault();
-            Debug(
-                $"Resolved spawnableDefs: {spawnableDefs.Count}, defaultDef: {defaultDef?.defName}",
-                this
-            );
+            foreach (var category in categories)
+            {
+                Debug($"Resolving category: {category.defName}", this);
+                var defs = DefDatabase<ThingDef>
+                    .AllDefsListForReading.Where(def =>
+                        def.thingCategories?.Contains(category) ?? false
+                    )
+                    .ToHashSet();
+                spawnableDefs.AddRangeUnique(defs);
+            }
+            Debug($"Resolved spawnableDefs from categories: {spawnableDefs.Count} total", this);
         }
 
         if (!searches.NullOrEmpty())

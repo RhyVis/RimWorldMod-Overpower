@@ -11,19 +11,20 @@ public class Building_EnvControlUnit : Building
     private const float OffsetPlus10 = 10f;
     private const float DefaultTemperature = 21f;
 
-    private static readonly Texture2D IconLower = ContentFinder<Texture2D>.Get(
+    private static readonly Texture2D IconTempLower = ContentFinder<Texture2D>.Get(
         "UI/Commands/TempLower"
     );
-    private static readonly Texture2D IconRaise = ContentFinder<Texture2D>.Get(
+    private static readonly Texture2D IconTempRaise = ContentFinder<Texture2D>.Get(
         "UI/Commands/TempRaise"
     );
-    private static readonly Texture2D IconReset = ContentFinder<Texture2D>.Get(
+    private static readonly Texture2D IconTempReset = ContentFinder<Texture2D>.Get(
         "UI/Commands/TempReset"
     );
 
     private bool _active = true;
     private bool _clearGas = false;
     private bool _clearFilth = false;
+    private bool _clearFire = false;
     private float _temperature = -10000f;
 
     private Room Room => this.GetRoom();
@@ -45,13 +46,21 @@ public class Building_EnvControlUnit : Building
         Scribe_Values.Look(ref _temperature, "controlTemperature", DefaultTemperature);
         Scribe_Values.Look(ref _clearGas, "controlClearGas", false);
         Scribe_Values.Look(ref _clearFilth, "controlClearFilth", false);
+        Scribe_Values.Look(ref _clearFire, "controlClearFire", false);
     }
 
     public override string GetInspectString()
     {
         var builder = new StringBuilder(base.GetInspectString());
-        builder.Append($"{"TargetTemperature".Translate()}: ");
-        builder.AppendLine(_temperature.ToStringTemperature("F0"));
+        if (!IsRoomValid)
+            builder.AppendLine(
+                "RhyniaOverpower_EnvControlUnit_Inspect_RoomInvalid"
+                    .Translate()
+                    .Colorize(Color.yellow)
+            );
+        builder.AppendLine(
+            $"{"TargetTemperature".Translate()}: {_temperature.ToStringTemperature("F0")}"
+        );
         return builder.ToString().TrimEnd();
     }
 
@@ -66,70 +75,85 @@ public class Building_EnvControlUnit : Building
             isActive = () => _active,
             toggleAction = () => _active = !_active,
         };
-        yield return new Command_Toggle()
+        if (_active)
         {
-            defaultLabel = "RhyniaOverpower_EnvControlUnit_Gizmo_ClearGas".Translate(),
-            icon = TexCommand.ToggleVent,
-            isActive = () => _clearGas,
-            toggleAction = () =>
+            yield return new Command_Toggle()
             {
-                _clearGas = !_clearGas;
-                if (_clearGas)
-                    ClearGasInRoom();
-            },
-        };
-        yield return new Command_Toggle()
-        {
-            defaultLabel = "RhyniaOverpower_EnvControlUnit_Gizmo_ClearFilth".Translate(),
-            icon = TexCommand.ToggleVent,
-            isActive = () => _clearFilth,
-            toggleAction = () =>
+                defaultLabel = "RhyniaOverpower_EnvControlUnit_Gizmo_ClearGas".Translate(),
+                icon = TexCommand.ToggleVent,
+                isActive = () => _clearGas,
+                toggleAction = () =>
+                {
+                    _clearGas = !_clearGas;
+                    if (_clearGas)
+                        ClearGasInRoom();
+                },
+            };
+            yield return new Command_Toggle()
             {
-                _clearFilth = !_clearFilth;
-                if (_clearFilth)
-                    ClearFilthInRoom();
-            },
-        };
-        yield return new Command_Action()
-        {
-            defaultLabel = RoundOffset(OffsetMinus1).ToStringTemperatureOffset("F0"),
-            defaultDesc = "CommandLowerTempDesc".Translate(),
-            hotKey = KeyBindingDefOf.Misc5,
-            icon = IconReset,
-            action = () => ChangeTargetTemperature(OffsetMinus1),
-        };
-        yield return new Command_Action()
-        {
-            defaultLabel = RoundOffset(OffsetMinus10).ToStringTemperatureOffset("F0"),
-            defaultDesc = "CommandLowerTempDesc".Translate(),
-            hotKey = KeyBindingDefOf.Misc4,
-            icon = IconLower,
-            action = () => ChangeTargetTemperature(OffsetMinus10),
-        };
-        yield return new Command_Action()
-        {
-            defaultLabel = "CommandResetTemp".Translate(),
-            defaultDesc = "CommandResetTempDesc".Translate(),
-            hotKey = KeyBindingDefOf.Misc1,
-            icon = IconReset,
-            action = ResetTemperature,
-        };
-        yield return new Command_Action()
-        {
-            defaultLabel = $"+{RoundOffset(OffsetPlus1).ToStringTemperatureOffset("F0")}",
-            defaultDesc = "CommandRaiseTempDesc".Translate(),
-            hotKey = KeyBindingDefOf.Misc2,
-            icon = IconRaise,
-            action = () => ChangeTargetTemperature(OffsetPlus1),
-        };
-        yield return new Command_Action()
-        {
-            defaultLabel = $"+{RoundOffset(OffsetPlus10).ToStringTemperatureOffset("F0")}",
-            defaultDesc = "CommandRaiseTempDesc".Translate(),
-            hotKey = KeyBindingDefOf.Misc3,
-            icon = IconRaise,
-            action = () => ChangeTargetTemperature(OffsetPlus10),
-        };
+                defaultLabel = "RhyniaOverpower_EnvControlUnit_Gizmo_ClearFilth".Translate(),
+                icon = TexCommand.ToggleVent,
+                isActive = () => _clearFilth,
+                toggleAction = () =>
+                {
+                    _clearFilth = !_clearFilth;
+                    if (_clearFilth)
+                        ClearFilthInRoom();
+                },
+            };
+            yield return new Command_Toggle()
+            {
+                defaultLabel = "RhyniaOverpower_EnvControlUnit_Gizmo_ClearFire".Translate(),
+                icon = TexCommand.ToggleVent,
+                isActive = () => _clearFire,
+                toggleAction = () =>
+                {
+                    _clearFire = !_clearFire;
+                    if (_clearFire)
+                        ClearFireInRoom();
+                },
+            };
+            yield return new Command_Action()
+            {
+                defaultLabel = RoundOffset(OffsetMinus1).ToStringTemperatureOffset("F0"),
+                defaultDesc = "CommandLowerTempDesc".Translate(),
+                hotKey = KeyBindingDefOf.Misc5,
+                icon = IconTempReset,
+                action = () => ChangeTargetTemperature(OffsetMinus1),
+            };
+            yield return new Command_Action()
+            {
+                defaultLabel = RoundOffset(OffsetMinus10).ToStringTemperatureOffset("F0"),
+                defaultDesc = "CommandLowerTempDesc".Translate(),
+                hotKey = KeyBindingDefOf.Misc4,
+                icon = IconTempLower,
+                action = () => ChangeTargetTemperature(OffsetMinus10),
+            };
+            yield return new Command_Action()
+            {
+                defaultLabel = "CommandResetTemp".Translate(),
+                defaultDesc = "CommandResetTempDesc".Translate(),
+                hotKey = KeyBindingDefOf.Misc1,
+                icon = IconTempReset,
+                action = ResetTemperature,
+            };
+            yield return new Command_Action()
+            {
+                defaultLabel = $"+{RoundOffset(OffsetPlus1).ToStringTemperatureOffset("F0")}",
+                defaultDesc = "CommandRaiseTempDesc".Translate(),
+                hotKey = KeyBindingDefOf.Misc2,
+                icon = IconTempRaise,
+                action = () => ChangeTargetTemperature(OffsetPlus1),
+            };
+            yield return new Command_Action()
+            {
+                defaultLabel = $"+{RoundOffset(OffsetPlus10).ToStringTemperatureOffset("F0")}",
+                defaultDesc = "CommandRaiseTempDesc".Translate(),
+                hotKey = KeyBindingDefOf.Misc3,
+                icon = IconTempRaise,
+                action = () => ChangeTargetTemperature(OffsetPlus10),
+            };
+        }
     }
 
     public override void TickRare()
@@ -143,6 +167,8 @@ public class Building_EnvControlUnit : Building
             ClearGasInRoom();
         if (_clearFilth)
             ClearFilthInRoom();
+        if (_clearFire)
+            ClearFireInRoom();
     }
 
     private void SetTemperature()
@@ -181,6 +207,19 @@ public class Building_EnvControlUnit : Building
         Debug("Clearing filth in the room", this);
         foreach (var item in this.GetRoom().ThingGrid().OfType<Filth>().ToList())
             item.Destroy(DestroyMode.Vanish);
+    }
+
+    private void ClearFireInRoom()
+    {
+        Debug("Clearing fire in the room", this);
+        foreach (var item in this.GetRoom().ThingGrid().ToList())
+            if (
+                ((item as Fire) ?? (item?.GetAttachment(ThingDefOf.Fire) as Fire)) is Fire
+                {
+                    Destroyed: false
+                } fire
+            )
+                fire.Destroy();
     }
 
     private static float RoundOffset(float celsius) =>

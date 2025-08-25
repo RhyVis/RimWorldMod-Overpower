@@ -56,6 +56,8 @@
 
   <RhyniaOverpower_EnvControlUnit_Gizmo_ClearGas>清除气体</RhyniaOverpower_EnvControlUnit_Gizmo_ClearGas>
   <RhyniaOverpower_EnvControlUnit_Gizmo_ClearFilth>清除污垢</RhyniaOverpower_EnvControlUnit_Gizmo_ClearFilth>
+  <RhyniaOverpower_EnvControlUnit_Gizmo_ClearFire>灭火</RhyniaOverpower_EnvControlUnit_Gizmo_ClearFire>
+  <RhyniaOverpower_EnvControlUnit_Inspect_RoomInvalid>房间未封闭，停止工作</RhyniaOverpower_EnvControlUnit_Inspect_RoomInvalid>
 
   <!-- Comps -->
 
