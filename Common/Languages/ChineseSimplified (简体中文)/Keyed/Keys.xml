@@ -17,6 +17,10 @@
   <RhyniaOverpower_ThingSpawner_Def_Label>物品生成器 ({0})</RhyniaOverpower_ThingSpawner_Def_Label>
   <RhyniaOverpower_ThingSpawner_Def_Desc>在容器内生成{0}类型的物品。</RhyniaOverpower_ThingSpawner_Def_Desc>
 
+  <RhyniaOverpower_ThingSpawnerEx_GizmoWindow_Label>选择窗口</RhyniaOverpower_ThingSpawnerEx_GizmoWindow_Label>
+  <RhyniaOverpower_ThingSpawnerEx_GizmoWindow_Desc>打开选择要生成的物品的窗口</RhyniaOverpower_ThingSpawnerEx_GizmoWindow_Desc>
+  <RhyniaOverpower_ThingSpawnerEx_Window_Title>生成选择</RhyniaOverpower_ThingSpawnerEx_Window_Title>
+
   <RhyniaOverpower_WealthConvert_Gizmo1_Label>自动转化</RhyniaOverpower_WealthConvert_Gizmo1_Label>
   <RhyniaOverpower_WealthConvert_Gizmo1_Desc>当前自动转化状态为: {0}</RhyniaOverpower_WealthConvert_Gizmo1_Desc>
   <RhyniaOverpower_WealthConvert_Gizmo2_Label>自动放置</RhyniaOverpower_WealthConvert_Gizmo2_Label>

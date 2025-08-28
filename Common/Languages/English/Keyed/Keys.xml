@@ -17,6 +17,10 @@
   <RhyniaOverpower_ThingSpawner_Def_Label>thing spawner ({0})</RhyniaOverpower_ThingSpawner_Def_Label>
   <RhyniaOverpower_ThingSpawner_Def_Desc>Spawn {0} type things in the container.</RhyniaOverpower_ThingSpawner_Def_Desc>
 
+  <RhyniaOverpower_ThingSpawnerEx_GizmoWindow_Label>selection window</RhyniaOverpower_ThingSpawnerEx_GizmoWindow_Label>
+  <RhyniaOverpower_ThingSpawnerEx_GizmoWindow_Desc>open the window for selecting items to spawn</RhyniaOverpower_ThingSpawnerEx_GizmoWindow_Desc>
+  <RhyniaOverpower_ThingSpawnerEx_Window_Title>Spawn Selection</RhyniaOverpower_ThingSpawnerEx_Window_Title>
+
   <RhyniaOverpower_WealthConvert_Gizmo1_Label>Auto Convert</RhyniaOverpower_WealthConvert_Gizmo1_Label>
   <RhyniaOverpower_WealthConvert_Gizmo1_Desc>Current auto convert status is: {0}</RhyniaOverpower_WealthConvert_Gizmo1_Desc>
   <RhyniaOverpower_WealthConvert_Gizmo2_Label>Auto Placement</RhyniaOverpower_WealthConvert_Gizmo2_Label>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <Rhy_ThingSpawnerEx.label>物品生成器（扩展）</Rhy_ThingSpawnerEx.label>
+  <Rhy_ThingSpawnerEx.description>可以根据设置生成各种物品，并维持数量。</Rhy_ThingSpawnerEx.description>
+
+</LanguageData>
