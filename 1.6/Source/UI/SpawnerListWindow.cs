@@ -4,6 +4,11 @@ public class SpawnerListWindow : Window
 {
     private static List<ThingDef> ProductDefs => Building_ThingSpawnerEx.ProductDefs;
     private Dictionary<ThingDef, int> Quantities => _building.Quantities;
+    private List<ThingDef> SortedProductDefs =>
+        [
+            .. ProductDefs.Where(Quantities.ContainsKey).OrderByDescending(def => Quantities[def]),
+            .. ProductDefs.Where(def => !Quantities.ContainsKey(def)),
+        ];
 
     private readonly Building_ThingSpawnerEx _building;
     private Vector2 _scrollPosition = Vector2.zero;
@@ -24,7 +29,7 @@ public class SpawnerListWindow : Window
     private const float Padding = 10f;
     private const float SearchBoxHeight = 30f;
     private const float TitleHeight = 40f;
-    private const float ScrollBarWidth = 10f;
+    private const float ScrollBarWidth = 6f;
 
     public override Vector2 InitialSize => new(800f, 600f);
 
@@ -124,7 +129,7 @@ public class SpawnerListWindow : Window
         Text.Anchor = TextAnchor.MiddleLeft;
         GUI.color = Color.gray;
         var modName = def.modContentPack?.Name ?? "Unknown Mod";
-        Widgets.Label(modLabelRect, $"From: {modName}");
+        Widgets.Label(modLabelRect, $"Mod: {modName}");
         GUI.color = Color.white;
         Text.Font = GameFont.Small;
         Text.Anchor = TextAnchor.UpperLeft;
@@ -233,19 +238,16 @@ public class SpawnerListWindow : Window
         }
     }
 
-    private List<ThingDef> GetFilteredDefs()
-    {
-        if (string.IsNullOrEmpty(_searchString))
-            return ProductDefs;
-
-        return
-        [
-            .. ProductDefs.Where(def =>
-                def.LabelCap.ToString().ToLower().Contains(_searchString.ToLower())
-                || def.defName.ToLower().Contains(_searchString.ToLower())
-            ),
-        ];
-    }
+    private List<ThingDef> GetFilteredDefs() =>
+        string.IsNullOrEmpty(_searchString)
+            ? SortedProductDefs
+            :
+            [
+                .. SortedProductDefs.Where(def =>
+                    def.LabelCap.ToString().ToLower().Contains(_searchString.ToLower())
+                    || def.defName.ToLower().Contains(_searchString.ToLower())
+                ),
+            ];
 
     private void OnStateChanged(ThingDef def, int quantity) =>
         _building.Notify_StateChanged(def, quantity);

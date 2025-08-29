@@ -101,7 +101,7 @@ public class Building_ThingSpawnerEx : Building
 
     public void Notify_StateChanged(ThingDef def, int quantity)
     {
-        Info(
+        Debug(
             $"Thing {def.defName}({def.LabelCap}) state changed: Quantity={quantity} (Enabled={quantity > 0})",
             this
         );
