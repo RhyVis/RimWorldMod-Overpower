@@ -19,13 +19,12 @@ public class CompGenPlatform : ThingComp
     {
         foreach (var gizmo in base.CompGetGizmosExtra())
             yield return gizmo;
-        yield return new Command_ActionWithCooldown
+        yield return new Command_Action
         {
             defaultLabel = "RhyniaOverpower_GenPlatform_Gizmo_Label".Translate(),
             defaultDesc = "RhyniaOverpower_GenPlatform_Gizmo_Desc".Translate(),
             icon = Tex,
             action = Action,
-            cooldownPercentGetter = () => 1.0f - _cooldown / CooldownTime,
         };
     }
 
