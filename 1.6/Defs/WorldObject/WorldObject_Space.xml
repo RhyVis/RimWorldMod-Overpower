@@ -7,10 +7,9 @@
     <expandingIconTexture>World/WorldObjects/Expanding/SettlementPlatform</expandingIconTexture>
     <expandingIconDrawSize>1.1</expandingIconDrawSize>
     <overrideMapSize>(225, 1, 225)</overrideMapSize>
-    <mapGenerator>Rhy_AsteroidPlatformGenerator</mapGenerator>
     <canBePlayerHome>False</canBePlayerHome>
     <treatAsPlayerHome>False</treatAsPlayerHome>
     <requiresSignalJammerToReach>False</requiresSignalJammerToReach>
-    <IncidentTargetTags Inherit="False" />
+    <mapGenerator>Rhy_AsteroidPlatformGenerator</mapGenerator>
   </WorldObjectDef>
 </Defs>

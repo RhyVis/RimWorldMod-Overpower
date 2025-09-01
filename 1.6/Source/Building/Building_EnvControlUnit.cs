@@ -28,8 +28,8 @@ public class Building_EnvControlUnit : Building
     private float _temperature = -10000f;
 
     private Room Room => this.GetRoom();
-    private bool IsRoomValid => Room is { TouchesMapEdge: false };
-    private bool IsRoomSealed => Room is { UsesOutdoorTemperature: false };
+    private bool IsRoomInner => Room is { TouchesMapEdge: false };
+    private bool IsRoomIndoor => Room is { UsesOutdoorTemperature: false };
 
     public override void SpawnSetup(Map map, bool respawningAfterLoad)
     {
@@ -52,7 +52,7 @@ public class Building_EnvControlUnit : Building
     public override string GetInspectString()
     {
         var builder = new StringBuilder(base.GetInspectString());
-        if (!IsRoomValid)
+        if (!IsRoomInner)
             builder.AppendLine(
                 "RhyniaOverpower_EnvControlUnit_Inspect_RoomInvalid"
                     .Translate()
@@ -159,12 +159,16 @@ public class Building_EnvControlUnit : Building
     public override void TickRare()
     {
         base.TickRare();
-        if (!_active || !Spawned || !IsRoomValid)
+        if (!_active || !Spawned)
             return;
-        if (IsRoomSealed)
+        if (IsRoomIndoor)
             SetTemperature();
-        if (_clearGas)
-            ClearGasInRoom();
+        if (IsRoomInner)
+        {
+            ProvideOxygen();
+            if (_clearGas)
+                ClearGasInRoom();
+        }
         if (_clearFilth)
             ClearFilthInRoom();
         if (_clearFire)
@@ -193,6 +197,12 @@ public class Building_EnvControlUnit : Building
     }
 
     private void ThrowTemperature() => this.ThrowMote(_temperature.ToStringTemperature("F0"));
+
+    private void ProvideOxygen()
+    {
+        Debug("Providing oxygen in the room", this);
+        Room.Vacuum = 0f;
+    }
 
     private void ClearGasInRoom()
     {

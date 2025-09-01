@@ -2,6 +2,7 @@ global using System;
 global using System.Collections.Generic;
 global using System.Linq;
 global using System.Text;
+global using HarmonyLib;
 global using Rhynia.Baseline;
 global using Rhynia.Baseline.Util;
 global using static Rhynia.Baseline.Util.Logger<Rhynia.Overpower.LogLabel>;
