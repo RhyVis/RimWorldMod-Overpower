@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
 
-  <DesignatorDropdownGroupDef>
+  <DesignatorDropdownGroupDef MayRequire="adaptive.storage.framework">
     <defName>Rhy_ThingSpawner_Dropdown</defName>
   </DesignatorDropdownGroupDef>
 
   <!-- Abstract -->
 
-  <ThingDef Name="Rhy_ThingSpawnerBase" ParentName="AdaptiveStorageBase" Abstract="True">
+  <ThingDef Name="Rhy_ThingSpawnerBase" ParentName="AdaptiveStorageBase" Abstract="True" MayRequire="adaptive.storage.framework">
     <thingClass>Rhynia.Overpower.Building_ThingSpawner</thingClass>
     <label>thing spawner</label>
     <description>Can spawn specified items in the container.</description>
@@ -51,11 +51,11 @@
         </temperature>
       </li>
     </modExtensions>
-    <designationCategory>Rhy_MainCategory</designationCategory>
+    <designationCategory IsNull="True" />
     <designatorDropdown>Rhy_ThingSpawner_Dropdown</designatorDropdown>
   </ThingDef>
 
-  <AdaptiveStorage.GraphicsDef Name="Rhy_ThingSpawnerGraphicBase" Abstract="True">
+  <AdaptiveStorage.GraphicsDef Name="Rhy_ThingSpawnerGraphicBase" Abstract="True" MayRequire="adaptive.storage.framework">
     <showContainedItems>False</showContainedItems>
     <graphics>
       <li>
@@ -72,7 +72,7 @@
 
   <!-- Content -->
 
-  <ThingDef ParentName="Rhy_ThingSpawnerBase">
+  <ThingDef ParentName="Rhy_ThingSpawnerBase" MayRequire="adaptive.storage.framework">
     <defName>Rhy_ThingSpawner_Medical</defName>
     <modExtensions>
       <li Class="Rhynia.Overpower.DefModExt_ThingSpawner">
@@ -84,12 +84,12 @@
     </modExtensions>
   </ThingDef>
 
-  <AdaptiveStorage.GraphicsDef ParentName="Rhy_ThingSpawnerGraphicBase">
+  <AdaptiveStorage.GraphicsDef ParentName="Rhy_ThingSpawnerGraphicBase" MayRequire="adaptive.storage.framework">
     <defName>Rhy_ThingSpawner_Medical_Graphics</defName>
     <targetDef>Rhy_ThingSpawner_Medical</targetDef>
   </AdaptiveStorage.GraphicsDef>
 
-  <ThingDef ParentName="Rhy_ThingSpawnerBase">
+  <ThingDef ParentName="Rhy_ThingSpawnerBase" MayRequire="adaptive.storage.framework">
     <defName>Rhy_ThingSpawner_Material</defName>
     <modExtensions>
       <li Class="Rhynia.Overpower.DefModExt_ThingSpawner">
@@ -105,12 +105,12 @@
     </modExtensions>
   </ThingDef>
 
-  <AdaptiveStorage.GraphicsDef ParentName="Rhy_ThingSpawnerGraphicBase">
+  <AdaptiveStorage.GraphicsDef ParentName="Rhy_ThingSpawnerGraphicBase" MayRequire="adaptive.storage.framework">
     <defName>Rhy_ThingSpawner_Material_Graphics</defName>
     <targetDef>Rhy_ThingSpawner_Material</targetDef>
   </AdaptiveStorage.GraphicsDef>
 
-  <ThingDef ParentName="Rhy_ThingSpawnerBase">
+  <ThingDef ParentName="Rhy_ThingSpawnerBase" MayRequire="adaptive.storage.framework">
     <defName>Rhy_ThingSpawner_Component</defName>
     <modExtensions>
       <li Class="Rhynia.Overpower.DefModExt_ThingSpawner">
@@ -128,12 +128,12 @@
     </modExtensions>
   </ThingDef>
 
-  <AdaptiveStorage.GraphicsDef ParentName="Rhy_ThingSpawnerGraphicBase">
+  <AdaptiveStorage.GraphicsDef ParentName="Rhy_ThingSpawnerGraphicBase" MayRequire="adaptive.storage.framework">
     <defName>Rhy_ThingSpawner_Component_Graphics</defName>
     <targetDef>Rhy_ThingSpawner_Component</targetDef>
   </AdaptiveStorage.GraphicsDef>
 
-  <ThingDef ParentName="Rhy_ThingSpawnerBase">
+  <ThingDef ParentName="Rhy_ThingSpawnerBase" MayRequire="adaptive.storage.framework">
     <defName>Rhy_ThingSpawner_Textile</defName>
     <modExtensions>
       <li Class="Rhynia.Overpower.DefModExt_ThingSpawner">
@@ -145,7 +145,7 @@
     </modExtensions>
   </ThingDef>
 
-  <AdaptiveStorage.GraphicsDef ParentName="Rhy_ThingSpawnerGraphicBase">
+  <AdaptiveStorage.GraphicsDef ParentName="Rhy_ThingSpawnerGraphicBase" MayRequire="adaptive.storage.framework">
     <defName>Rhy_ThingSpawner_Textile_Graphics</defName>
     <targetDef>Rhy_ThingSpawner_Textile</targetDef>
   </AdaptiveStorage.GraphicsDef>

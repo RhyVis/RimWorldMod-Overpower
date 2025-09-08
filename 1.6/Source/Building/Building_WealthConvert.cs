@@ -1,7 +1,9 @@
+using AdaptiveStorage;
 using StorageBuilding = AdaptiveStorage.ThingClass;
 
 namespace Rhynia.Overpower;
 
+[Obsolete("Use Building_WealthConvertEx")]
 public class Building_WealthConvert : StorageBuilding
 {
     private bool _autoConvert = true;
@@ -11,6 +13,17 @@ public class Building_WealthConvert : StorageBuilding
     private int _ticker = 1250;
 
     private string ModeLabel => _mode == 0 ? ThingDefOf.Silver.label : ThingDefOf.Gold.label;
+
+    protected override void OnSpawn(Map map, SpawnMode spawnMode)
+    {
+        base.OnSpawn(map, spawnMode);
+        Find.LetterStack.ReceiveLetter(
+            "RhyniaOverpower_Debug_Removing_Label".Translate(def.LabelCap),
+            "RhyniaOverpower_Debug_Removing_Desc".Translate(def.LabelCap),
+            LetterDefOf.ThreatBig,
+            new LookTargets(Position, Map)
+        );
+    }
 
     public override IEnumerable<Gizmo> GetGizmos()
     {

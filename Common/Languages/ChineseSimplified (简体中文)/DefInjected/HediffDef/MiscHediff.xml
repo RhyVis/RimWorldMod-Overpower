@@ -1,44 +1,47 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
-  
+
+  <Rhy_StandupHediff.label>起立</Rhy_StandupHediff.label>
+  <Rhy_StandupHediff.description>大幅提高意识和移动能力，并免疫疼痛。</Rhy_StandupHediff.description>
+
   <!-- EN: Berserk -->
   <Rhy_BerserkHediff.label>狂躁</Rhy_BerserkHediff.label>
   <!-- EN: Greatly increase the chance to enter a berserk mental state, and immune to pain. -->
   <Rhy_BerserkHediff.description>大幅增加狂暴与打架概率，并免疫疼痛。</Rhy_BerserkHediff.description>
-  
+
   <!-- EN: Death -->
   <Rhy_DeathHediff.label>死亡</Rhy_DeathHediff.label>
   <!-- EN: Death due to losing consciousness. -->
   <Rhy_DeathHediff.description>因失去意识而死亡。</Rhy_DeathHediff.description>
-  
+
   <!-- EN: Forgetting -->
   <Rhy_ForgettingHediff.label>遗忘</Rhy_ForgettingHediff.label>
   <!-- EN: Slowly forget skills. -->
   <Rhy_ForgettingHediff.description>逐渐遗忘技能。</Rhy_ForgettingHediff.description>
-  
+
   <!-- EN: Hunger -->
   <Rhy_HungerHediff.label>饥饿</Rhy_HungerHediff.label>
   <!-- EN: Greatly increases hunger rate. -->
   <Rhy_HungerHediff.description>大幅增加饥饿程度。</Rhy_HungerHediff.description>
-  
+
   <!-- EN: Slow -->
   <Rhy_SlowHediff.label>缓慢</Rhy_SlowHediff.label>
   <!-- EN: You shall not move. -->
   <Rhy_SlowHediff.description>你不得移动。</Rhy_SlowHediff.description>
-  
+
   <!-- EN: Suppression -->
   <Rhy_SuppressionHediff.label>压制</Rhy_SuppressionHediff.label>
   <!-- EN: Suppressed to no consciousness. -->
   <Rhy_SuppressionHediff.description>压制到没有意识。</Rhy_SuppressionHediff.description>
-  
+
   <!-- EN: Upset -->
   <Rhy_UpsetHediff.label>沮丧</Rhy_UpsetHediff.label>
   <!-- EN: Extreme sadness. -->
   <Rhy_UpsetHediff.description>极度悲伤。</Rhy_UpsetHediff.description>
-  
+
   <!-- EN: Vomit -->
   <Rhy_VomitHediff.label>呕吐</Rhy_VomitHediff.label>
   <!-- EN: Greatly increases the chance to vomit. -->
   <Rhy_VomitHediff.description>大幅增加呕吐概率。</Rhy_VomitHediff.description>
-  
+
 </LanguageData>

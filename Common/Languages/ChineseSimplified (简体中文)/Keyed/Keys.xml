@@ -14,7 +14,7 @@
   <RhyniaOverpower_ThingSpawner_Mote1>成功补充物品: {0}</RhyniaOverpower_ThingSpawner_Mote1>
   <RhyniaOverpower_ThingSpawner_Mote2>成功生成物品</RhyniaOverpower_ThingSpawner_Mote2>
   <RhyniaOverpower_ThingSpawner_Mote3>存储物品类型错误, 期望: {0}, 实际: {1}</RhyniaOverpower_ThingSpawner_Mote3>
-  <RhyniaOverpower_ThingSpawner_Def_Label>物品生成器 ({0})</RhyniaOverpower_ThingSpawner_Def_Label>
+  <RhyniaOverpower_ThingSpawner_Def_Label>物品生成器 (即将移除！) ({0})</RhyniaOverpower_ThingSpawner_Def_Label>
   <RhyniaOverpower_ThingSpawner_Def_Desc>在容器内生成{0}类型的物品。</RhyniaOverpower_ThingSpawner_Def_Desc>
 
   <RhyniaOverpower_ThingSpawnerEx_GizmoWindow_Label>选择窗口</RhyniaOverpower_ThingSpawnerEx_GizmoWindow_Label>
@@ -87,4 +87,9 @@
   <RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>捕敌相位核心在整个世界只能存在一个</RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>
   <RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon1>捕敌相位信标在当前地图只能存在一个</RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon1>
   <RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>捕敌相位核心尚未初始化</RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>
+
+  <!-- Debug -->
+
+  <RhyniaOverpower_Debug_Removing_Label>警告：计划移除 {0}</RhyniaOverpower_Debug_Removing_Label>
+  <RhyniaOverpower_Debug_Removing_Desc>你正在使用的 {0} 将在后续版本中被移除，请尽快将其替换为模组中提供的替代品</RhyniaOverpower_Debug_Removing_Desc>
 </LanguageData>

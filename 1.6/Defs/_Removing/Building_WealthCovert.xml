@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
 
-  <ThingDef Name="Rhy_WealthConvertBase" ParentName="AdaptiveStorageMinifiableBase" Abstract="True">
+  <ThingDef Name="Rhy_WealthConvertBase" ParentName="AdaptiveStorageMinifiableBase" Abstract="True" MayRequire="adaptive.storage.framework">
     <thingClass>Rhynia.Overpower.Building_WealthConvert</thingClass>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
@@ -26,10 +26,10 @@
       <WorkToBuild>100</WorkToBuild>
       <Mass>8</Mass>
     </statBases>
-    <designationCategory>Rhy_MainCategory</designationCategory>
+    <designationCategory IsNull="True" />
   </ThingDef>
 
-  <ThingDef ParentName="Rhy_WealthConvertBase">
+  <ThingDef ParentName="Rhy_WealthConvertBase" MayRequire="adaptive.storage.framework">
     <defName>Rhy_WealthConvert</defName>
     <label>wealth converter</label>
     <description>Can convert items in the container into silver or gold.</description>
@@ -53,7 +53,7 @@
     </building>
   </ThingDef>
 
-  <AdaptiveStorage.GraphicsDef>
+  <AdaptiveStorage.GraphicsDef MayRequire="adaptive.storage.framework">
     <defName>Rhy_WealthConvertGraphics</defName>
     <targetDef>Rhy_WealthConvert</targetDef>
     <showContainedItems>False</showContainedItems>

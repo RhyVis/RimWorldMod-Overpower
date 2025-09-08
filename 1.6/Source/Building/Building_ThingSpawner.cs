@@ -3,6 +3,7 @@ using StorageBuilding = AdaptiveStorage.ThingClass;
 
 namespace Rhynia.Overpower;
 
+[Obsolete("Use Building_ThingSpawnerEx")]
 [StaticConstructorOnStartup]
 public class Building_ThingSpawner : StorageBuilding
 {
@@ -65,6 +66,13 @@ public class Building_ThingSpawner : StorageBuilding
 
         UpdateAllow(_spawnTargetDef);
         Debug($"SpawnThingDef: {_spawnTargetDef.defName}/{_spawnTargetDef.label}", this);
+
+        Find.LetterStack.ReceiveLetter(
+            "RhyniaOverpower_Debug_Removing_Label".Translate(def.LabelCap),
+            "RhyniaOverpower_Debug_Removing_Desc".Translate(def.LabelCap),
+            LetterDefOf.ThreatBig,
+            new LookTargets(Position, Map)
+        );
     }
 
     public override IEnumerable<Gizmo> GetGizmos()

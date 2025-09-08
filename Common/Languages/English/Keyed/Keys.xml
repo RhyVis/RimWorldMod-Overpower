@@ -14,7 +14,7 @@
   <RhyniaOverpower_ThingSpawner_Mote1>Successfully replenished item: {0}</RhyniaOverpower_ThingSpawner_Mote1>
   <RhyniaOverpower_ThingSpawner_Mote2>Successfully spawned item</RhyniaOverpower_ThingSpawner_Mote2>
   <RhyniaOverpower_ThingSpawner_Mote3>Stored item type error, expected: {0}, actual: {1}</RhyniaOverpower_ThingSpawner_Mote3>
-  <RhyniaOverpower_ThingSpawner_Def_Label>thing spawner ({0})</RhyniaOverpower_ThingSpawner_Def_Label>
+  <RhyniaOverpower_ThingSpawner_Def_Label>thing spawner (REMOVING!) ({0})</RhyniaOverpower_ThingSpawner_Def_Label>
   <RhyniaOverpower_ThingSpawner_Def_Desc>Spawn {0} type things in the container.</RhyniaOverpower_ThingSpawner_Def_Desc>
 
   <RhyniaOverpower_ThingSpawnerEx_GizmoWindow_Label>selection window</RhyniaOverpower_ThingSpawnerEx_GizmoWindow_Label>
@@ -85,4 +85,8 @@
   <RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>Enemy phase core can only exist once in the entire world</RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>
   <RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon1>Enemy phase beacon can only exist once on the current map</RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon1>
   <RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>Enemy phase core has not been initialized</RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>
+
+  <!-- Debug -->
+  <RhyniaOverpower_Debug_Removing_Label>Warning: {0} removing</RhyniaOverpower_Debug_Removing_Label>
+  <RhyniaOverpower_Debug_Removing_Desc>The {0} you are using is going to be removed in following versions, make sure to replace it with the alternation provided in the mod as quickly as possible</RhyniaOverpower_Debug_Removing_Desc>
 </LanguageData>

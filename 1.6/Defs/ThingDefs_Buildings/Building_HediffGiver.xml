@@ -54,6 +54,18 @@
   <!-- Positive -->
 
   <ThingDef ParentName="Rhy_HediffGiverBasePositive">
+    <defName>Rhy_HediffGiver_Standup</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>Rhy_StandupHediff</hediffDef>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>1.0</severityAdjust>
+        <radius>4.9</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_HediffGiverBasePositive">
     <defName>Rhy_HediffGiver_GoJuiceHigh</defName>
     <modExtensions>
       <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
@@ -135,6 +147,35 @@
         <stats>
           <li>PsychicSensitivity</li>
         </stats>
+        <isNegative>True</isNegative>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>1.0</severityAdjust>
+        <radius>4.9</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_HediffGiverBaseNegative">
+    <defName>Rhy_HediffGiver_Upset</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>Rhy_UpsetHediff</hediffDef>
+        <stats>
+          <li>PsychicSensitivity</li>
+        </stats>
+        <isNegative>True</isNegative>
+        <checkInterval>60</checkInterval>
+        <severityAdjust>1.0</severityAdjust>
+        <radius>4.9</radius>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="Rhy_HediffGiverBaseNegative">
+    <defName>Rhy_HediffGiver_Slow</defName>
+    <modExtensions>
+      <li Class="Rhynia.Overpower.DefModExt_HediffGiver">
+        <hediffDef>Rhy_SlowHediff</hediffDef>
         <isNegative>True</isNegative>
         <checkInterval>60</checkInterval>
         <severityAdjust>1.0</severityAdjust>

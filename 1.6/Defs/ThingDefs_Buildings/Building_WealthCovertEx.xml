@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <ThingDef ParentName="Rhy_FurnBase">
+    <thingClass>Rhynia.Overpower.Building_WealthConvertEx</thingClass>
+    <defName>Rhy_WealthConvertEx</defName>
+    <label>wealth converter</label>
+    <description>Can convert filtered items in the colony into selected item.</description>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <texPath>RhyniaOverpower/Things/Building/Misc/Barrel</texPath>
+      <color>(200, 200, 200)</color>
+      <colorTwo>(216, 191, 216)</colorTwo>
+    </graphicData>
+    <size>(1, 1)</size>
+    <defaultPlacingRot>North</defaultPlacingRot>
+    <rotatable>False</rotatable>
+    <tickerType>Rare</tickerType>
+    <building>
+      <maxItemsInCell>0</maxItemsInCell>
+      <fixedStorageSettings>
+        <filter>
+          <categories>
+            <li>Root</li>
+          </categories>
+        </filter>
+      </fixedStorageSettings>
+    </building>
+    <inspectorTabs>
+      <li>ITab_Storage</li>
+    </inspectorTabs>
+    <costList>
+      <Steel>160</Steel>
+      <Silver>120</Silver>
+    </costList>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>100</WorkToBuild>
+      <Mass>8</Mass>
+    </statBases>
+    <designationCategory>Rhy_MainCategory</designationCategory>
+  </ThingDef>
+
+</Defs>

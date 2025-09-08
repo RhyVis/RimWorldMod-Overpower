@@ -24,6 +24,30 @@
     </comps>
   </HediffDef>
 
+  <!-- Good -->
+
+  <HediffDef ParentName="Rhy_MiscHediffBaseWithSecond">
+    <defName>Rhy_StandupHediff</defName>
+    <label>Standup</label>
+    <description>Make the pawn able to standup ignoring pain.</description>
+    <stages>
+      <li>
+        <painFactor>0</painFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>2.00</offset>
+            <setMax>3.00</setMax>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>2.00</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
   <!-- Bad -->
 
   <HediffDef ParentName="Rhy_MiscHediffBaseWithSecond">
