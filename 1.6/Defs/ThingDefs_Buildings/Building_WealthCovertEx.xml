@@ -39,6 +39,9 @@
       <WorkToBuild>100</WorkToBuild>
       <Mass>8</Mass>
     </statBases>
+    <placeWorkers>
+      <li>Rhynia.Overpower.PlaceWorker_MapOneOnly_WealthConvert</li>
+    </placeWorkers>
     <designationCategory>Rhy_MainCategory</designationCategory>
   </ThingDef>
 

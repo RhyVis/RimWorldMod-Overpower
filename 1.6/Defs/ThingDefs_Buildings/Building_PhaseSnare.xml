@@ -29,7 +29,7 @@
     <designatorDropdown>Rhy_PhaseSnare_Dropdown</designatorDropdown>
     <costList Inherit="False" />
     <placeWorkers>
-      <li>Rhynia.Overpower.Placeworker_PhaseSnareCore</li>
+      <li>Rhynia.Overpower.PlaceWorker_PhaseSnareCore</li>
     </placeWorkers>
   </ThingDef>
 
@@ -62,7 +62,7 @@
     <thingCategories Inherit="False" />
     <designatorDropdown>Rhy_PhaseSnare_Dropdown</designatorDropdown>
     <placeWorkers>
-      <li>Rhynia.Overpower.Placeworker_PhaseSnareBeacon</li>
+      <li>Rhynia.Overpower.PlaceWorker_PhaseSnareBeacon</li>
     </placeWorkers>
   </ThingDef>
 </Defs>

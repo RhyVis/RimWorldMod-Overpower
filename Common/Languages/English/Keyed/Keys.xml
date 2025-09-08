@@ -85,6 +85,7 @@
   <RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>Enemy phase core can only exist once in the entire world</RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>
   <RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon1>Enemy phase beacon can only exist once on the current map</RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon1>
   <RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>Enemy phase core has not been initialized</RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>
+  <RhyniaOverpower_PlaceWorker_CheckMapOneOnly>Only one {0} can exist on the current map</RhyniaOverpower_PlaceWorker_CheckMapOneOnly>
 
   <!-- Debug -->
   <RhyniaOverpower_Debug_Removing_Label>Warning: {0} removing</RhyniaOverpower_Debug_Removing_Label>

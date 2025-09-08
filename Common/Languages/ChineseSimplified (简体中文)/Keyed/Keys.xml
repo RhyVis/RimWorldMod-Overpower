@@ -87,6 +87,7 @@
   <RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>捕敌相位核心在整个世界只能存在一个</RhyniaOverpower_PlaceWorker_CheckPhaseSnareCore>
   <RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon1>捕敌相位信标在当前地图只能存在一个</RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon1>
   <RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>捕敌相位核心尚未初始化</RhyniaOverpower_PlaceWorker_CheckPhaseSnareBeacon2>
+  <RhyniaOverpower_PlaceWorker_CheckMapOneOnly>当前地图只能存在一个{0}</RhyniaOverpower_PlaceWorker_CheckMapOneOnly>
 
   <!-- Debug -->
 
