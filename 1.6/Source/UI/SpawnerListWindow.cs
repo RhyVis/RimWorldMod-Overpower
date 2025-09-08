@@ -4,11 +4,7 @@ public class SpawnerListWindow : Window
 {
     private static List<ThingDef> ProductDefs => Building_ThingSpawnerEx.ProductDefs;
     private Dictionary<ThingDef, int> Quantities => _building.Quantities;
-    private List<ThingDef> SortedProductDefs =>
-        [
-            .. ProductDefs.Where(Quantities.ContainsKey).OrderByDescending(def => Quantities[def]),
-            .. ProductDefs.Where(def => !Quantities.ContainsKey(def)),
-        ];
+    private readonly List<ThingDef> _sortedProductDefs;
 
     private readonly Building_ThingSpawnerEx _building;
     private Vector2 _scrollPosition = Vector2.zero;
@@ -17,10 +13,14 @@ public class SpawnerListWindow : Window
     public SpawnerListWindow(Building_ThingSpawnerEx building)
     {
         _building = building;
+        _sortedProductDefs =
+        [
+            .. ProductDefs.Where(Quantities.ContainsKey).OrderByDescending(def => Quantities[def]),
+            .. ProductDefs.Where(def => !Quantities.ContainsKey(def)),
+        ];
 
         doCloseX = true;
         draggable = true;
-        resizeable = true;
         forcePause = true;
     }
 
@@ -54,20 +54,36 @@ public class SpawnerListWindow : Window
 
         curY += SearchBoxHeight + Padding;
 
-        // Filtered item list
+        // Filtered item list with virtualization
         var filteredDefs = GetFilteredDefs();
+        DrawVirtualizedList(new Rect(0f, curY, inRect.width, inRect.height - curY), filteredDefs);
+    }
 
-        // Scroll area
-        var scrollRect = new Rect(0f, curY, inRect.width - ScrollBarWidth, inRect.height - curY);
-        var viewRect = new Rect(0f, 0f, scrollRect.width - 16f, filteredDefs.Count * RowHeight);
+    private void DrawVirtualizedList(Rect listRect, List<ThingDef> items)
+    {
+        var totalHeight = items.Count * RowHeight;
+        var scrollRect = new Rect(0f, listRect.y, listRect.width - ScrollBarWidth, listRect.height);
+        var viewRect = new Rect(0f, 0f, scrollRect.width - 16f, totalHeight);
 
         Widgets.BeginScrollView(scrollRect, ref _scrollPosition, viewRect);
 
-        var itemY = 0f;
-        foreach (var def in filteredDefs)
+        // Calculate visible area
+        var visibleTop = _scrollPosition.y;
+        var visibleBottom = _scrollPosition.y + scrollRect.height;
+
+        // Calculate item index range to render
+        var firstVisibleIndex = Mathf.Max(0, Mathf.FloorToInt(visibleTop / RowHeight) - 1); // -1 for buffer
+        var lastVisibleIndex = Mathf.Min(
+            items.Count - 1,
+            Mathf.CeilToInt(visibleBottom / RowHeight) + 1
+        ); // +1 for buffer
+
+        // Only render visible items
+        for (var i = firstVisibleIndex; i <= lastVisibleIndex; i++)
         {
-            DrawItemRow(new Rect(Padding, itemY, viewRect.width - 2 * Padding, RowHeight), def);
-            itemY += RowHeight;
+            var itemY = i * RowHeight;
+            var itemRect = new Rect(Padding, itemY, viewRect.width - 2 * Padding, RowHeight);
+            DrawItemRow(itemRect, items[i]);
         }
 
         Widgets.EndScrollView();
@@ -240,10 +256,10 @@ public class SpawnerListWindow : Window
 
     private List<ThingDef> GetFilteredDefs() =>
         string.IsNullOrEmpty(_searchString)
-            ? SortedProductDefs
+            ? _sortedProductDefs
             :
             [
-                .. SortedProductDefs.Where(def =>
+                .. _sortedProductDefs.Where(def =>
                     def.LabelCap.ToString().ToLower().Contains(_searchString.ToLower())
                     || def.defName.ToLower().Contains(_searchString.ToLower())
                 ),
