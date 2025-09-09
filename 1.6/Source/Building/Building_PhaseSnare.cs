@@ -1,12 +1,18 @@
 namespace Rhynia.Overpower;
 
+[StaticConstructorOnStartup]
 public class Building_PhaseSnareCore : Building
 {
     private int _ticker;
     private int _lastProcessedCount;
     private bool _enabled = true;
+    private bool _doExecution = false;
 
     private GameComponent_PhaseSnare _container = null!;
+
+    private static readonly Texture2D IconDamage = ContentFinder<Texture2D>.Get(
+        "UI/Designators/Slaughter"
+    );
 
     public bool IsEnabled => _enabled;
 
@@ -49,6 +55,7 @@ public class Building_PhaseSnareCore : Building
     {
         base.ExposeData();
         Scribe_Values.Look(ref _enabled, "enabled", true);
+        Scribe_Values.Look(ref _doExecution, "doExecution", false);
     }
 
     public override IEnumerable<Gizmo> GetGizmos()
@@ -62,13 +69,20 @@ public class Building_PhaseSnareCore : Building
             isActive = () => _enabled,
             toggleAction = () => _enabled = !_enabled,
         };
+        yield return new Command_Toggle
+        {
+            defaultLabel = "RhyniaOverpower_PhaseSnareCore_Gizmo_Execution_Label".Translate(),
+            defaultDesc = "RhyniaOverpower_PhaseSnareCore_Gizmo_Execution_Desc".Translate(),
+            icon = IconDamage,
+            isActive = () => _doExecution,
+            toggleAction = () => _doExecution = !_doExecution,
+        };
     }
 
     public override string GetInspectString()
     {
         var sb = new StringBuilder(base.GetInspectString());
-        sb.AppendLineIfNotEmpty();
-        sb.AppendLine(
+        sb.AppendInNewLine(
             "RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed".Translate(_lastProcessedCount)
         );
         return sb.ToString().TrimEnd();
@@ -109,6 +123,7 @@ public class Building_PhaseSnareCore : Building
         var processedCount = 0;
         foreach (var pawn in pawns)
         {
+            // Pawn validation
             if (pawn is { Spawned: false } or { Map: null })
             {
                 pawn.RemoveDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation);
@@ -116,6 +131,7 @@ public class Building_PhaseSnareCore : Building
                 continue;
             }
 
+            // Pawn cross-map teleportation
             if (pawn.Map.uniqueID != Map.uniqueID)
             {
                 Debug($"Teleport pawn from {pawn.Map.uniqueID} to {Map.uniqueID}", this);
@@ -124,11 +140,16 @@ public class Building_PhaseSnareCore : Building
                 pawn.AddDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation);
             }
 
+            // Pawn processing
             pawn.stances?.stunner.StunFor(300, null, false, false);
             pawn.jobs?.StopAll(false, false);
 
             pawn.Position = Position;
             pawn.Notify_Teleported();
+
+            // Pawn execution
+            if (_doExecution)
+                pawn.TakeDamage(new(DamageDefOf.ExecutionCut, 8000, 1, -1, null, null, null));
 
             if (pawn.Downed || pawn.Dead)
                 pawn.RemoveDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation);
@@ -215,7 +236,7 @@ public class Building_PhaseSnareBeacon : Building
             yield return new Command_Toggle
             {
                 defaultLabel = "RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureHostile".Translate(),
-                icon = TexCommand.FireAtWill,
+                icon = TexCommand.Attack,
                 isActive = () => _captureHostile,
                 toggleAction = () => _captureHostile = !_captureHostile,
             };
@@ -224,7 +245,7 @@ public class Building_PhaseSnareBeacon : Building
                 {
                     defaultLabel =
                         "RhyniaOverpower_PhaseSnareBeacon_Gizmo_CaptureFogged".Translate(),
-                    icon = TexCommand.FireAtWill,
+                    icon = TexCommand.Attack,
                     isActive = () => _captureFogged,
                     toggleAction = () => _captureFogged = !_captureFogged,
                 };
@@ -307,7 +328,7 @@ public class Building_PhaseSnareBeacon : Building
                 }
             }
 
-        var processPawns = validPawns.Where(p =>
+        var processPawns = pawns.Where(p =>
             p.HasDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation)
         );
 

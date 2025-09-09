@@ -49,6 +49,8 @@
   <RhyniaOverpower_HediffGiver_Def_DescSeg1>此机器对范围内的生物产生{0}影响。</RhyniaOverpower_HediffGiver_Def_DescSeg1>
   <RhyniaOverpower_HediffGiver_Def_DescSeg2>受{0}影响。</RhyniaOverpower_HediffGiver_Def_DescSeg2>
 
+  <RhyniaOverpower_PhaseSnareCore_Gizmo_Execution_Label>处决</RhyniaOverpower_PhaseSnareCore_Gizmo_Execution_Label>
+  <RhyniaOverpower_PhaseSnareCore_Gizmo_Execution_Desc>在传送后直接处决被捕捉的生物</RhyniaOverpower_PhaseSnareCore_Gizmo_Execution_Desc>
   <RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>上一次处理数量：{0}</RhyniaOverpower_PhaseSnareCore_Inspect_LastProcessed>
   <RhyniaOverpower_PhaseSnareCore_Msg_Setup>捕敌相位核心已生效</RhyniaOverpower_PhaseSnareCore_Msg_Setup>
   <RhyniaOverpower_PhaseSnareCore_Msg_Stop>捕敌相位核心已停止</RhyniaOverpower_PhaseSnareCore_Msg_Stop>
