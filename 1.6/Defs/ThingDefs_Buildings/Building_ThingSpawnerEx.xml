@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
 
-  <ThingDef ParentName="BuildingBase">
+  <ThingDef ParentName="Rhy_FurnBase">
     <thingClass>Rhynia.Overpower.Building_ThingSpawnerEx</thingClass>
     <defName>Rhy_ThingSpawnerEx</defName>
-    <label>thing spawner extended</label>
+    <label>thing spawner</label>
     <description>Can spawn specified items according to settings and maintain their quantities.</description>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
@@ -16,13 +16,15 @@
     <size>(1, 1)</size>
     <defaultPlacingRot>North</defaultPlacingRot>
     <rotatable>False</rotatable>
-    <inspectorTabs Inherit="False" />
+    <tickerType>Rare</tickerType>
+    <building>
+      <maxItemsInCell>0</maxItemsInCell>
+    </building>
     <costList>
       <Steel>100</Steel>
       <Silver>100</Silver>
       <ComponentSpacer>1</ComponentSpacer>
     </costList>
-    <tickerType>Rare</tickerType>
     <statBases>
       <MaxHitPoints>380</MaxHitPoints>
       <WorkToBuild>2800</WorkToBuild>
@@ -31,7 +33,6 @@
     <comps>
       <li Class="CompProperties_Forbiddable" />
     </comps>
-    <designationCategory>Rhy_MainCategory</designationCategory>
   </ThingDef>
 
 </Defs>

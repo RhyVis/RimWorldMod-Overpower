@@ -11,7 +11,7 @@
       <shaderType>CutoutComplex</shaderType>
       <texPath>RhyniaOverpower/Things/Building/Misc/Barrel</texPath>
       <color>(200, 200, 200)</color>
-      <colorTwo>(216, 191, 216)</colorTwo>
+      <colorTwo>(0, 0, 139)</colorTwo>
     </graphicData>
     <size>(1, 1)</size>
     <defaultPlacingRot>North</defaultPlacingRot>
@@ -42,7 +42,6 @@
     <placeWorkers>
       <li>Rhynia.Overpower.PlaceWorker_MapOneOnly_WealthConvert</li>
     </placeWorkers>
-    <designationCategory>Rhy_MainCategory</designationCategory>
   </ThingDef>
 
 </Defs>

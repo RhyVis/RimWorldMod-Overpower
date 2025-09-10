@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 4278040946
+CRC: 2447319422
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9b72453fab499813cb926d3574fe0e72
+    Hash: 506ace35803331501b930b76e88c4980
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2612ac43db082a73502ee80f2eceb73f
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 9b72453fab499813cb926d3574fe0e72
+    Hash: 506ace35803331501b930b76e88c4980
 HashAppended: 0
 ClassTypes:
 - Class: 28
@@ -18,18 +18,28 @@ SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Item/Resource/ArchotechAssembly/ArchotechAssembly_b.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/NetSpawner.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/GestatorGlass_east.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/Vent.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/GestatorTop_south.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Security/PhaseSnare_Core.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/Gestator_north.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/Power.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Security/PhaseSnare_Beacon.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/UI/PhaseSnareDesignation.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/GestatorTop_north.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/Barrel.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/GestatorUI.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/GestatorTop_east.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/GestatorGlass_north.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Item/Resource/ArchotechAssembly/ArchotechAssembly_a.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/Barrel_m.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Security/PhaseSnare_Beacon_m.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Item/Resource/ArchotechAssembly/ArchotechAssembly_c.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/HediffGiver_m.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/Gestator_east.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/Power_m.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/GestatorGlass_south.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/HediffGiver.png
+- Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Production/Gestator_south.png
 - Assets/Data/rhynia.mod.overpower/Textures/RhyniaOverpower/Things/Building/Misc/NetSpawner_m.png
 Dependencies: []

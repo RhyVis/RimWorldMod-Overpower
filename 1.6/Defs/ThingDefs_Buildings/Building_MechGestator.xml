@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <ThingDef ParentName="MechGestatorBase">
+    <defName>Rhy_MechGestator</defName>
+    <label>mech gestator</label>
+    <description>Mechanitors can use it to produce new mechanoids or to resurrect dead mechanoids.</description>
+    <graphicData>
+      <texPath>RhyniaOverpower/Things/Building/Production/Gestator</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+    <uiIconPath>RhyniaOverpower/Things/Building/Production/GestatorUI</uiIconPath>
+    <uiIconScale>1.1</uiIconScale>
+    <interactionCellOffset>(0, 0, 1)</interactionCellOffset>
+    <fillPercent>0.3</fillPercent>
+    <pathCost>20</pathCost>
+    <castEdgeShadows>False</castEdgeShadows>
+    <uiOrder>2400</uiOrder>
+    <rotatable>True</rotatable>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <placeWorkers Inherit="False" />
+    <designationCategory>Rhy_MainCategory</designationCategory>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <WorkToBuild>6000</WorkToBuild>
+      <Mass>15</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <size>(1, 1)</size>
+    <costList>
+      <Steel>300</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <researchPrerequisites>
+      <li>BasicMechtech</li>
+    </researchPrerequisites>
+    <building>
+      <barDrawData>
+        <north>
+          <preRotationOffset>(0, 0)</preRotationOffset>
+          <size>(0.4, 0.1)</size>
+        </north>
+        <south>
+          <preRotationOffset>(0, 0)</preRotationOffset>
+          <size>(0.4, 0.1)</size>
+        </south>
+        <east>
+          <preRotationOffset>(0, 0)</preRotationOffset>
+          <size>(0.4, 0.1)</size>
+        </east>
+        <west>
+          <preRotationOffset>(0, 0)</preRotationOffset>
+          <size>(0.4, 0.1)</size>
+        </west>
+      </barDrawData>
+      <formingGraphicData>
+        <texPath>Things/Pawn/Mechanoid/HalfGestatedMechSmall</texPath>
+        <graphicClass>Graphic_Single</graphicClass>
+        <drawSize>(0.4, 0.4)</drawSize>
+      </formingGraphicData>
+      <formingMechPerRotationOffset>
+        <li>(0, 0, 0.2)</li>
+        <li>(0, 0, 0.2)</li>
+        <li>(0, 0, 0.2)</li>
+        <li>(0, 0, 0.2)</li>
+      </formingMechPerRotationOffset>
+      <mechGestatorCylinderGraphic>
+        <texPath>RhyniaOverpower/Things/Building/Production/GestatorGlass</texPath>
+        <graphicClass>Graphic_Multi</graphicClass>
+        <drawSize>(1, 1)</drawSize>
+        <shaderType>Transparent</shaderType>
+      </mechGestatorCylinderGraphic>
+      <mechGestatorTopGraphic>
+        <texPath>RhyniaOverpower/Things/Building/Production/GestatorTop</texPath>
+        <graphicClass>Graphic_Multi</graphicClass>
+        <drawSize>(1, 1)</drawSize>
+        <drawOffset>(0, 0, 0.5)</drawOffset>
+      </mechGestatorTopGraphic>
+      <gestatorFormingMote />
+      <gestatorCycleCompleteMote />
+      <gestatorFormedMote />
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>800</basePowerConsumption>
+        <idlePowerDraw>100</idlePowerDraw>
+      </li>
+    </comps>
+    <modExtensions>
+      <li Class="VEF.Buildings.RecipeInheritanceExtension">
+        <inheritRecipesFrom>
+          <li>MechGestator</li>
+          <li>LargeMechGestator</li>
+        </inheritRecipesFrom>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+</Defs>

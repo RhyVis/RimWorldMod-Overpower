@@ -310,23 +310,14 @@ public class Building_PhaseSnareBeacon : Building
 
         var validPawns = pawns
             .Where(p => p is { Dead: false, Downed: false, Faction: null or { IsPlayer: false } })
-            .ToHashSet();
+            .ToList();
 
         if (_captureHostile)
-            foreach (var pawn in validPawns)
-            {
-                var shouldCapture =
-                    (
-                        pawn.Faction?.HostileTo(Faction.OfPlayer) is true
-                        && pawn is { IsPrisonerOfColony: false, IsSlaveOfColony: false }
-                    ) || (pawn.AnimalOrWildMan() && pawn.InAggroMentalState);
-                if (shouldCapture)
-                {
-                    if (!_captureFogged && pawn.Position.Fogged(pawn.Map))
-                        continue;
-                    pawn.AddDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation);
-                }
-            }
+            validPawns
+                .AsParallel()
+                .Where(ShouldCapturePawn)
+                .ToList()
+                .ForEach(pawn => pawn.AddDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation));
 
         var processPawns = pawns.Where(p =>
             p.HasDesignation(DefOf_Overpower.Rhy_PhaseSnareDesignation)
@@ -336,6 +327,20 @@ public class Building_PhaseSnareBeacon : Building
             return;
 
         _container.PushPawns(processPawns);
+    }
+
+    private bool ShouldCapturePawn(Pawn pawn)
+    {
+        var shouldCapture =
+            (
+                pawn.Faction?.HostileTo(Faction.OfPlayer) is true
+                && pawn is { IsPrisonerOfColony: false, IsSlaveOfColony: false }
+            ) || (pawn.AnimalOrWildMan() && pawn.InAggroMentalState);
+
+        if (!shouldCapture)
+            return false;
+
+        return _captureFogged || !pawn.Position.Fogged(pawn.Map);
     }
 
     private void OptQuickWildAnimal()
