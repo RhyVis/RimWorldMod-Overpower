@@ -203,17 +203,7 @@ public class Building_PhaseSnareBeacon : Building
         }
 
         _container = component;
-
-        var (isValid, isEnabled) = _container.IsValidAndEnabled;
-
-        if (!isValid)
-        {
-            Log.Error("PhaseSnareCore is not valid, disabling this beacon");
-            Destroy();
-            return;
-        }
-
-        _cachedCoreEnable = isEnabled;
+        _cachedCoreEnable = component.IsEnabled;
     }
 
     public override IEnumerable<Gizmo> GetGizmos()

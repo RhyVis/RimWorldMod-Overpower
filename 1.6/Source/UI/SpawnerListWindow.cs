@@ -254,16 +254,99 @@ public class SpawnerListWindow : Window
         }
     }
 
-    private List<ThingDef> GetFilteredDefs() =>
-        string.IsNullOrEmpty(_searchString)
-            ? _sortedProductDefs
-            :
-            [
-                .. _sortedProductDefs.Where(def =>
-                    def.LabelCap.ToString().ToLower().Contains(_searchString.ToLower())
-                    || def.defName.ToLower().Contains(_searchString.ToLower())
-                ),
-            ];
+    private List<ThingDef> GetFilteredDefs()
+    {
+        if (string.IsNullOrEmpty(_searchString))
+            return _sortedProductDefs;
+
+        var searchTerm = _searchString.ToLower();
+        var (modFilter, nameFilter) = ParseSearchString(searchTerm);
+
+        return
+        [
+            .. _sortedProductDefs.Where(def =>
+            {
+                var modMatch =
+                    modFilter is null
+                    || (def.modContentPack?.Name ?? "Unknown Mod").ToLower().Contains(modFilter);
+
+                var nameMatch =
+                    nameFilter is null
+                    || def.LabelCap.ToString().ToLower().Contains(nameFilter)
+                    || def.defName.ToLower().Contains(nameFilter);
+
+                return modMatch && nameMatch;
+            }),
+        ];
+    }
+
+    private static (string? modFilter, string? nameFilter) ParseSearchString(string searchTerm)
+    {
+        string? modFilter = null;
+        string? nameFilter = null;
+
+        // 1. "@mod" - 仅按模组名搜索
+        // 2. "name" - 仅按物品名搜索
+        // 3. "@mod:name" - 同时指定模组和物品名
+        // 4. "@mod name" - 模组名后跟空格，然后是物品名
+        // 5. "name @mod" - 物品名后跟模组名
+
+        if (searchTerm.Contains('@'))
+        {
+            if (searchTerm.Contains(':'))
+            {
+                // 模式: "@mod:name"
+                var parts = searchTerm.Split(':', 2);
+                if (parts[0].StartsWith('@'))
+                {
+                    modFilter = parts[0][1..].Trim();
+                    nameFilter = parts[1].Trim();
+                }
+            }
+            else
+            {
+                // 处理包含 @ 但没有 : 的情况
+                var atIndex = searchTerm.IndexOf('@');
+
+                if (atIndex == 0)
+                {
+                    // 以 @ 开头: "@mod name" 或 "@mod"
+                    var afterAt = searchTerm[1..];
+                    var spaceIndex = afterAt.IndexOf(' ');
+
+                    if (spaceIndex > 0)
+                    {
+                        modFilter = afterAt[..spaceIndex].Trim();
+                        nameFilter = afterAt[(spaceIndex + 1)..].Trim();
+                    }
+                    else
+                    {
+                        modFilter = afterAt.Trim();
+                    }
+                }
+                else
+                {
+                    // @ 在中间或末尾: "name @mod"
+                    var namePart = searchTerm[..atIndex].Trim();
+                    var modPart = searchTerm[(atIndex + 1)..].Trim();
+
+                    nameFilter = namePart;
+                    modFilter = modPart;
+                }
+            }
+        }
+        else
+        {
+            // 没有 @，纯物品名搜索
+            nameFilter = searchTerm.Trim();
+        }
+
+        // 清理空字符串，转换为 null
+        modFilter = string.IsNullOrWhiteSpace(modFilter) ? null : modFilter;
+        nameFilter = string.IsNullOrWhiteSpace(nameFilter) ? null : nameFilter;
+
+        return (modFilter, nameFilter);
+    }
 
     private void OnStateChanged(ThingDef def, int quantity) =>
         _building.Notify_StateChanged(def, quantity);
