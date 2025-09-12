@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 状态作用机 (麻醉) -->
+  <Rhy_HediffGiver_Anesthetic.label>TODO</Rhy_HediffGiver_Anesthetic.label>
+  <!-- EN: 此机器对范围内的生物产生麻醉影响。 -->
+  <Rhy_HediffGiver_Anesthetic.description>TODO</Rhy_HediffGiver_Anesthetic.description>
+  
+  <!-- EN: 状态作用机 (狂躁) -->
+  <Rhy_HediffGiver_Berserk.label>TODO</Rhy_HediffGiver_Berserk.label>
+  <!-- EN: 此机器对范围内的生物产生狂躁影响。受心灵敏感度影响。 -->
+  <Rhy_HediffGiver_Berserk.description>TODO</Rhy_HediffGiver_Berserk.description>
+  
+  <!-- EN: 状态作用机 (失血) -->
+  <Rhy_HediffGiver_BloodLoss.label>TODO</Rhy_HediffGiver_BloodLoss.label>
+  <!-- EN: 此机器对范围内的生物产生失血影响。受心灵敏感度影响。 -->
+  <Rhy_HediffGiver_BloodLoss.description>TODO</Rhy_HediffGiver_BloodLoss.description>
+  
+  <!-- EN: 状态作用机 (紧张性木僵) -->
+  <Rhy_HediffGiver_Breakdown.label>TODO</Rhy_HediffGiver_Breakdown.label>
+  <!-- EN: 此机器对范围内的生物产生紧张性木僵影响。受心灵敏感度影响。 -->
+  <Rhy_HediffGiver_Breakdown.description>TODO</Rhy_HediffGiver_Breakdown.description>
+  
+  <!-- EN: 状态作用机 (死亡) -->
+  <Rhy_HediffGiver_Death.label>TODO</Rhy_HediffGiver_Death.label>
+  <!-- EN: 此机器对范围内的生物产生死亡影响。 -->
+  <Rhy_HediffGiver_Death.description>TODO</Rhy_HediffGiver_Death.description>
+  
+  <!-- EN: 状态作用机 (活力水亢奋) -->
+  <Rhy_HediffGiver_GoJuiceHigh.label>TODO</Rhy_HediffGiver_GoJuiceHigh.label>
+  <!-- EN: 此机器对范围内的生物产生活力水亢奋影响。 -->
+  <Rhy_HediffGiver_GoJuiceHigh.description>TODO</Rhy_HediffGiver_GoJuiceHigh.description>
+  
+  <!-- EN: 状态作用机 (饥饿) -->
+  <Rhy_HediffGiver_Hunger.label>TODO</Rhy_HediffGiver_Hunger.label>
+  <!-- EN: 此机器对范围内的生物产生饥饿影响。受心灵敏感度影响。 -->
+  <Rhy_HediffGiver_Hunger.description>TODO</Rhy_HediffGiver_Hunger.description>
+  
+  <!-- EN: 状态作用机 (怀孕) -->
+  <Rhy_HediffGiver_Pregnant.label>TODO</Rhy_HediffGiver_Pregnant.label>
+  <!-- EN: 此机器对范围内的生物产生怀孕影响。 -->
+  <Rhy_HediffGiver_Pregnant.description>TODO</Rhy_HediffGiver_Pregnant.description>
+  
+  <!-- EN: 状态作用机 (缓慢) -->
+  <Rhy_HediffGiver_Slow.label>TODO</Rhy_HediffGiver_Slow.label>
+  <!-- EN: 此机器对范围内的生物产生缓慢影响。 -->
+  <Rhy_HediffGiver_Slow.description>TODO</Rhy_HediffGiver_Slow.description>
+  
+  <!-- EN: 状态作用机 (起立) -->
+  <Rhy_HediffGiver_Standup.label>TODO</Rhy_HediffGiver_Standup.label>
+  <!-- EN: 此机器对范围内的生物产生起立影响。 -->
+  <Rhy_HediffGiver_Standup.description>TODO</Rhy_HediffGiver_Standup.description>
+  
+  <!-- EN: 状态作用机 (压制) -->
+  <Rhy_HediffGiver_Suppression.label>TODO</Rhy_HediffGiver_Suppression.label>
+  <!-- EN: 此机器对范围内的生物产生压制影响。 -->
+  <Rhy_HediffGiver_Suppression.description>TODO</Rhy_HediffGiver_Suppression.description>
+  
+  <!-- EN: 状态作用机 (中毒) -->
+  <Rhy_HediffGiver_Toxic.label>TODO</Rhy_HediffGiver_Toxic.label>
+  <!-- EN: 此机器对范围内的生物产生中毒影响。 -->
+  <Rhy_HediffGiver_Toxic.description>TODO</Rhy_HediffGiver_Toxic.description>
+  
+  <!-- EN: 状态作用机 (沮丧) -->
+  <Rhy_HediffGiver_Upset.label>TODO</Rhy_HediffGiver_Upset.label>
+  <!-- EN: 此机器对范围内的生物产生沮丧影响。受心灵敏感度影响。 -->
+  <Rhy_HediffGiver_Upset.description>TODO</Rhy_HediffGiver_Upset.description>
+  
+  <!-- EN: 状态作用机 (呕吐) -->
+  <Rhy_HediffGiver_Vomit.label>TODO</Rhy_HediffGiver_Vomit.label>
+  <!-- EN: 此机器对范围内的生物产生呕吐影响。受心灵敏感度影响。 -->
+  <Rhy_HediffGiver_Vomit.description>TODO</Rhy_HediffGiver_Vomit.description>
+  
+</LanguageData>

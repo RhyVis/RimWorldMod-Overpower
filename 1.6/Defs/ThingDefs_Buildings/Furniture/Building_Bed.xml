@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <ThingDef ParentName="BedBase">
+    <defName>Rhy_SleepingPit</defName>
+    <label>sleeping pit</label>
+    <description>A small pit where pawns can sleep in, very uncomfortable but saves space.</description>
+    <graphicData>
+      <texPath>RhyniaOverpower/Things/Building/Furniture/Pit</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <castEdgeShadows>False</castEdgeShadows>
+    <scatterableOnMapGen>False</scatterableOnMapGen>
+    <passability>Standable</passability>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>0</WorkToBuild>
+      <Mass>0</Mass>
+      <Flammability>0</Flammability>
+      <BedRestEffectiveness>0.4</BedRestEffectiveness>
+      <Comfort>0.20</Comfort>
+      <ImmunityGainSpeedFactor>1.05</ImmunityGainSpeedFactor>
+      <SurgerySuccessChanceFactor>1.2</SurgerySuccessChanceFactor>
+      <BirthRitualQualityOffset MayRequire="Ludeon.RimWorld.Biotech">2</BirthRitualQualityOffset>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>VitalsMonitor</li>
+          <li MayRequire="Ludeon.RimWorld.Ideology">SleepAccelerator</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <size>(1, 1)</size>
+    <costList Inherit="False" />
+    <minifiedDef IsNull="True" />
+    <thingCategories Inherit="False" />
+    <building>
+      <bed_showSleeperBody>False</bed_showSleeperBody>
+      <bed_defaultMedical>False</bed_defaultMedical>
+      <bed_healPerDay>5</bed_healPerDay>
+      <buildingSizeCategory>Small</buildingSizeCategory>
+      <wakeDormantPawnsOnConstruction>False</wakeDormantPawnsOnConstruction>
+      <artificialForMeditationPurposes>False</artificialForMeditationPurposes>
+      <paintable>False</paintable>
+    </building>
+    <fillPercent>0.2</fillPercent>
+    <pathCost>20</pathCost>
+    <leaveResourcesWhenKilled>False</leaveResourcesWhenKilled>
+    <designationCategory>Rhy_MainCategory</designationCategory>
+  </ThingDef>
+
+</Defs>

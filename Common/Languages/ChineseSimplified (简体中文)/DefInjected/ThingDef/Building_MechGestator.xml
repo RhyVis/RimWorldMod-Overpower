@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
-
+  
+  <!-- EN: mech gestator -->
   <Rhy_MechGestator.label>机械培育器</Rhy_MechGestator.label>
+  <!-- EN: Mechanitors can use it to produce new mechanoids or to resurrect dead mechanoids. -->
   <Rhy_MechGestator.description>允许机械师在此机器培育或复活大多数机械体。</Rhy_MechGestator.description>
-
+  
 </LanguageData>

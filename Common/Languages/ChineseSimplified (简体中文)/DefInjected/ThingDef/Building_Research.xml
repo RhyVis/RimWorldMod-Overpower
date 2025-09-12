@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: research terminal -->
+  <Rhy_ScienceTerminal.label>研究终端</Rhy_ScienceTerminal.label>
+  <!-- EN: A tiny research terminal capable of researching projects that needs hi-tech research bench. -->
+  <Rhy_ScienceTerminal.description>一个小型研究终端，能够研究需要高级研究台的项目。</Rhy_ScienceTerminal.description>
+  
+</LanguageData>

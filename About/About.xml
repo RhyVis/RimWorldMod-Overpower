@@ -6,7 +6,7 @@
   <supportedVersions>
     <li>1.6</li>
   </supportedVersions>
-  <modVersion IgnoreIfNoMatchingField="True">1.13.2</modVersion>
+  <modVersion IgnoreIfNoMatchingField="True">1.15.0</modVersion>
   <modDependencies>
     <li>
       <packageId>Rhynia.Mod.Baseline</packageId>
@@ -18,11 +18,6 @@
       <displayName>Harmony</displayName>
       <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
       <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
-    </li>
-    <li>
-      <packageId>adaptive.storage.framework</packageId>
-      <displayName>Adaptive Storage Framework</displayName>
-      <steamWorkshopUrl>https://steamcommunity.com/workshop/filedetails/?id=3033901359</steamWorkshopUrl>
     </li>
     <li>
       <packageId>OskarPotocki.VanillaFactionsExpanded.Core</packageId>
@@ -42,7 +37,6 @@
     <li>brrainz.harmony</li>
     <li>imranfish.XmlExtensions</li>
     <li>OskarPotocki.VanillaFactionsExpanded.Core</li>
-    <li>adaptive.storage.framework</li>
   </loadAfter>
   <description>Homemade overpowered stuffs.</description>
 </ModMetaData>

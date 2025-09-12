@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
-
+  
+  <!-- EN: thing spawner -->
   <Rhy_ThingSpawnerEx.label>物品生成器</Rhy_ThingSpawnerEx.label>
+  <!-- EN: Can spawn specified items according to settings and maintain their quantities. -->
   <Rhy_ThingSpawnerEx.description>可以根据设置生成各种物品，并维持数量。</Rhy_ThingSpawnerEx.description>
-
+  
 </LanguageData>

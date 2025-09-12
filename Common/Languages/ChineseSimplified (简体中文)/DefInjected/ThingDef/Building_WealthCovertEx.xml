@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
-
+  
+  <!-- EN: wealth converter -->
   <Rhy_WealthConvertEx.label>财富转换器</Rhy_WealthConvertEx.label>
+  <!-- EN: Can convert filtered items in the colony into selected item. -->
   <Rhy_WealthConvertEx.description>可以将存储筛选的物品转化为所选的物品。</Rhy_WealthConvertEx.description>
-
+  
 </LanguageData>

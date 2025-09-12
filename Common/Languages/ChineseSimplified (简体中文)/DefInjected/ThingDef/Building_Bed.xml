@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: sleeping pit -->
+  <Rhy_SleepingPit.label>睡眠坑</Rhy_SleepingPit.label>
+  <!-- EN: A small pit where pawns can sleep in, very uncomfortable but saves space. -->
+  <Rhy_SleepingPit.description>一个供殖民者睡觉的小坑，虽然非常不舒服，但节省空间。</Rhy_SleepingPit.description>
+  
+</LanguageData>

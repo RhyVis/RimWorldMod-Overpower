@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <ThingDef ParentName="BenchBase">
+    <thingClass>Building_ResearchBench</thingClass>
+    <defName>Rhy_ScienceTerminal</defName>
+    <label>research terminal</label>
+    <description>A tiny research terminal capable of researching projects that needs hi-tech research bench.</description>
+    <uiIconPath>RhyniaOverpower/Things/Building/Production/Research_south</uiIconPath>
+    <graphicData>
+      <texPath>RhyniaOverpower/Things/Building/Production/Research</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+    </graphicData>
+    <building>
+      <paintable>False</paintable>
+      <workTableRoomRole>Laboratory</workTableRoomRole>
+      <workTableNotInRoomRoleFactor>0.8</workTableNotInRoomRoleFactor>
+    </building>
+    <costList>
+      <Steel>150</Steel>
+      <ComponentIndustrial>12</ComponentIndustrial>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <ResearchSpeedFactor>0.9</ResearchSpeedFactor>
+      <WorkToBuild>2000</WorkToBuild>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <size>(1, 1)</size>
+    <fillPercent>0.5</fillPercent>
+    <pathCost>20</pathCost>
+    <passability>PassThroughOnly</passability>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0, 0, -1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <modExtensions>
+      <li Class="Rhynia.Baseline.DefModExt_EqualResearchUse">
+        <thingDefs>
+          <li>HiTechResearchBench</li>
+        </thingDefs>
+      </li>
+      <li Class="Rhynia.Baseline.DefModExt_CopyFacilities">
+        <thingDefs>
+          <li>HiTechResearchBench</li>
+        </thingDefs>
+      </li>
+    </modExtensions>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>200</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <ResearchSpeedFactor>0.2</ResearchSpeedFactor>
+        </statOffsets>
+      </li>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities />
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+      <li>PlaceWorker_DrawLinesToBookcasesInRoom</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>MicroelectronicsBasics</li>
+    </researchPrerequisites>
+    <designationCategory>Rhy_MainCategory</designationCategory>
+  </ThingDef>
+</Defs>

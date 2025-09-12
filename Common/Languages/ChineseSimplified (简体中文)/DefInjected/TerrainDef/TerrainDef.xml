@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  
+  <!-- EN: archotech assembly plate -->
   <Rhy_ArchotechAssemblyPlate.label>超凡流形地板</Rhy_ArchotechAssemblyPlate.label>
+  <!-- EN: Special tiles with special cleanliness-enhancing properties. It's quick to clean and increases the containment strength of nearby holding platforms. -->
   <Rhy_ArchotechAssemblyPlate.description>特制地板，具有超凡的清洁性能。清洁速度快，并能增强周围平台的收容强度。</Rhy_ArchotechAssemblyPlate.description>
+  
 </LanguageData>
