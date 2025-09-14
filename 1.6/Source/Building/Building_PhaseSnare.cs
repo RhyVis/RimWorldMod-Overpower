@@ -221,6 +221,22 @@ public class Building_PhaseSnareBeacon : Building
                 Notify_ColorChanged();
             },
         };
+
+        if (_cachedCoreEnable)
+            yield return new Command_Action
+            {
+                defaultLabel = DefOf_Overpower.Rhy_PhaseSnare_Core.LabelCap,
+                icon = DefOf_Overpower.Rhy_PhaseSnare_Core.uiIcon,
+                action = () =>
+                {
+                    var core = _container.InstanceCore;
+                    if (core is null)
+                        return;
+                    Find.Selector.ClearSelection();
+                    Find.Selector.Select(core);
+                },
+            };
+
         if (Enabled)
         {
             yield return new Command_Toggle
@@ -357,6 +373,7 @@ public class GameComponent_PhaseSnare : GameComponent
     private readonly AtomicContainerNullable<Building_PhaseSnareCore> _instanceCore = new();
     private readonly AtomicContainer<HashSet<Pawn>> _pendingPawns = new([]);
 
+    public Building_PhaseSnareCore? InstanceCore => _instanceCore.Value;
     public bool IsValid => _instanceCore.Value is { Spawned: true, Map: not null };
     public bool IsEnabled => _instanceCore.Value?.IsEnabled ?? false;
     public (bool, bool) IsValidAndEnabled

@@ -7,10 +7,10 @@ public static class DefOf_Overpower
 {
     public static DesignationDef Rhy_PhaseSnareDesignation;
 
+    public static ThingDef Rhy_PhaseSnare_Core;
     public static ThingDef Rhy_PhaseSnare_Beacon;
 
     public static ThingDef Rhy_ThingSpawnerEx;
-
     public static ThingDef Rhy_WealthConvertEx;
 
     public static WorldObjectDef Rhy_AsteroidPlatformWorldObject;
